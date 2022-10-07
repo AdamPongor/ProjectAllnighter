@@ -129,7 +129,10 @@ public class PlayerController : MonoBehaviour
     void OnDodgeFinished()
     {
         stateLock = false;
-        CurrentState = PlayerStates.IDLE;
+        if(movementInput != Vector2.zero)
+            CurrentState = PlayerStates.WALK;
+        else
+            CurrentState = PlayerStates.IDLE;
         
     }
 }
