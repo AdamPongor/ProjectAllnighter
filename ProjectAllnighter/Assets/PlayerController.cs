@@ -132,4 +132,8 @@ public class PlayerController : MonoBehaviour
             CurrentState = PlayerStates.IDLE;
         dodgeSpeed = 10;
     }
+    void onFire()
+    {
+        print("Fire pressed");
+    }
 }
