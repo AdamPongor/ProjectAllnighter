@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
+
+
     public enum PlayerStates{
         IDLE,
         WALK,
@@ -28,23 +30,30 @@ public class PlayerController : MonoBehaviour
                     canMove = true;
                     break;
                 case PlayerStates.DODGE:
+                    
                     animator.Play("Dodge");
                     stateLock = true;
-                    canMove = false;
                     break;
             }
-            }            
+            }
         }
-        
+
     }
-    public float moveSpeed = 1f;
-    public float collisionOffset = 0.05f;
-    public ContactFilter2D movementFilter;
-    
-    Vector2 movementInput;
+    public float moveSpeed = 70f;
+    public float maxSpeed = 8f;
+    public float dodgeSpeed = 10f;
+    //Each frame of physics, what percentage of the speed should be shaved off the velocity out of  1 (100%)
+    public float idleFriction = 0.9f;
     Rigidbody2D rb;
     Animator animator;
 
+    public float collisionOffset = 0.05f;
+    public ContactFilter2D movementFilter;
+    
+    Vector2 movementInput = Vector2.zero;
+    Vector2 lastMoveDir = Vector2.zero;
+
+    //Determine the switch case of the animations.
     PlayerStates currentState;
     // If this is true, animation state should not change.
     bool stateLock = false;
@@ -53,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,54 +71,41 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    
-    private void FixedUpdate(){
-        // Control animation parameters
-        // if(!animLocked && movementInput != Vector2.zero)
-        // {
-        //     animator.SetFloat(animationStrings.moveX, movementInput.x);
-        //     animator.SetFloat(animationSTrings.moveY, movementInput.y);
-        // }
-        if(movementInput != Vector2.zero){
-            bool success = TryMove(movementInput);
 
-            if(!success){
-                success = TryMove(new Vector2(movementInput.x, 0));
-                
-                if(!success){
-                    success = TryMove(new Vector2(movementInput.y,0));
-                }
-            }
-            
+    private void FixedUpdate(){
+
+        
+        if(canMove == true && movementInput != Vector2.zero)
+        {
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
         }
+        if(movementInput != Vector2.zero)
+            lastMoveDir = movementInput;
+
+        
+
+        if(currentState == PlayerStates.DODGE)
+        {
+            canMove = false;
+            Vector2 dodgeDir = lastMoveDir;
+            float decreaseDodgeSpeed = 4f;
+            dodgeSpeed -= dodgeSpeed * decreaseDodgeSpeed * Time.deltaTime;
+            rb.velocity = dodgeDir * dodgeSpeed;
+        }
+       
+        
+        
+
     }
-    private bool TryMove(Vector2 direction){
-        // Check for potential collisions
-        int count = rb.Cast(
-                direction, // Direction from the body to look fro collisions
-                movementFilter, // Determine where a collision can occur
-                castCollisions, // List of collisions to store after the Cast is finished
-                moveSpeed * Time.fixedDeltaTime + collisionOffset 
-            );
-            
-            
-            if(count == 0)
-            {
-            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-            return true;
-            }
-            else{
-                return false;
-            }
-    }
-   
+    
+
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
 
 
         // Update Animator for sprite direction
-        if(canMove && movementInput != Vector2.zero)
+        if(movementInput != Vector2.zero)
         {
             CurrentState = PlayerStates.WALK;
             animator.SetFloat("MoveX",movementInput.x);
@@ -124,6 +120,7 @@ public class PlayerController : MonoBehaviour
     void OnDodge()
     {
         CurrentState = PlayerStates.DODGE;
+        
     }
 
     void OnDodgeFinished()
@@ -133,6 +130,6 @@ public class PlayerController : MonoBehaviour
             CurrentState = PlayerStates.WALK;
         else
             CurrentState = PlayerStates.IDLE;
-        
+        dodgeSpeed = 10;
     }
 }
