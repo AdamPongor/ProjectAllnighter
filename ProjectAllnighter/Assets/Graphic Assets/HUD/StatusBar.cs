@@ -20,7 +20,7 @@ public class StatusBar : MonoBehaviour
 
     public static StatusBar instance;
 
-    private WaitForSeconds regenTick = new WaitForSeconds(0.1f);
+    private WaitForSeconds regenTick = new WaitForSeconds(0.02f);
 
     private Coroutine regen;
 
@@ -55,7 +55,7 @@ public class StatusBar : MonoBehaviour
     }
     private IEnumerator RegenStamina()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         while(CurrentStamina < maxStamina)
         {
             CurrentStamina += maxStamina / 100;
