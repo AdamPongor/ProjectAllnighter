@@ -96,11 +96,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = dodgeDir * dodgeSpeed;
             
         }
-
-    
-       
-        
-        
+        //update weapon position for the right direction
+        weaponParent.Direction = getDirection();
 
     }
     
@@ -111,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
 
         // Update Animator for sprite direction
-        if(movementInput != Vector2.zero)
+        if (movementInput != Vector2.zero)
         {
             CurrentState = PlayerStates.WALK;
             animator.SetFloat("MoveX",movementInput.x);
@@ -121,9 +118,6 @@ public class PlayerController : MonoBehaviour
         {
             CurrentState = PlayerStates.IDLE;
         }
-
-        //update weapon position for the right direction
-        weaponParent.Direction = getDirection();
 
 
     }
@@ -146,9 +140,9 @@ public class PlayerController : MonoBehaviour
             CurrentState = PlayerStates.IDLE;
         dodgeSpeed = 10;
     }
-    void onFire()
+    void OnFire()
     {
-        print("Fire pressed");
+        weaponParent.Attack();
     }
 
 
