@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    
     public float moveSpeed = 70f;
     public float maxSpeed = 8f;
     public float dodgeSpeed = 10f;
@@ -92,7 +94,10 @@ public class PlayerController : MonoBehaviour
             float decreaseDodgeSpeed = 4f;
             dodgeSpeed -= dodgeSpeed * decreaseDodgeSpeed * Time.deltaTime;
             rb.velocity = dodgeDir * dodgeSpeed;
+            
         }
+
+    
        
         
         
@@ -125,8 +130,11 @@ public class PlayerController : MonoBehaviour
 
     void OnDodge()
     {
-        CurrentState = PlayerStates.DODGE;
-        
+        if(StatusBar.instance.isEnoughStamina(25f))
+        {
+            CurrentState = PlayerStates.DODGE;
+            StatusBar.instance.UseStamina(25f);
+        }
     }
 
     void OnDodgeFinished()
