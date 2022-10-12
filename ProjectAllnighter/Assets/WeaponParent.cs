@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponParent : MonoBehaviour
 {
     public Vector2 Direction { get; set; }
+    public bool IsAttacking { get; private set; }
+
     public SpriteRenderer characterRenderer;
     public SpriteRenderer weaponRenderer;
     public Animator animator;
@@ -12,6 +14,9 @@ public class WeaponParent : MonoBehaviour
     private bool attackBlocked;
 
     private void Update() {
+        if (IsAttacking)
+            return;
+
         transform.right = Direction;
 
         if (Direction.y > 0)
@@ -29,6 +34,7 @@ public class WeaponParent : MonoBehaviour
         if (attackBlocked)
             return;
         animator.SetTrigger("Attack");
+        IsAttacking = true;
         attackBlocked = true;
         StartCoroutine(DelayAttack());
     }
@@ -36,5 +42,8 @@ public class WeaponParent : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         attackBlocked = false;
+    }
+    public void ResetIsAttacking() { 
+        IsAttacking = false;
     }
 }
