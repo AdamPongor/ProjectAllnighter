@@ -80,16 +80,18 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate(){
 
-        
+        //Move the player if it's moveable and there is any input.
         if(canMove == true && movementInput != Vector2.zero)
         {
             rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
         }
+
+        //Save the last input so if the player dodging while in IDLE state it will dodge to the direction of the last input.
         if(movementInput != Vector2.zero)
             lastMoveDir = movementInput;
 
         
-
+        //While dodging lock the movement
         if(currentState == PlayerStates.DODGE)
         {
             canMove = false;
@@ -99,7 +101,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = dodgeDir * dodgeSpeed;
             
         }
-        //update weapon position for the right direction
+        //Update weapon position for the right direction
         weaponParent.Direction = getDirection();
 
     }
@@ -124,6 +126,8 @@ public class PlayerController : MonoBehaviour
 
     void OnDodge()
     {
+        //Checking the stamina amount if the player has enough for another dodge.
+        //If the player is in a dodge or attacking at the moment don't let it dodge.
         if(StatusBar.instance.isEnoughStamina(25f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
             CurrentState = PlayerStates.DODGE;
@@ -133,15 +137,19 @@ public class PlayerController : MonoBehaviour
 
     void OnDodgeFinished()
     {
+        //Unlock the satelock and checking for input to decide which animation should play.
         stateLock = false;
         if(movementInput != Vector2.zero)
             CurrentState = PlayerStates.WALK;
         else
             CurrentState = PlayerStates.IDLE;
-        dodgeSpeed = 10;
     }
+
+
     void OnFire()
     {
+        //Checking the stamina amount if the player has enough for another attack.
+        //If the player is in a dodge or attacking at the moment don't let it attack.
         if (StatusBar.instance.isEnoughStamina(20f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
             weaponParent.Attack();
