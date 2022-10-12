@@ -37,7 +37,10 @@ public class PlayerController : MonoBehaviour
             }
             }
         }
-
+        get
+        {
+            return currentState;
+        }
     }
 
     
@@ -106,7 +109,6 @@ public class PlayerController : MonoBehaviour
     {
         movementInput = movementValue.Get<Vector2>();
 
-
         // Update Animator for sprite direction
         if (movementInput != Vector2.zero)
         {
@@ -118,13 +120,11 @@ public class PlayerController : MonoBehaviour
         {
             CurrentState = PlayerStates.IDLE;
         }
-
-
     }
 
     void OnDodge()
     {
-        if(StatusBar.instance.isEnoughStamina(25f))
+        if(StatusBar.instance.isEnoughStamina(25f) && CurrentState != PlayerStates.DODGE)
         {
             CurrentState = PlayerStates.DODGE;
             StatusBar.instance.UseStamina(25f);
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnFire()
     {
-        if (StatusBar.instance.isEnoughStamina(20f))
+        if (StatusBar.instance.isEnoughStamina(20f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
             weaponParent.Attack();
             StatusBar.instance.UseStamina(20f);
