@@ -29,7 +29,7 @@ public class WeaponParent : MonoBehaviour
         transform.right = Direction;
         lastDirection = Direction;
 
-        if (Direction.y > 0)
+        if (Direction.y > 0 || Direction.x < 0)
         {
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
         }
@@ -37,22 +37,7 @@ public class WeaponParent : MonoBehaviour
         {
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         }
-        
-        //setting the position of the weapon closer to the sideways character sprite
-        pos = transform.position;
-        //TODO ez a feltetel nem jo... egyszer kell csak arrebb rakni ennyivel
-        if (!lastDirection.Equals(Direction))
-        {
-            if (Direction.x > 0)
-            {
-                pos.x -= 0.1f;
-            }
-            else if (Direction.x < 0)
-            {
-                pos.x += 0.1f;
-            }
-            transform.position = pos;
-        }
+
     }
     public void Attack()
     {
