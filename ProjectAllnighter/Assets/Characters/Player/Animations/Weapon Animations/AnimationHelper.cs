@@ -5,10 +5,14 @@ using UnityEngine.Events;
 
 public class AnimationHelper : MonoBehaviour
 {
-    public UnityEvent OnAnimationTriggered;
+    public UnityEvent OnAnimationTriggered, OnAttackPerformed;
 
     public void TriggerEvent()
     {
         OnAnimationTriggered?.Invoke();
+    }
+    public void TriggerAttack()
+    {
+        OnAttackPerformed?.Invoke();
     }
 }
