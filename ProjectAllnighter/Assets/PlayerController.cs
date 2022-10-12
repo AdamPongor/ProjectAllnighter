@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     void OnDodge()
     {
-        if(StatusBar.instance.isEnoughStamina(25f) && CurrentState != PlayerStates.DODGE)
+        if(StatusBar.instance.isEnoughStamina(25f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
             CurrentState = PlayerStates.DODGE;
             StatusBar.instance.UseStamina(25f);
