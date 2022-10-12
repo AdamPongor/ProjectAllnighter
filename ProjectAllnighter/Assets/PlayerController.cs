@@ -143,6 +143,8 @@ public class PlayerController : MonoBehaviour
             CurrentState = PlayerStates.WALK;
         else
             CurrentState = PlayerStates.IDLE;
+
+        dodgeSpeed = 10f;
     }
 
 
