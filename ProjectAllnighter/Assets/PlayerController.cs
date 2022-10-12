@@ -142,9 +142,12 @@ public class PlayerController : MonoBehaviour
     }
     void OnFire()
     {
-        weaponParent.Attack();
+        if (StatusBar.instance.isEnoughStamina(20f))
+        {
+            weaponParent.Attack();
+            StatusBar.instance.UseStamina(20f);
+        }
     }
-
 
     Vector2 getDirection() 
     {
