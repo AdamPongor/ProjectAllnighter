@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
+    private WeaponParent weaponParent;
 
 
     public enum PlayerStates{
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        weaponParent = GetComponentInChildren<WeaponParent>();
     }
 
 
@@ -115,6 +116,11 @@ public class PlayerController : MonoBehaviour
         {
             CurrentState = PlayerStates.IDLE;
         }
+
+        //update weapon position for the right direction
+        weaponParent.Direction = getDirection();
+
+
     }
 
     void OnDodge()
@@ -135,5 +141,11 @@ public class PlayerController : MonoBehaviour
     void onFire()
     {
         print("Fire pressed");
+    }
+
+
+    Vector2 getDirection() 
+    {
+        return lastMoveDir;
     }
 }
