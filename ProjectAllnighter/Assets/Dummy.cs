@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dummy : MonoBehaviour
 {
 
-    private float health = 10000;
+    private float health = 1;
     public float Health {
         get { return health; }
 
