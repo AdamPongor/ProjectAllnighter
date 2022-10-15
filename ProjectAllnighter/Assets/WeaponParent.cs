@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Transactions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponParent : MonoBehaviour
@@ -35,11 +36,11 @@ public class WeaponParent : MonoBehaviour
     private bool isRanged;
     [SerializeField] GameObject projectile;
     [SerializeField] Transform firePoint;
-
+    private Camera mainCamera;
 
     private void Start()
     {
-
+        mainCamera = Camera.main;
         weaponcnt = 2;
         weapons = new GameObject[weaponcnt];
 
@@ -55,10 +56,15 @@ public class WeaponParent : MonoBehaviour
     }
     private void Update() {
 
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
+        Vector2 offset = new Vector2(mousePosition.x - firePoint.position.x, mousePosition.y - firePoint.position.y);
+        float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+
+        firePoint.rotation = Quaternion.Euler(0, 0, angle);
+
         if (IsAttacking)
             return;
-        
-
         //setting the sword's direction towards where the character is facing
         if ((Direction.x < 0 || Direction.y < 0) && !swordOnlLeft)
         {
@@ -92,6 +98,8 @@ public class WeaponParent : MonoBehaviour
     }
     private void RangedAttack()
     {
+        //calculate the projectiles vector
+
         animator.SetTrigger("Attack");
         Instantiate(projectile, firePoint.position, firePoint.rotation);
         IsAttacking = true;
