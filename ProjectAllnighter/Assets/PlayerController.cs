@@ -101,6 +101,8 @@ public class PlayerController : MonoBehaviour
             rb.velocity = dodgeDir * dodgeSpeed;
             
         }
+        //set the weaponparent in case of weapon change
+        weaponParent = GetComponentInChildren<WeaponParent>();
         //Update weapon position for the right direction
         weaponParent.Direction = getDirection();
 

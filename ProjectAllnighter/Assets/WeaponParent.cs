@@ -5,25 +5,74 @@ using UnityEngine;
 
 public class WeaponParent : MonoBehaviour
 {
+    //weapondirection set
     public Vector2 Direction { get; set; }
     private Vector2 lastDirection;
     public bool IsAttacking { get; private set; }
 
+    //animation
     public SpriteRenderer characterRenderer;
     public SpriteRenderer weaponRenderer;
     public Animator animator;
     public float delay = 0.3f;
     private bool attackBlocked;
-    private bool swordOnlLeft= false;
+    private bool swordOnlLeft = false;
 
+    //create weapon holders
+    private int weaponcnt;
+    public int currentWeaponIndex;
 
+    public GameObject[] weapons;
+    public GameObject currentWeapon;
+    public GameObject weaponParent;
+
+    //hitscan
     public Transform circleOrigin;
     public float radius;
 
+
+
+    private void Start()
+    {
+
+        weaponcnt = 2;
+        weapons = new GameObject[weaponcnt];
+
+
+        for (int i = 0; i < weaponcnt; i++)
+        {
+            weapons[i] = weaponParent.transform.GetChild(i).gameObject;
+            weapons[i].SetActive(false);
+        }
+        weapons[0].SetActive(true);
+        currentWeapon = weapons[0];
+        weaponcnt = 0;
+    }
     private void Update() {
 
         if (IsAttacking)
             return;
+
+        //change weapon to key R
+        //TODO change the weapon animator and the renderer
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (currentWeaponIndex == 0)
+            {
+                weapons[currentWeaponIndex].SetActive(false);
+                weapons[1].SetActive(true);
+                currentWeapon = weapons[1];
+                currentWeaponIndex = 1;
+            }
+            else
+            {
+                weapons[currentWeaponIndex].SetActive(false);
+                weapons[0].SetActive(true);
+                currentWeapon = weapons[0];
+                currentWeaponIndex = 0;
+            }
+
+        }
 
         //setting the sword's direction towards where the character is facing
         if ((Direction.x < 0 || Direction.y < 0) && !swordOnlLeft)
@@ -57,6 +106,12 @@ public class WeaponParent : MonoBehaviour
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         }
 
+
+    }
+
+    public void ChangeWeapon()    
+    {
+        
     }
     public void Attack()
     {
