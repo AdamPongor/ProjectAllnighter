@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class WeaponParent : MonoBehaviour
@@ -13,22 +14,40 @@ public class WeaponParent : MonoBehaviour
     public Animator animator;
     public float delay = 0.3f;
     private bool attackBlocked;
+    private bool swordOnlLeft= false;
+
 
     public Transform circleOrigin;
     public float radius;
-    private Vector3 pos;
 
     private void Update() {
 
         if (IsAttacking)
             return;
 
+        //setting the sword's direction towards where the character is facing
+        if ((Direction.x < 0 || Direction.y < 0) && !swordOnlLeft)
+        {
+            Vector3 swordpos = transform.localPosition;
+            swordpos.x *= -1;
+            transform.localPosition = swordpos;
+            swordOnlLeft = true;
+            //mirror sword
+            transform.Rotate(0,180,0);
+            lastDirection = Direction;
+        }
+        else if ((Direction.x > 0 || Direction.y > 0) && swordOnlLeft) 
+        {
+            Vector3 swordpos = transform.localPosition;
+            swordpos.x *= -1;
+            transform.localPosition = swordpos;
+            swordOnlLeft = false;
+            //mirror sword
+            transform.Rotate(0, 180, 0);
+            lastDirection = Direction;
+        }
 
-
-        //setting the direction towards where the character is facing
-        transform.right = Direction;
-        lastDirection = Direction;
-
+        //setting sorting order in case of moving upwards or downwards
         if (Direction.y > 0 || Direction.x < 0)
         {
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
