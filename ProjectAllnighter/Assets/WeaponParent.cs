@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WeaponParent : MonoBehaviour
 {
+    
+
     //weapondirection set
     public Vector2 Direction { get; set; }
     public bool IsAttacking { get; private set; }

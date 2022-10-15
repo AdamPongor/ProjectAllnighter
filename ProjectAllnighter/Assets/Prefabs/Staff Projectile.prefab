@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2196347613738239591}
   - component: {fileID: 2196347613738239588}
   - component: {fileID: 2196347613738239589}
-  m_Layer: 0
+  - component: {fileID: 2055765959813949506}
+  m_Layer: 7
   m_Name: Staff Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,3 +148,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 1
+--- !u!95 &2055765959813949506
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2196347613738239586}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9a0fae657ac7544b955d45b74c257ca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
