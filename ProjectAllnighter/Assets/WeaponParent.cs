@@ -29,6 +29,10 @@ public class WeaponParent : MonoBehaviour
     public Transform circleOrigin;
     public float radius;
 
+    //projectile
+    private bool isRanged;
+    [SerializeField] GameObject projectile;
+    [SerializeField] Transform firePoint;
 
 
     private void Start()
@@ -83,6 +87,14 @@ public class WeaponParent : MonoBehaviour
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         }
 
+    }
+    private void RangedAttack()
+    {
+        animator.SetTrigger("Attack");
+        Instantiate(projectile, firePoint.position, firePoint.rotation);
+        IsAttacking = true;
+        attackBlocked = true;
+        StartCoroutine(DelayAttack());
 
     }
 
@@ -96,7 +108,7 @@ public class WeaponParent : MonoBehaviour
             weapons[1].SetActive(true);
             currentWeapon = weapons[1];
             currentWeaponIndex = 1;
-
+            isRanged = true;
         }
         else
         {
@@ -104,6 +116,7 @@ public class WeaponParent : MonoBehaviour
             weapons[0].SetActive(true);
             currentWeapon = weapons[0];
             currentWeaponIndex = 0;
+            isRanged = false;
         }
         //change renderers
         weaponRenderer = currentWeapon.GetComponent<SpriteRenderer>();
@@ -113,6 +126,11 @@ public class WeaponParent : MonoBehaviour
     {
         if (attackBlocked)
             return;
+        if (isRanged)
+        {
+            RangedAttack();
+            return;
+        }
         animator.SetTrigger("Attack");
         IsAttacking = true;
         attackBlocked = true;
