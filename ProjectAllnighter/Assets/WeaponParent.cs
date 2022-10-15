@@ -7,7 +7,6 @@ public class WeaponParent : MonoBehaviour
 {
     //weapondirection set
     public Vector2 Direction { get; set; }
-    private Vector2 lastDirection;
     public bool IsAttacking { get; private set; }
 
     //animation
@@ -52,27 +51,7 @@ public class WeaponParent : MonoBehaviour
 
         if (IsAttacking)
             return;
-
-        //change weapon to key R
-        //TODO change the weapon animator and the renderer
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (currentWeaponIndex == 0)
-            {
-                weapons[currentWeaponIndex].SetActive(false);
-                weapons[1].SetActive(true);
-                currentWeapon = weapons[1];
-                currentWeaponIndex = 1;
-            }
-            else
-            {
-                weapons[currentWeaponIndex].SetActive(false);
-                weapons[0].SetActive(true);
-                currentWeapon = weapons[0];
-                currentWeaponIndex = 0;
-            }
-
-        }
+        
 
         //setting the sword's direction towards where the character is facing
         if ((Direction.x < 0 || Direction.y < 0) && !swordOnlLeft)
@@ -83,7 +62,6 @@ public class WeaponParent : MonoBehaviour
             swordOnlLeft = true;
             //mirror sword
             transform.Rotate(0,180,0);
-            lastDirection = Direction;
         }
         else if ((Direction.x > 0 || Direction.y > 0) && swordOnlLeft) 
         {
@@ -93,7 +71,6 @@ public class WeaponParent : MonoBehaviour
             swordOnlLeft = false;
             //mirror sword
             transform.Rotate(0, 180, 0);
-            lastDirection = Direction;
         }
 
         //setting sorting order in case of moving upwards or downwards
@@ -111,7 +88,26 @@ public class WeaponParent : MonoBehaviour
 
     public void ChangeWeapon()    
     {
-        
+        //change weapon to key R
+
+        if (currentWeaponIndex == 0)
+        {
+            weapons[currentWeaponIndex].SetActive(false);
+            weapons[1].SetActive(true);
+            currentWeapon = weapons[1];
+            currentWeaponIndex = 1;
+
+        }
+        else
+        {
+            weapons[currentWeaponIndex].SetActive(false);
+            weapons[0].SetActive(true);
+            currentWeapon = weapons[0];
+            currentWeaponIndex = 0;
+        }
+        //change renderers
+        weaponRenderer = currentWeapon.GetComponent<SpriteRenderer>();
+        animator = currentWeapon.GetComponent<Animator>();
     }
     public void Attack()
     {

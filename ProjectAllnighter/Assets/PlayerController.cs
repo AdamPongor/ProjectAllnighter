@@ -160,6 +160,10 @@ public class PlayerController : MonoBehaviour
             StatusBar.instance.UseStamina(20f);
         }
     }
+    void OnWeaponChange() 
+    {
+        weaponParent.ChangeWeapon();
+    }
 
     Vector2 getDirection() 
     {
