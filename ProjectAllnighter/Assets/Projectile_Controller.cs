@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile_Controller : MonoBehaviour
 {
-    [SerializeField] float bulletSpeed = 5f;
+    [SerializeField] float bulletSpeed = 8f;
      private Rigidbody2D projectilerb;
 
     // Start is called before the first frame update
@@ -23,6 +23,10 @@ public class Projectile_Controller : MonoBehaviour
     {
         //collision is the object what the projectile hit
         Destroy(gameObject);
-
+        Dummy d = collision.GetComponent<Dummy>();
+        if (d != null)
+        {
+            d.takeDamage(10);
+        }
     }
 }
