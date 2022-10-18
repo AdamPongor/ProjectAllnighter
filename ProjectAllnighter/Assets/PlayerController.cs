@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
         weaponParent = GetComponentInChildren<WeaponParent>();
     }
 
-
     private void FixedUpdate(){
 
         //Move the player if it's moveable and there is any input.

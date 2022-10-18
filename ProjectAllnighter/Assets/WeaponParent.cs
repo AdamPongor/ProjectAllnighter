@@ -53,12 +53,15 @@ public class WeaponParent : MonoBehaviour
         weapons[0].SetActive(true);
         currentWeapon = weapons[0];
         weaponcnt = 0;
+
+        //firePoint.position = new Vector2(Screen.width / 2, Screen.height / 2);
     }
     private void Update() {
 
+        
         Vector3 mousePosition = Input.mousePosition;
         Vector3 screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
-        Vector2 offset = new Vector2(mousePosition.x - firePoint.position.x, mousePosition.y - firePoint.position.y);
+        Vector2 offset = new Vector2(mousePosition.x - Screen.width/2, mousePosition.y - Screen.height/2);
         float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
 
         firePoint.rotation = Quaternion.Euler(0, 0, angle);
