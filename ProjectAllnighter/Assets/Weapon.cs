@@ -4,7 +4,7 @@ using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponParent : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     
 
@@ -21,10 +21,10 @@ public class WeaponParent : MonoBehaviour
     private bool swordOnlLeft = false;
 
     //create weapon holders
-    private int weaponcnt;
+    //private int weaponcnt;
     public int currentWeaponIndex;
 
-    public GameObject[] weapons;
+    public List<GameObject> weapons;
     public GameObject currentWeapon;
     public GameObject weaponParent;
 
@@ -41,20 +41,19 @@ public class WeaponParent : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        weaponcnt = 2;
-        weapons = new GameObject[weaponcnt];
 
-
-        for (int i = 0; i < weaponcnt; i++)
+        //dynamic weapon list
+        weapons = new List<GameObject>();
+        for (int i = 0; i < weaponParent.transform.childCount; i++)
         {
-            weapons[i] = weaponParent.transform.GetChild(i).gameObject;
+            weapons.Add(weaponParent.transform.GetChild(i).gameObject);
             weapons[i].SetActive(false);
+            Debug.Log(i);
         }
         weapons[0].SetActive(true);
         currentWeapon = weapons[0];
-        weaponcnt = 0;
+        currentWeaponIndex = 0;
 
-        //firePoint.position = new Vector2(Screen.width / 2, Screen.height / 2);
     }
     private void Update() {
 
@@ -114,21 +113,22 @@ public class WeaponParent : MonoBehaviour
     public void ChangeWeapon()    
     {
         //change weapon to key R
-
-        if (currentWeaponIndex == 0)
+        weapons[currentWeaponIndex].SetActive(false);
+        currentWeaponIndex++;
+        if (currentWeaponIndex >= weapons.Count)
         {
-            weapons[currentWeaponIndex].SetActive(false);
-            weapons[1].SetActive(true);
-            currentWeapon = weapons[1];
-            currentWeaponIndex = 1;
+            currentWeaponIndex = 0;
+        }
+        weapons[currentWeaponIndex].SetActive(true);
+        currentWeapon = weapons[currentWeaponIndex];
+
+        // TODO: EZT MAJD ÁT KÉNE TENNI A WEPONBE PROPERTYNEK ÉS A LESZÁRMAZOTTAKBEN JÓL INICIALIZÁLNI
+        if (currentWeaponIndex == 1)
+        {
             isRanged = true;
         }
         else
         {
-            weapons[currentWeaponIndex].SetActive(false);
-            weapons[0].SetActive(true);
-            currentWeapon = weapons[0];
-            currentWeaponIndex = 0;
             isRanged = false;
         }
         //change renderers
@@ -168,6 +168,10 @@ public class WeaponParent : MonoBehaviour
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
         {
             Debug.Log(collider.name);
+            if (collider.tag == "Enemy")
+            {
+                collider.GetComponent<Enemy>().takeDamage(10);
+            }
         }
     }
 }

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dummy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 
-    private float health = 1;
+    private float health = 30;
     public float Health {
         get { return health; }
 

@@ -23,7 +23,7 @@ public class Projectile_Controller : MonoBehaviour
     {
         //collision is the object what the projectile hit
         Destroy(gameObject);
-        Dummy d = collision.GetComponent<Dummy>();
+        Enemy d = collision.GetComponent<Enemy>();
         if (d != null)
         {
             d.takeDamage(10);

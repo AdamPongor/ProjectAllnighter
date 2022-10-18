@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private WeaponParent weaponParent;
+    private Weapon weaponParent;
 
 
     public enum PlayerStates{
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        weaponParent = GetComponentInChildren<WeaponParent>();
+        weaponParent = GetComponentInChildren<Weapon>();
     }
 
     private void FixedUpdate(){
@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             
         }
         //set the weaponparent in case of weapon change
-        weaponParent = GetComponentInChildren<WeaponParent>();
+        weaponParent = GetComponentInChildren<Weapon>();
         //Update weapon position for the right direction
         weaponParent.Direction = getDirection();
 
