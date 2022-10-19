@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     private Weapon weaponParent;
 
-
     public enum PlayerStates{
         IDLE,
         WALK,

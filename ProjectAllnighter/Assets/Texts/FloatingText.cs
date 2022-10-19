@@ -7,13 +7,21 @@ using UnityEngine;
 public class FloatingText : MonoBehaviour
 {
     private float TTL = 0.4f;
-    private float floatspeed = 300;
+    private float floatspeed = 200;
     private Vector3 direction = new Vector3(0, 1, 0);
     private float timeElapsed = 0.0f;
 
     public TextMeshProUGUI textmesh;
     RectTransform rTransform;
-
+    
+    public string Text
+    {
+        set
+        {
+            GetComponent<TMPro.TextMeshProUGUI>().text = value;
+        }
+        
+    }
 
     // Start is called before the first frame update
     void Start()
