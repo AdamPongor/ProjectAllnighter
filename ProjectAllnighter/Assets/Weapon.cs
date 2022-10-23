@@ -10,23 +10,15 @@ public class Weapon : MonoBehaviour
 
     //weapondirection set
     public Vector2 Direction { get; set; }
-    public bool IsAttacking { get; private set; }
+    public bool IsAttacking { get; protected set; }
 
     //animation
     public SpriteRenderer characterRenderer;
     public SpriteRenderer weaponRenderer;
     public Animator animator;
     public float delay = 0.3f;
-    private bool attackBlocked;
+    protected bool attackBlocked;
     private bool swordOnlLeft = false;
-
-    //create weapon holders
-    //private int weaponcnt;
-    public int currentWeaponIndex;
-
-    public List<GameObject> weapons;
-    public GameObject currentWeapon;
-    public GameObject weaponParent;
 
     //hitscan
     public Transform circleOrigin;
@@ -36,33 +28,18 @@ public class Weapon : MonoBehaviour
     private bool isRanged;
     [SerializeField] GameObject projectile;
     [SerializeField] Transform firePoint;
-    private Camera mainCamera;
+    protected Camera mainCamera;
 
     private void Start()
     {
         mainCamera = Camera.main;
-
-        //dynamic weapon list
-        weapons = new List<GameObject>();
-        for (int i = 0; i < weaponParent.transform.childCount; i++)
-        {
-            weapons.Add(weaponParent.transform.GetChild(i).gameObject);
-            weapons[i].SetActive(false);
-            Debug.Log(i);
-        }
-        weapons[0].SetActive(true);
-        currentWeapon = weapons[0];
-        currentWeaponIndex = 0;
-
     }
-    private void Update() {
+    public virtual void Update() {
 
-        
         Vector3 mousePosition = Input.mousePosition;
         Vector3 screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
-        Vector2 offset = new Vector2(mousePosition.x - Screen.width/2, mousePosition.y - Screen.height/2);
+        Vector2 offset = new Vector2(mousePosition.x - Screen.width / 2, mousePosition.y - Screen.height / 2);
         float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
-
         firePoint.rotation = Quaternion.Euler(0, 0, angle);
 
         if (IsAttacking)
@@ -98,10 +75,11 @@ public class Weapon : MonoBehaviour
         }
 
     }
-    private void RangedAttack()
+    public void RangedAttack()
     {
         //calculate the projectiles vector
-
+        if (attackBlocked)
+            return;
         animator.SetTrigger("Attack");
         Instantiate(projectile, firePoint.position, firePoint.rotation);
         IsAttacking = true;
@@ -110,46 +88,21 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public void ChangeWeapon()    
+    public void ChangeWeapon(GameObject currentWeapon)    
     {
-        //change weapon to key R
-        weapons[currentWeaponIndex].SetActive(false);
-        currentWeaponIndex++;
-        if (currentWeaponIndex >= weapons.Count)
-        {
-            currentWeaponIndex = 0;
-        }
-        weapons[currentWeaponIndex].SetActive(true);
-        currentWeapon = weapons[currentWeaponIndex];
-
-        // TODO: EZT MAJD ÁT KÉNE TENNI A WEPONBE PROPERTYNEK ÉS A LESZÁRMAZOTTAKBEN JÓL INICIALIZÁLNI
-        if (currentWeaponIndex == 1)
-        {
-            isRanged = true;
-        }
-        else
-        {
-            isRanged = false;
-        }
-        //change renderers
         weaponRenderer = currentWeapon.GetComponent<SpriteRenderer>();
         animator = currentWeapon.GetComponent<Animator>();
     }
-    public void Attack()
+    public virtual void MeleeAttack()
     {
         if (attackBlocked)
             return;
-        if (isRanged)
-        {
-            RangedAttack();
-            return;
-        }
         animator.SetTrigger("Attack");
         IsAttacking = true;
         attackBlocked = true;
         StartCoroutine(DelayAttack());
     }
-    private IEnumerator DelayAttack()
+    public IEnumerator DelayAttack()
     {
         yield return new WaitForSeconds(delay);
         attackBlocked = false;

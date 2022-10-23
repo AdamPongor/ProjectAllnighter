@@ -6,7 +6,9 @@ using UnityEngine;
 public class Projectile_Controller : MonoBehaviour
 {
     [SerializeField] float bulletSpeed = 8f;
-     private Rigidbody2D projectilerb;
+    private Rigidbody2D projectilerb;
+    private float TTL = 3f;
+    private float timeElapsed = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -15,9 +17,14 @@ public class Projectile_Controller : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         projectilerb.velocity = transform.right * bulletSpeed;
+        timeElapsed += Time.deltaTime;
+        if (timeElapsed > TTL)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

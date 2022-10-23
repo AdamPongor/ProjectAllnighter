@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private Weapon weaponParent;
+    
 
     public enum PlayerStates{
         IDLE,
@@ -67,6 +67,12 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
+    //dynamic weapon list
+    private Weapon weaponParent;
+    public int currentWeaponIndex;
+    public List<GameObject> weapons;
+    public GameObject currentWeapon;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +80,18 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponParent = GetComponentInChildren<Weapon>();
+
+        //dynamic weapon list
+        weapons = new List<GameObject>();
+        for (int i = 0; i < weaponParent.transform.childCount; i++)
+        {
+            weapons.Add(weaponParent.transform.GetChild(i).gameObject);
+            weapons[i].SetActive(false);
+            Debug.Log(i);
+        }
+        weapons[0].SetActive(true);
+        currentWeapon = weapons[0];
+        currentWeaponIndex = 0;
     }
 
     private void FixedUpdate(){
@@ -154,13 +172,32 @@ public class PlayerController : MonoBehaviour
         //If the player is in a dodge or attacking at the moment don't let it attack.
         if (StatusBar.instance.isEnoughStamina(20f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
-            weaponParent.Attack();
-            StatusBar.instance.UseStamina(20f);
+            if (currentWeapon.tag == "Ranged")
+            {
+                weaponParent.RangedAttack();
+                StatusBar.instance.UseStamina(20f);
+            } else if (currentWeapon.tag == "Melee")
+            {
+                weaponParent.MeleeAttack();
+                StatusBar.instance.UseStamina(20f);
+            }
         }
     }
     void OnWeaponChange() 
     {
-        weaponParent.ChangeWeapon();
+        
+        //change weapon to key R
+        weapons[currentWeaponIndex].SetActive(false);
+        currentWeaponIndex++;
+        if (currentWeaponIndex >= weapons.Count)
+        {
+            currentWeaponIndex = 0;
+        }
+        weapons[currentWeaponIndex].SetActive(true);
+        currentWeapon = weapons[currentWeaponIndex];
+
+        //change renderers
+        weaponParent.ChangeWeapon(currentWeapon);
     }
 
     Vector2 getDirection() 
