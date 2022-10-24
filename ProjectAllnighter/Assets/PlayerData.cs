@@ -31,4 +31,9 @@ public class PlayerData : MonoBehaviour
     {
         Health.Use(amount);
     }
+
+    public void Heal(float amount)
+    {
+        Health.Add(amount);
+    }
 }

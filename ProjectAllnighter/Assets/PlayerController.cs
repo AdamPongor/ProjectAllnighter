@@ -207,4 +207,9 @@ public class PlayerController : MonoBehaviour
     {
         return lastMoveDir;
     }
+
+    void onHeal()
+    {
+        playerData.Heal(20f);
+    }
 }

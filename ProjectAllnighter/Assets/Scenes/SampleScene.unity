@@ -228,6 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 160620284}
+  tick: 0
+  canRegen: 0
 --- !u!4 &219823438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 108774019235222396, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
@@ -46172,6 +46174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1204712090}
+  tick: 0.1
+  canRegen: 1
 --- !u!1 &1294606300
 GameObject:
   m_ObjectHideFlags: 0
@@ -47084,6 +47088,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1952181416}
+  tick: 0.02
+  canRegen: 1
 --- !u!1 &1963945206
 GameObject:
   m_ObjectHideFlags: 3
@@ -47584,6 +47590,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 41.314
       objectReference: {fileID: 0}
+    - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: Mana
+      value: 
+      objectReference: {fileID: 1204712091}
+    - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: Health
+      value: 
+      objectReference: {fileID: 160620285}
+    - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: Stamina
+      value: 
+      objectReference: {fileID: 1952181417}
+    - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: stamina
+      value: 
+      objectReference: {fileID: 1952181417}
     - target: {fileID: 9146357273953083263, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: m_TagString
       value: Melee

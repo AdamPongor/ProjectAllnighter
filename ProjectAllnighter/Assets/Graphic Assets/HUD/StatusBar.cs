@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class StatusBar : MonoBehaviour
 {
     public Slider slider;
-    private float maxStamina = 100f;
-    public float CurrentStamina{
+    private float maxValue = 100f;
+    public float tick;
+    public bool canRegen;
+    public float currentValue{
         set{
             _currentStamina = value;   
         }
@@ -18,24 +20,25 @@ public class StatusBar : MonoBehaviour
 
     private float _currentStamina;
 
-    private WaitForSeconds regenTick = new WaitForSeconds(0.02f);
+    private WaitForSeconds regenTick;
 
     private Coroutine regen;
 
     void Start()
     {
-        CurrentStamina = maxStamina;
-        slider.maxValue = maxStamina;
-        slider.value = maxStamina;
-        Debug.Log(CurrentStamina);
+        regenTick = new WaitForSeconds(tick);
+        currentValue = maxValue;
+        slider.maxValue = maxValue;
+        slider.value = maxValue;
+        Debug.Log(currentValue);
     }
 
     public void Use(float amount)
     {
-        if(CurrentStamina - amount>= 0)
+        if(currentValue - amount>= 0)
         {
-            CurrentStamina -= amount;
-            slider.value = CurrentStamina;
+            currentValue -= amount;
+            slider.value = currentValue;
             if(regen != null)
                 StopCoroutine(regen);
 
@@ -43,16 +46,22 @@ public class StatusBar : MonoBehaviour
             
             
         }
-        Debug.Log(CurrentStamina);
-
+        Debug.Log(currentValue);
     }
+
+    public void Add(float Amount)
+    {
+        currentValue += Amount;
+        slider.value = currentValue;
+    }
+
     private IEnumerator Regen()
     {
         yield return new WaitForSeconds(1);
-        while(CurrentStamina < maxStamina)
+        while((currentValue < maxValue) && canRegen)
         {
-            CurrentStamina += maxStamina / 100;
-            slider.value = CurrentStamina;
+            currentValue += maxValue / 100;
+            slider.value = currentValue;
             yield return regenTick;
         }
         regen = null;
