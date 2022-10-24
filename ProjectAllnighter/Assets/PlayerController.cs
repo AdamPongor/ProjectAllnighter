@@ -173,13 +173,13 @@ public class PlayerController : MonoBehaviour
     {
         //Checking the stamina amount if the player has enough for another attack.
         //If the player is in a dodge or attacking at the moment don't let it attack.
-        if (playerData.isEnoughStamina(20f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
+        if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
-            if (currentWeapon.tag == "Ranged")
+            if (playerData.isEnoughMana(20f) && currentWeapon.tag == "Ranged")
             {
                 weaponParent.RangedAttack();
                 playerData.UseMana(20f);
-            } else if (currentWeapon.tag == "Melee")
+            } else if (playerData.isEnoughStamina(20f) && currentWeapon.tag == "Melee")
             {
                 weaponParent.MeleeAttack();
                 playerData.UseStamina(20f);
@@ -188,6 +188,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnWeaponChange() 
     {
+        
         
         //change weapon to key R
         weapons[currentWeaponIndex].SetActive(false);
@@ -208,7 +209,7 @@ public class PlayerController : MonoBehaviour
         return lastMoveDir;
     }
 
-    void onHeal()
+    void OnHeal()
     {
         playerData.Heal(20f);
     }
