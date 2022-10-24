@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5409440203852632387}
   - component: {fileID: 312200241516765102}
   - component: {fileID: 4796379259334865635}
+  - component: {fileID: 8150477013936088016}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -151,6 +152,9 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  currentWeaponIndex: 0
+  weapons: []
+  currentWeapon: {fileID: 0}
 --- !u!50 &5409440203852632387
 Rigidbody2D:
   serializedVersion: 4
@@ -218,6 +222,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8150477013936088016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108774019235222398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe7a79b2b7fda147ac0eb1fe4d705ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3021450433533603488
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,11 +284,6 @@ MonoBehaviour:
   weaponRenderer: {fileID: 896862181120478960}
   animator: {fileID: 365410436}
   delay: 0.3
-  currentWeaponIndex: 0
-  weapons:
-  - {fileID: 3021450433533603488}
-  currentWeapon: {fileID: 0}
-  weaponParent: {fileID: 3021450433533603488}
   circleOrigin: {fileID: 3046573922738694134}
   radius: 0.15
   projectile: {fileID: 2196347613738239586, guid: 1e8dd4ee13f199e438e6a792876e803b, type: 3}

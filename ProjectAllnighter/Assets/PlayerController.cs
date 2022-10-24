@@ -73,9 +73,12 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> weapons;
     public GameObject currentWeapon;
 
+    PlayerData playerData;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerData = gameObject.GetComponent<PlayerData>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -146,10 +149,10 @@ public class PlayerController : MonoBehaviour
     {
         //Checking the stamina amount if the player has enough for another dodge.
         //If the player is in a dodge or attacking at the moment don't let it dodge.
-        if(StatusBar.instance.isEnoughStamina(25f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
+        if(playerData.isEnoughStamina(25f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
             CurrentState = PlayerStates.DODGE;
-            StatusBar.instance.UseStamina(25f);
+            playerData.UseStamina(25f);
         }
     }
 
@@ -170,16 +173,16 @@ public class PlayerController : MonoBehaviour
     {
         //Checking the stamina amount if the player has enough for another attack.
         //If the player is in a dodge or attacking at the moment don't let it attack.
-        if (StatusBar.instance.isEnoughStamina(20f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
+        if (playerData.isEnoughStamina(20f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
             if (currentWeapon.tag == "Ranged")
             {
                 weaponParent.RangedAttack();
-                StatusBar.instance.UseStamina(20f);
+                playerData.UseMana(20f);
             } else if (currentWeapon.tag == "Melee")
             {
                 weaponParent.MeleeAttack();
-                StatusBar.instance.UseStamina(20f);
+                playerData.UseStamina(20f);
             }
         }
     }

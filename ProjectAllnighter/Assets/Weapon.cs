@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour
     public Animator animator;
     public float delay = 0.3f;
     protected bool attackBlocked;
-    private bool swordOnlLeft = false;
+    private bool swordOnlLeft = true;
 
     //hitscan
     public Transform circleOrigin;
@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour
     {
         mainCamera = Camera.main;
     }
-    public virtual void Update() {
+    public void Update() {
 
         Vector3 mousePosition = Input.mousePosition;
         Vector3 screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);

@@ -18,7 +18,7 @@ public class StatusBar : MonoBehaviour
 
     private float _currentStamina;
 
-    public static StatusBar instance;
+    //public static StatusBar instance;
 
     private WaitForSeconds regenTick = new WaitForSeconds(0.02f);
 
@@ -26,7 +26,7 @@ public class StatusBar : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;    
+        //instance = this;    
     }
 
     void Start()
@@ -37,7 +37,7 @@ public class StatusBar : MonoBehaviour
         Debug.Log(CurrentStamina);
     }
 
-    public void UseStamina(float amount)
+    public void Use(float amount)
     {
         if(CurrentStamina - amount>= 0)
         {
@@ -46,14 +46,14 @@ public class StatusBar : MonoBehaviour
             if(regen != null)
                 StopCoroutine(regen);
 
-            regen = StartCoroutine(RegenStamina());
+            regen = StartCoroutine(Regen());
             
             
         }
         Debug.Log(CurrentStamina);
 
     }
-    private IEnumerator RegenStamina()
+    private IEnumerator Regen()
     {
         yield return new WaitForSeconds(1);
         while(CurrentStamina < maxStamina)
@@ -66,7 +66,7 @@ public class StatusBar : MonoBehaviour
             
     }
 
-    public bool isEnoughStamina(float amount)
+    public bool isEnough(float amount)
     {
         if(_currentStamina < amount)
             return false;
