@@ -18,16 +18,9 @@ public class StatusBar : MonoBehaviour
 
     private float _currentStamina;
 
-    //public static StatusBar instance;
-
     private WaitForSeconds regenTick = new WaitForSeconds(0.02f);
 
     private Coroutine regen;
-
-    private void Awake()
-    {
-        //instance = this;    
-    }
 
     void Start()
     {
