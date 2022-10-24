@@ -26,4 +26,9 @@ public class PlayerData : MonoBehaviour
     {
         return Mana.isEnough(amount);
     }
+
+    public void takeDamage(float amount)
+    {
+        Health.Use(amount);
+    }
 }
