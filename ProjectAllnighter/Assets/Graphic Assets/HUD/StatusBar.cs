@@ -30,7 +30,6 @@ public class StatusBar : MonoBehaviour
         currentValue = maxValue;
         slider.maxValue = maxValue;
         slider.value = maxValue;
-        Debug.Log(currentValue);
     }
 
     public void Use(float amount)

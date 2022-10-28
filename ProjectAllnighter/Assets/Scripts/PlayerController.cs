@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> weapons;
     public GameObject currentWeapon;
 
+    private Inventory inventory;
+
     PlayerData playerData;
 
     // Start is called before the first frame update
@@ -83,6 +85,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponParent = GetComponentInChildren<Weapon>();
+        inventory = new Inventory();
+
 
         //dynamic weapon list
         weapons = new List<GameObject>();
@@ -90,7 +94,6 @@ public class PlayerController : MonoBehaviour
         {
             weapons.Add(weaponParent.transform.GetChild(i).gameObject);
             weapons[i].SetActive(false);
-            Debug.Log(i);
         }
         weapons[0].SetActive(true);
         currentWeapon = weapons[0];

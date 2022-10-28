@@ -120,7 +120,7 @@ public class Weapon : MonoBehaviour
     {
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
         {
-            Debug.Log(collider.name);
+            
             if (collider.tag == "Enemy")
             {
                 collider.GetComponent<Enemy>().takeDamage(10);
