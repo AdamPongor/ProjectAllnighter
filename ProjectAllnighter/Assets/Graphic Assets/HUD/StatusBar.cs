@@ -50,8 +50,15 @@ public class StatusBar : MonoBehaviour
 
     public void Add(float Amount)
     {
-        currentValue += Amount;
-        slider.value = currentValue;
+        if ((currentValue + Amount) > maxValue)
+        {
+            currentValue = maxValue;
+        }
+        else
+        {
+            currentValue += Amount;
+        }
+         slider.value = currentValue;
     }
 
     private IEnumerator Regen()

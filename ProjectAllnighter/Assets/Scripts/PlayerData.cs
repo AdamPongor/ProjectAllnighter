@@ -8,6 +8,8 @@ public class PlayerData : MonoBehaviour
     public StatusBar Mana;
     public StatusBar Health;
 
+    private List<Bonfire> visitedBonfires = new List<Bonfire>();
+
     public void UseStamina(float amount)
     {
         Stamina.Use(amount);
@@ -35,5 +37,10 @@ public class PlayerData : MonoBehaviour
     public void Heal(float amount)
     {
         Health.Add(amount);
+    }
+
+    public void AddBonfire(Bonfire b)
+    {
+        visitedBonfires.Add(b);
     }
 }
