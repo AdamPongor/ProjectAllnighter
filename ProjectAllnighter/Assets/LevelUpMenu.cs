@@ -31,13 +31,7 @@ public class LevelUpMenu : MonoBehaviour
     void Start()
     {
         data = player.GetComponent<PlayerData>();
-        Level = data.Level;
-        Vitality = data.Vitality;
-        Endurance = data.Endurance;
-        Strength = data.Strength;
-        Dexterity = data.Dexterity;
-        Intelligence = data.Intelligence;
-        PlayerXP = data.XP;
+        loadData();
         UpdateMenu();
     }
 
@@ -123,8 +117,31 @@ public class LevelUpMenu : MonoBehaviour
             UpdateMenu();
         }
     }
-    public void OnExit()
+    public void loadData()
     {
-        
+        data = player.GetComponent<PlayerData>();
+        Level = data.Level;
+        Vitality = data.Vitality;
+        Endurance = data.Endurance;
+        Strength = data.Strength;
+        Dexterity = data.Dexterity;
+        Intelligence = data.Intelligence;
+        PlayerXP = data.XP;
+        UpdateMenu();
+    }
+    public void OnAccept()
+    {
+        data.Level = Level;
+        data.Vitality = Vitality;
+        data.Endurance = Endurance;
+        data.Strength = Strength;
+        data.Dexterity = Dexterity;
+        data.Intelligence = Intelligence;
+        data.XP = PlayerXP;
+    }
+
+    public void OnCancel()
+    {
+        levelUpCost = data.Level * 100;
     }
 }
