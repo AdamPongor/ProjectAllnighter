@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    public bool inMenu = false;
     public float moveSpeed = 70f;
     public float maxSpeed = 8f;
     public float dodgeSpeed = 10f;
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate(){
 
         //Move the player if it's moveable and there is any input.
-        if(canMove == true && movementInput != Vector2.zero)
+        if(canMove == true && movementInput != Vector2.zero && !inMenu)
         {
             rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
         }
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
         movementInput = movementValue.Get<Vector2>();
 
         // Update Animator for sprite direction
-        if (movementInput != Vector2.zero)
+        if (movementInput != Vector2.zero && !inMenu)
         {
             CurrentState = PlayerStates.WALK;
             animator.SetFloat("MoveX",movementInput.x);
@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
     {
         //Checking the stamina amount if the player has enough for another dodge.
         //If the player is in a dodge or attacking at the moment don't let it dodge.
-        if(playerData.isEnoughStamina(25f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
+        if(playerData.isEnoughStamina(25f) && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking && !inMenu)
         {
             CurrentState = PlayerStates.DODGE;
             playerData.UseStamina(25f);
@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
     {
         //Checking the stamina amount if the player has enough for another attack.
         //If the player is in a dodge or attacking at the moment don't let it attack.
-        if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
+        if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking && !inMenu)
         {
             if (playerData.isEnoughMana(20f) && currentWeapon.tag == "Ranged")
             {
@@ -191,20 +191,21 @@ public class PlayerController : MonoBehaviour
     }
     void OnWeaponChange() 
     {
-        
-        
-        //change weapon to key R
-        weapons[currentWeaponIndex].SetActive(false);
-        currentWeaponIndex++;
-        if (currentWeaponIndex >= weapons.Count)
+        if (!inMenu)
         {
-            currentWeaponIndex = 0;
-        }
-        weapons[currentWeaponIndex].SetActive(true);
-        currentWeapon = weapons[currentWeaponIndex];
+            //change weapon to key R
+            weapons[currentWeaponIndex].SetActive(false);
+            currentWeaponIndex++;
+            if (currentWeaponIndex >= weapons.Count)
+            {
+                currentWeaponIndex = 0;
+            }
+            weapons[currentWeaponIndex].SetActive(true);
+            currentWeapon = weapons[currentWeaponIndex];
 
-        //change renderers
-        weaponParent.ChangeWeapon(currentWeapon);
+            //change renderers
+            weaponParent.ChangeWeapon(currentWeapon);
+        }
     }
 
     Vector2 getDirection() 
@@ -214,6 +215,14 @@ public class PlayerController : MonoBehaviour
 
     void OnHeal()
     {
-        playerData.Heal(20f);
+        if (!inMenu)
+        {
+            playerData.Heal(20f);
+        }
+    }
+
+    public void InMenu(bool b)
+    {
+        inMenu = b;
     }
 }

@@ -188,14 +188,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b801f0f6e43ea4a4cb2df28817f2e342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactKey: 102
+  interactKeys: 660000004a010000
   interactAction:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4920171087561047006}
         m_TargetAssemblyTypeName: Bonfire, Assembly-CSharp
-        m_MethodName: Rest
-        m_Mode: 2
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: PlayerData, Assembly-CSharp
@@ -203,6 +203,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7944214998343528895, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: InMenu
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   text: F to interact
   PromptBox: {fileID: 1222422788672966946, guid: 91c7b13ba86bfee47b8c94f849c58926, type: 3}

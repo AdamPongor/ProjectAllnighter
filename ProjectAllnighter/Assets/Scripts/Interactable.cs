@@ -7,7 +7,7 @@ public class Interactable : MonoBehaviour
 {
 
     private bool inRange;
-    public KeyCode interactKey;
+    public List<KeyCode> interactKeys;
     public UnityEvent interactAction;
     public string text;
     private Popup prompt;
@@ -24,9 +24,12 @@ public class Interactable : MonoBehaviour
     {
         if (inRange)
         {
-            if (Input.GetKeyDown(interactKey))
+            foreach (KeyCode kc in interactKeys)
             {
-                interactAction.Invoke();
+                if (Input.GetKeyDown(kc))
+                {
+                    interactAction.Invoke();
+                }
             }
         }
     }
