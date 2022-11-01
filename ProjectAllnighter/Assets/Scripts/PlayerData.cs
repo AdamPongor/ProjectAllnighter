@@ -10,6 +10,18 @@ public class PlayerData : MonoBehaviour
 
     private List<Bonfire> visitedBonfires = new List<Bonfire>();
 
+    public int XP = 100000;
+    public int Money = 100000;
+    public int Level = 1;
+
+    public int Vitality = 1;
+    public int Endurance = 1;
+    public int Strength = 1;
+    public int Dexterity = 1;
+    public int Intelligence = 1;
+
+
+
     public void UseStamina(float amount)
     {
         Stamina.Use(amount);
