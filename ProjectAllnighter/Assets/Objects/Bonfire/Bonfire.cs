@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bonfire : MonoBehaviour
 {
+
+    public string bonfireName;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,6 @@ public class Bonfire : MonoBehaviour
     public void Rest(PlayerData player)
     {
         player.Heal(1000);
-        player.AddBonfire(this);
+        player.AddBonfire(this.gameObject);
     }
 }

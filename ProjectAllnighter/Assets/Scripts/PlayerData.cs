@@ -8,7 +8,7 @@ public class PlayerData : MonoBehaviour
     public StatusBar Mana;
     public StatusBar Health;
 
-    private List<Bonfire> visitedBonfires = new List<Bonfire>();
+    public List<GameObject> visitedBonfires = new List<GameObject>();
 
     public int XP = 100000;
     public int Money = 100000;
@@ -51,8 +51,13 @@ public class PlayerData : MonoBehaviour
         Health.Add(amount);
     }
 
-    public void AddBonfire(Bonfire b)
+    public void AddBonfire(GameObject b)
     {
         visitedBonfires.Add(b);
+    }
+
+    public List<GameObject> GetBonfires()
+    {
+        return visitedBonfires;
     }
 }
