@@ -8,6 +8,7 @@ public class PlayerData : MonoBehaviour
     public StatusBar Mana;
     public StatusBar Health;
 
+    public GameObject lastInteracted;
     public List<GameObject> visitedBonfires = new List<GameObject>();
 
     public int XP = 100000;
@@ -20,6 +21,13 @@ public class PlayerData : MonoBehaviour
     public int Dexterity = 1;
     public int Intelligence = 1;
 
+    public GameObject GetLastInteracted() { 
+        return lastInteracted; 
+    }
+    public void SetLastInteracted(GameObject go)
+    {
+        lastInteracted = go;
+    }
 
 
     public void UseStamina(float amount)
@@ -53,11 +61,19 @@ public class PlayerData : MonoBehaviour
 
     public void AddBonfire(GameObject b)
     {
-        visitedBonfires.Add(b);
+        if (!visitedBonfires.Contains(b))
+        {
+            visitedBonfires.Add(b);
+        }
     }
 
     public List<GameObject> GetBonfires()
     {
         return visitedBonfires;
+    }
+
+    public void Teleport(Vector3 pos)
+    {
+        transform.position = pos;
     }
 }

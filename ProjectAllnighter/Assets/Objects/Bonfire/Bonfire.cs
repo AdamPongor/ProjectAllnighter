@@ -6,10 +6,11 @@ public class Bonfire : MonoBehaviour
 {
 
     public string bonfireName;
+    public GameObject BF;
     // Start is called before the first frame update
     void Start()
     {
-        
+        BF = gameObject;
     }
 
     // Update is called once per frame
@@ -21,6 +22,6 @@ public class Bonfire : MonoBehaviour
     public void Rest(PlayerData player)
     {
         player.Heal(1000);
-        player.AddBonfire(this.gameObject);
+        player.AddBonfire(player.GetLastInteracted());
     }
 }

@@ -176,7 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdabad4d0cc8cc408ce8480c6c62391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  bonfireName: 
+  BF: {fileID: 4920171087561047013}
 --- !u!114 &4920171087561047007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +237,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+        m_TargetAssemblyTypeName: PlayerData, Assembly-CSharp
+        m_MethodName: SetLastInteracted
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 4920171087561047013}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

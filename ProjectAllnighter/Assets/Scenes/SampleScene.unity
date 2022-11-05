@@ -2897,6 +2897,10 @@ PrefabInstance:
       propertyPath: name
       value: Left
       objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047006, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: bonfireName
+      value: Bonfire Left
+      objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: PromptBox
       value: 
@@ -2930,6 +2934,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 708673602}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 513613486}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
@@ -2944,6 +2952,10 @@ PrefabInstance:
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: SetName
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetLastInteracted
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3031,7 +3043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047013, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_Name
-      value: Bonfire (1)
+      value: Bonfire Left
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
@@ -51456,6 +51468,7 @@ MonoBehaviour:
   player: {fileID: 1952343439}
   buttonParent: {fileID: 1455707102}
   teleportButton: {fileID: 3404936068985627479, guid: d6c939760e45d3140abfca21dfc7ae7e, type: 3}
+  teleportMenu: {fileID: 1511246909}
 --- !u!1 &1521686247
 GameObject:
   m_ObjectHideFlags: 0
@@ -55191,6 +55204,10 @@ PrefabInstance:
       propertyPath: stamina
       value: 
       objectReference: {fileID: 1952181417}
+    - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: lastInteracted
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9146357273953083263, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: m_TagString
       value: Melee
@@ -55313,6 +55330,10 @@ PrefabInstance:
       propertyPath: name
       value: Right
       objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047006, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: bonfireName
+      value: Bonfire Right
+      objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: PromptBox
       value: 
@@ -55330,6 +55351,10 @@ PrefabInstance:
       value: 330
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -55340,6 +55365,10 @@ PrefabInstance:
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -55358,6 +55387,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 708673602}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 513613486}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
@@ -55374,6 +55411,10 @@ PrefabInstance:
       value: SetName
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetLastInteracted
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
@@ -55386,6 +55427,10 @@ PrefabInstance:
       value: BonfireMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: PlayerData, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
@@ -55396,6 +55441,10 @@ PrefabInstance:
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -55416,6 +55465,10 @@ PrefabInstance:
     - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047007, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047010, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_RootOrder
@@ -55463,7 +55516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047013, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_Name
-      value: Bonfire
+      value: Bonfire Right
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047013, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_IsActive
