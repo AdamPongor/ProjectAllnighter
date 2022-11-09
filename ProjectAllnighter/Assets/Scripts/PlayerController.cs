@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnWeaponChange() 
     {
-        if (!inMenu)
+        if (!inMenu && CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking)
         {
             //change weapon to key R
             weapons[currentWeaponIndex].SetActive(false);

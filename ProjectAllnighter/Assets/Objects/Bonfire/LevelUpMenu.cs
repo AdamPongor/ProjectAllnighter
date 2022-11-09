@@ -49,7 +49,7 @@ public class LevelUpMenu : MonoBehaviour
 
     public void SetVitality(int i)
     {
-        if ((PlayerXP >= levelUpCost || i<0) && Vitality+i > 0)
+        if ((PlayerXP >= levelUpCost || i<0) && Vitality+i > 0 && Vitality + i >= data.Vitality)
         {
             Level += i;
             Vitality += i;
@@ -63,7 +63,7 @@ public class LevelUpMenu : MonoBehaviour
     }
     public void SetEndurance(int i)
     {
-        if ((PlayerXP >= levelUpCost || i < 0) && Endurance + i > 0)
+        if ((PlayerXP >= levelUpCost || i < 0) && Endurance + i > 0 && Endurance + i >= data.Endurance)
         {
             Level += i;
             Endurance += i;
@@ -77,7 +77,7 @@ public class LevelUpMenu : MonoBehaviour
     }
     public void SetStrength(int i)
     {
-        if ((PlayerXP >= levelUpCost || i < 0) && Strength + i > 0)
+        if ((PlayerXP >= levelUpCost || i < 0) && Strength + i > 0 && Strength + i >= data.Strength)
         {
             Level += i;
             Strength += i;
@@ -91,7 +91,7 @@ public class LevelUpMenu : MonoBehaviour
     }
     public void SetDexterity(int i)
     {
-        if ((PlayerXP >= levelUpCost || i < 0) && Dexterity + i > 0)
+        if ((PlayerXP >= levelUpCost || i < 0) && Dexterity + i > 0 && Dexterity + i >= data.Dexterity)
         {
             Level += i;
             Dexterity += i;
@@ -105,7 +105,7 @@ public class LevelUpMenu : MonoBehaviour
     }
     public void SetIntelligence(int i)
     {
-        if ((PlayerXP >= levelUpCost || i < 0) && Intelligence + i > 0)
+        if ((PlayerXP >= levelUpCost || i < 0) && Intelligence + i > 0 && Intelligence + i >= data.Intelligence)
         {
             Level += i;
             Intelligence += i;
