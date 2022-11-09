@@ -44,28 +44,12 @@ public class Weapon : MonoBehaviour
 
         if (IsAttacking || gameObject.GetComponentInParent<PlayerController>().inMenu)
             return;
-        //setting the sword's direction towards where the character is facing
-            if ((Direction.x < 0 || Direction.y < 0) && !swordOnlLeft)
-            {
-                Vector3 swordpos = transform.localPosition;
-                swordpos.x *= -1;
-                transform.localPosition = swordpos;
-                swordOnlLeft = true;
-                //mirror sword
-                transform.Rotate(0, 180, 0);
-            }
-            else if ((Direction.x > 0 || Direction.y > 0) && swordOnlLeft)
-            {
-                Vector3 swordpos = transform.localPosition;
-                swordpos.x *= -1;
-                transform.localPosition = swordpos;
-                swordOnlLeft = false;
-                //mirror sword
-                transform.Rotate(0, 180, 0);
-            }
 
-            //setting sorting order in case of moving upwards or downwards
-            if (Direction.y > 0 || Direction.x < 0)
+        animator.SetFloat("AnimX",Direction.x);
+        animator.SetFloat("AnimY", Direction.y);
+
+        //setting sorting order in case of moving upwards or downwards
+        if (Direction.y > 0 || Direction.x < 0)
             {
                 weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
             }
