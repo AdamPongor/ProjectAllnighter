@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -73,6 +74,8 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> weapons;
     public GameObject currentWeapon;
 
+    public PlayerInput playerInput;
+
     private Inventory inventory;
 
     PlayerData playerData;
@@ -101,6 +104,19 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate(){
+
+        if(EventSystem.current.IsPointerOverGameObject())
+        {
+            playerInput.DeactivateInput();
+            
+        }
+
+        if(!EventSystem.current.IsPointerOverGameObject())
+        {
+            playerInput.ActivateInput();
+            
+        }
+        
 
         //Move the player if it's moveable and there is any input.
         if(canMove == true && movementInput != Vector2.zero && !inMenu)
@@ -220,9 +236,12 @@ public class PlayerController : MonoBehaviour
             playerData.Heal(20f);
         }
     }
+    
 
     public void InMenu(bool b)
     {
         inMenu = b;
     }
+    
+    
 }
