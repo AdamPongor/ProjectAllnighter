@@ -8,6 +8,7 @@ TagManager:
   - Melee
   - Ranged
   - Prompt
+  - Defense
   layers:
   - Default
   - TransparentFX

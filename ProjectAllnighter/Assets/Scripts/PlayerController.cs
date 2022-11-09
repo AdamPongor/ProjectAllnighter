@@ -202,6 +202,9 @@ public class PlayerController : MonoBehaviour
             {
                 weaponParent.MeleeAttack();
                 playerData.UseStamina(20f);
+            } else if (currentWeapon.tag == "Defense")
+            {
+                weaponParent.Defend();
             }
         }
     }
