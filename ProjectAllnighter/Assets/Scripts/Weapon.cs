@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     //weapondirection set
     public Vector2 Direction { get; set; }
     public bool IsAttacking { get; protected set; }
+    public bool IsBlocking { get; protected set; }
 
     //animation
     public SpriteRenderer characterRenderer;
@@ -85,6 +86,18 @@ public class Weapon : MonoBehaviour
         attackBlocked = true;
         StartCoroutine(DelayAttack());
     }
+
+    public virtual void Defend()
+    {
+        if (attackBlocked)
+            return;
+        animator.SetTrigger("Defend");
+        IsAttacking = true;
+        IsBlocking = true;
+        attackBlocked = true;
+        StartCoroutine(DelayAttack());
+    }
+
     public IEnumerator DelayAttack()
     {
         yield return new WaitForSeconds(delay);
@@ -93,6 +106,12 @@ public class Weapon : MonoBehaviour
     public void ResetIsAttacking() { 
         IsAttacking = false;
     }
+
+    public void ResetIsBlocking()
+    {
+        IsBlocking = false;
+    }
+
     private void OnDrawGizmosSelected() 
     {
         Gizmos.color = Color.blue;

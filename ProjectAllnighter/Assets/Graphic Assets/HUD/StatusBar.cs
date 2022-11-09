@@ -34,18 +34,21 @@ public class StatusBar : MonoBehaviour
 
     public void Use(float amount)
     {
-        if(currentValue - amount>= 0)
+        if (currentValue - amount >= 0)
         {
             currentValue -= amount;
-            slider.value = currentValue;
-            if(regen != null)
-                StopCoroutine(regen);
-
-            regen = StartCoroutine(Regen());
-            
-            
         }
-        Debug.Log(currentValue);
+        else
+        {
+            currentValue = 0;
+        }
+            
+        slider.value = currentValue;
+        if (regen != null)
+            StopCoroutine(regen);
+
+        regen = StartCoroutine(Regen());
+       // Debug.Log(currentValue);
     }
 
     public void Add(float Amount)

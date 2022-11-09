@@ -51,7 +51,14 @@ public class PlayerData : MonoBehaviour
 
     public void takeDamage(float amount)
     {
-        Health.Use(amount);
+        if (GetComponentInChildren<Weapon>().IsBlocking)
+        {
+            Stamina.Use(amount);
+        } 
+        else
+        {
+            Health.Use(amount);
+        }
     }
 
     public void Heal(float amount)
