@@ -105,17 +105,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate(){
 
-        // if(EventSystem.current.IsPointerOverGameObject())
-        // {
-        //     playerInput.DeactivateInput();
-            
-        // }
+        if(EventSystem.current.IsPointerOverGameObject())
+        {
+            playerInput.DeactivateInput();
+            return;
+        }
+        else{
+            playerInput.ActivateInput();
+        }
 
-        // if(!EventSystem.current.IsPointerOverGameObject())
-        // {
-        //     playerInput.ActivateInput();
-            
-        // }
+        
         
 
         //Move the player if it's moveable and there is any input.
