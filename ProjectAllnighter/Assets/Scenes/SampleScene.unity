@@ -3041,6 +3041,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047011, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047013, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_Name
       value: Bonfire Left
@@ -55513,6 +55517,10 @@ PrefabInstance:
     - target: {fileID: 4920171087561047010, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920171087561047011, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047013, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_Name
