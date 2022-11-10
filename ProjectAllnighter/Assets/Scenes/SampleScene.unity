@@ -56746,7 +56746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9201196375649120952, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: m_TagString
-      value: Melee
+      value: Defense
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}

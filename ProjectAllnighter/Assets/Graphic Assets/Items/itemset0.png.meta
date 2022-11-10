@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -91,6 +91,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -3394,7 +3406,6 @@ TextureImporter:
       itemset0_135: 744247564
       itemset0_8: -493943415
       itemset0_152: -1946703185
-      itemset0_140: -263820140
       itemset0_92: -804623245
       itemset0_31: 1716907779
       itemset0_102: 1800127374
@@ -3417,6 +3428,7 @@ TextureImporter:
       itemset0_59: -1354366047
       itemset0_20: -1157447224
       itemset0_137: 2050586314
+      itemset0_155: -257681323
       itemset0_6: -1279867363
       itemset0_107: -1804199607
       itemset0_33: 457820002
@@ -3473,9 +3485,9 @@ TextureImporter:
       itemset0_127: 1831639798
       itemset0_68: 315289862
       itemset0_136: -1147520465
-      itemset0_144: -1896415155
-      itemset0_153: -1852292645
       itemset0_150: 1803565870
+      itemset0_153: -1852292645
+      itemset0_144: -1896415155
       itemset0_118: -576861366
       itemset0_21: 1021148257
       itemset0_7: 1837354889
@@ -3539,11 +3551,11 @@ TextureImporter:
       itemset0_35: -1885666805
       itemset0_60: -321391818
       itemset0_79: -1342498028
+      itemset0_140: -263820140
       itemset0_130: 112364676
-      itemset0_121: 882181999
       itemset0_149: 1382036335
       itemset0_42: -1382073297
-      itemset0_155: -257681323
+      itemset0_121: 882181999
       itemset0_105: 18941743
       itemset0_18: 1791805613
       itemset0_48: 1681588877
