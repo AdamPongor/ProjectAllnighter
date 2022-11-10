@@ -50387,6 +50387,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015629176}
   m_CullTransparentMesh: 1
+--- !u!114 &1042924293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6528528282291398692, guid: dd586d1fb5f5cb84490d8fcf93d499eb, type: 3}
+  m_PrefabInstance: {fileID: 3986150422379566545}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad4c8375ecf26741aef3eef1cd970ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1049340172
 GameObject:
   m_ObjectHideFlags: 0
@@ -54727,6 +54738,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913227120}
   m_CullTransparentMesh: 1
+--- !u!1 &1914316693 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4185891638467335822, guid: dd586d1fb5f5cb84490d8fcf93d499eb, type: 3}
+  m_PrefabInstance: {fileID: 3986150422379566545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1914316700
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914316693}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.16
+--- !u!114 &1914316701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914316693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16012b3d34c923e46a6ad97079a6c61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zone: {fileID: 1042924293}
 --- !u!1 &1918285574
 GameObject:
   m_ObjectHideFlags: 0
@@ -56867,8 +56912,8 @@ PrefabInstance:
       value: Skeleton
       objectReference: {fileID: 0}
     - target: {fileID: 6995088731047374235, guid: dd586d1fb5f5cb84490d8fcf93d499eb, type: 3}
-      propertyPath: m_Constraints
-      value: 4
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8579620170560616197, guid: dd586d1fb5f5cb84490d8fcf93d499eb, type: 3}
       propertyPath: m_RootOrder
