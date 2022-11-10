@@ -19,7 +19,6 @@ public class Weapon : MonoBehaviour
     public Animator animator;
     public float delay = 0.3f;
     protected bool attackBlocked;
-    private bool swordOnlLeft = true;
 
     //hitscan
     public Transform circleOrigin;
