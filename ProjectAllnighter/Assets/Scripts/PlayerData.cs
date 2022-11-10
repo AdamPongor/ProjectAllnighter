@@ -10,6 +10,7 @@ public class PlayerData : MonoBehaviour
 
     public GameObject lastInteracted;
     public List<GameObject> visitedBonfires = new List<GameObject>();
+    
 
     public int XP = 100000;
     public int Money = 100000;

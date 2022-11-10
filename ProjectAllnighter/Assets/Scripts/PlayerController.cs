@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    [SerializeField] private UI_Inventory uiInventory;
 
     //dynamic weapon list
     private Weapon weaponParent;
@@ -88,7 +89,11 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponParent = GetComponentInChildren<Weapon>();
+        
+        
         inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
+        uiInventory.SetPlayer(this);
 
 
         //dynamic weapon list
@@ -105,14 +110,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate(){
 
-        if(EventSystem.current.IsPointerOverGameObject())
-        {
-            playerInput.DeactivateInput();
-            return;
-        }
-        else{
-            playerInput.ActivateInput();
-        }
+        
 
         
         
@@ -243,6 +241,21 @@ public class PlayerController : MonoBehaviour
     public void InMenu(bool b)
     {
         inMenu = b;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
+        if(itemWorld != null)
+        {
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
+    }
+
+    public Vector3 GetPosition()
+    {
+        return gameObject.GetComponent<Rigidbody2D>().position;
     }
     
     
