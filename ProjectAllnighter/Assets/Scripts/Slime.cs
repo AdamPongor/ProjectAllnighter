@@ -23,17 +23,19 @@ public class Slime : MonoBehaviour
         animator.SetFloat("AnimMoveX", lastdir.x);
         animator.SetFloat("AnimMoveY", lastdir.y);
         animator.SetBool("isMoving", false);
-
-        Collider2D detected = zone.detectedObjs[0];
-        if (detected)
+        if (zone.detectedObjs.Count > 0)
         {
-            animator.SetBool("isMoving", true);
-            Vector2 dir = (detected.transform.position - transform.position).normalized;
-            rb.AddForce(Time.deltaTime * moveSpeed * dir,ForceMode2D.Impulse);
-            animator.SetFloat("AnimMoveX", dir.x);
-            animator.SetFloat("AnimMoveY", dir.y);
-            lastdir = dir;
-            return;
+            Collider2D detected = zone.detectedObjs[0];
+            if (detected)
+            {
+                animator.SetBool("isMoving", true);
+                Vector2 dir = (detected.transform.position - transform.position).normalized;
+                rb.AddForce(Time.deltaTime * moveSpeed * dir, ForceMode2D.Impulse);
+                animator.SetFloat("AnimMoveX", dir.x);
+                animator.SetFloat("AnimMoveY", dir.y);
+                lastdir = dir;
+                return;
+            }
         }
     }
 

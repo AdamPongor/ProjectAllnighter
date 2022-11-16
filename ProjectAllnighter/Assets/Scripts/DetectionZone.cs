@@ -25,7 +25,10 @@ public class DetectionZone : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == tagTarget)
-            detectedObjs.Remove(other);
+        if (detectedObjs.Count > 0) { 
+            if (other.gameObject.tag == tagTarget)
+                detectedObjs.Remove(other);
+        }
+        
     }
 }
