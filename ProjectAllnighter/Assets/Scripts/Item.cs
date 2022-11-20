@@ -10,40 +10,30 @@ public class Item
         HEALTHPOTION,
         MANAPOTION,
         STAMINAPOTION,
-        COIN,
-
+        COIN
     }
 
+    public bool Stackable;
+    public Sprite itemSprite;
     public ItemType itemType;
     public int amount;
 
+    public Item(bool stackabe, Sprite sprite, ItemType type, int amount){
+        Stackable = stackabe;
+        itemSprite = sprite;
+        itemType = type;
+        this.amount = amount;
+    }
+
+    
 
     public Sprite GetSprite()
     {
-        switch (itemType)
-        {
-            default:
-            case ItemType.SWORD:            return ItemAssets.Instance.swordSprite;
-            case ItemType.STAMINAPOTION:    return ItemAssets.Instance.staminaPotionSprite;
-            case ItemType.HEALTHPOTION:     return ItemAssets.Instance.healthPotionSprite;
-            case ItemType.MANAPOTION:       return ItemAssets.Instance.manaPotionSprite;
-            case ItemType.COIN:             return ItemAssets.Instance.coinSprite;
-        }
+        return itemSprite;
     }
 
     public bool IsStackable()
     {
-        switch (itemType)
-        {
-            default:
-            case ItemType.COIN:
-            case ItemType.HEALTHPOTION:
-            case ItemType.MANAPOTION:
-            case ItemType.STAMINAPOTION:
-                return true;
-            case ItemType.SWORD:
-                return false;
-        }
+        return Stackable;
     }
-
 }

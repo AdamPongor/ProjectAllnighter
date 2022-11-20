@@ -19,7 +19,6 @@ public class Slime : MonoBehaviour
     private void FixedUpdate()
     {
 
-
         animator.SetFloat("AnimMoveX", lastdir.x);
         animator.SetFloat("AnimMoveY", lastdir.y);
         animator.SetBool("isMoving", false);
@@ -37,11 +36,5 @@ public class Slime : MonoBehaviour
                 return;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

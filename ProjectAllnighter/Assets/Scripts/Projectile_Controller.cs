@@ -26,14 +26,16 @@ public class Projectile_Controller : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //collision is the object what the projectile hit
-        Destroy(gameObject);
+        
         Enemy d = collision.GetComponent<Enemy>();
         if (d != null)
         {
             d.takeDamage(10);
+            Destroy(gameObject);
         }
     }
 }

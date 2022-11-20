@@ -12,9 +12,9 @@ public class Inventory
     public Inventory(){
         itemList = new List<Item>();
         
-        AddItem(new Item{itemType=Item.ItemType.SWORD, amount = 1});
-        AddItem(new Item{itemType=Item.ItemType.HEALTHPOTION, amount = 1});
-        AddItem(new Item{itemType=Item.ItemType.STAMINAPOTION, amount = 1});
+        AddItem(new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.SWORD, 1));
+        AddItem(new Item(true, ItemAssets.Instance.healthPotionSprite, Item.ItemType.HEALTHPOTION, 1));
+        AddItem(new Item(true, ItemAssets.Instance.staminaPotionSprite, Item.ItemType.STAMINAPOTION, 1));
         Debug.Log("items:" + itemList.Count);
     }
 
