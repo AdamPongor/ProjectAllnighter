@@ -258,5 +258,9 @@ public class PlayerController : MonoBehaviour
         return gameObject.GetComponent<Rigidbody2D>().position;
     }
     
+    public int GetDamage()
+    {
+        return weapons[currentWeaponIndex].GetComponent<WeaponData>().GetDamage();
+    }
     
 }

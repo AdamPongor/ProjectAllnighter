@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    public PlayerInput playerInput;
-    
+    public UnityEvent pause;
+
+    public void OnEnable()
+    {
+        pause.Invoke();
+    }
 
     void Update()
     {
@@ -20,7 +25,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         Time.timeScale= 1;
-        pauseMenuUI.SetActive(false);   
+        pauseMenuUI.SetActive(false);
     }
 
     public void Exit()

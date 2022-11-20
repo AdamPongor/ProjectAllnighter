@@ -127,7 +127,8 @@ public class Weapon : MonoBehaviour
             {
                 Enemy e = collider.GetComponent<Enemy>();
                 PlayerData p = GetComponentInParent<PlayerData>();
-                e.takeDamage(10, p);
+                PlayerController pc = GetComponentInParent<PlayerController>();
+                e.takeDamage(pc.GetDamage(), p);
             }
         }
     }
