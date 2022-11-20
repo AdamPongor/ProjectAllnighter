@@ -5259,6 +5259,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 587721142}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &753408488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52454,7 +52466,7 @@ GameObject:
   - component: {fileID: 1430657953}
   - component: {fileID: 1430657956}
   - component: {fileID: 1430657955}
-  - component: {fileID: 1430657954}
+  - component: {fileID: 1430657957}
   m_Layer: 5
   m_Name: WeaponUpgradeMenu
   m_TagString: Untagged
@@ -52487,22 +52499,6 @@ RectTransform:
   m_AnchoredPosition: {x: -274, y: -14}
   m_SizeDelta: {x: 267, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1430657954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1430657952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff15acbb6b40b94dafe2c61c2874af3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1952343439}
-  buttonParent: {fileID: 602262335}
-  teleportButton: {fileID: 3404936068985627479, guid: d6c939760e45d3140abfca21dfc7ae7e, type: 3}
-  teleportMenu: {fileID: 1430657952}
 --- !u!114 &1430657955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52541,6 +52537,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430657952}
   m_CullTransparentMesh: 1
+--- !u!114 &1430657957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430657952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26b2270bf4a8914ca1cd5123e3136a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1952343439}
+  buttonParent: {fileID: 602262335}
+  upgradeButton: {fileID: 3404936068985627479, guid: d6c939760e45d3140abfca21dfc7ae7e, type: 3}
 --- !u!1 &1451349851
 GameObject:
   m_ObjectHideFlags: 0
@@ -57302,7 +57313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: health
-      value: 20
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: floatingText
@@ -57780,12 +57791,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
+      propertyPath: text
+      value: F to Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: PromptBox
       value: 
       objectReference: {fileID: 587721142}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -57793,6 +57808,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
@@ -57804,11 +57823,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1952343444}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 587721142}
+    - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
@@ -57820,12 +57847,20 @@ PrefabInstance:
       value: InMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: PlayerController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -57836,11 +57871,19 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956782402058583601, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
+      propertyPath: interactAction.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

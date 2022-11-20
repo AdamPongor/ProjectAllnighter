@@ -10,14 +10,16 @@ public class WeaponData : MonoBehaviour
     public int scaling;
     private int level = 0;
 
+    public int Level { get => level; set => level = value; }
+
     public void Upgrade()
     {
-        level++;
+        Level++;
     }
 
     public int GetDamage()
     {
-        return baseDamage * (int)(0.5 * level + 1) + scaling;
+        return baseDamage + (int)(baseDamage * 0.5 * Level) + scaling;
     }
 
 }
