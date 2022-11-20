@@ -6,7 +6,8 @@ public class PlayerData : MonoBehaviour
 {
     public StatusBar Stamina;
     public StatusBar Mana;
-    public StatusBar Health;
+    public StatusBar Health; 
+    public FloatingText floatingText;
 
     public GameObject lastInteracted;
     public List<GameObject> visitedBonfires = new List<GameObject>();
@@ -50,11 +51,12 @@ public class PlayerData : MonoBehaviour
         return Mana.isEnough(amount);
     }
 
-    public void takeDamage(float amount)
+    public void takeDamage(float amount, Enemy e)
     {
         if (GetComponentInChildren<Weapon>().IsBlocking)
         {
             Stamina.Use(amount);
+            e.Stun();
         } 
         else
         {
@@ -83,5 +85,15 @@ public class PlayerData : MonoBehaviour
     public void Teleport(Vector3 pos)
     {
         transform.position = pos;
+    }
+
+    public void AddXP(int xp){
+        XP += xp;
+        FloatingText text = Instantiate(floatingText);
+        text.SetColor(new Color(0, 8, 1, 1));
+        text.Text = "+" + xp.ToString() + " XP";
+        RectTransform textTransform = text.GetComponent<RectTransform>();
+        textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+        textTransform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
     }
 }

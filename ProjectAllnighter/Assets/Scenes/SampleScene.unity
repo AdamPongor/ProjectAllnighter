@@ -54863,6 +54863,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16012b3d34c923e46a6ad97079a6c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 30
+  XP: 1000
+  stuntime: 1000
+  floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
   zone: {fileID: 1042924293}
 --- !u!1 &1918285574
 GameObject:
@@ -56583,6 +56587,14 @@ PrefabInstance:
       value: 0.14649744
       objectReference: {fileID: 0}
     - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
+      propertyPath: XP
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: floatingText
       value: 
       objectReference: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
@@ -56860,6 +56872,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 197550659}
     - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: XP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: Mana
       value: 
       objectReference: {fileID: 1204712091}
@@ -56875,6 +56891,10 @@ PrefabInstance:
       propertyPath: stamina
       value: 
       objectReference: {fileID: 1952181417}
+    - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: floatingText
+      value: 
+      objectReference: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
     - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: lastInteracted
       value: 

@@ -64,7 +64,8 @@ public class Weapon : MonoBehaviour
         if (attackBlocked)
             return;
         animator.SetTrigger("Attack");
-        Instantiate(projectile, firePoint.position, firePoint.rotation);
+        GameObject proj = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        proj.GetComponent<Projectile_Controller>().Player = GetComponentInParent<PlayerData>();
         IsAttacking = true;
         attackBlocked = true;
         StartCoroutine(DelayAttack());
@@ -124,7 +125,9 @@ public class Weapon : MonoBehaviour
             
             if (collider.tag == "Enemy")
             {
-                collider.GetComponent<Enemy>().takeDamage(10);
+                Enemy e = collider.GetComponent<Enemy>();
+                PlayerData p = GetComponentInParent<PlayerData>();
+                e.takeDamage(10, p);
             }
         }
     }

@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : MonoBehaviour
+public class Skeleton : Enemy
 {
     Vector2 lastdir;
     public DetectionZone zone;
     private float moveSpeed = 40f;
     Rigidbody2D rb;
     Animator animator;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class Slime : MonoBehaviour
         if (zone.detectedObjs.Count > 0)
         {
             Collider2D detected = zone.detectedObjs[0];
-            if (detected)
+            if (detected && !stunned)
             {
                 animator.SetBool("isMoving", true);
                 Vector2 dir = (detected.transform.position - transform.position).normalized;

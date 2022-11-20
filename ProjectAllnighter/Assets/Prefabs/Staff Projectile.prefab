@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 1
+  player: {fileID: 108774019235222398, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
 --- !u!95 &2055765959813949506
 Animator:
   serializedVersion: 4

@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class Enemy : MonoBehaviour
 {
 
-    private float health = 30;
+    public float health;
+    public int XP;
+    public int stuntime;
+    protected bool stunned;
     [SerializeField] FloatingText floatingText;
     public float Health {
         get { return health; }
@@ -13,14 +17,10 @@ public class Enemy : MonoBehaviour
         private set
         {
             health = value;
-            if (health <= 0)
-            {
-                Die();
-            }
         }
     }
 
-    public void takeDamage(float damage)
+    public void takeDamage(float damage, PlayerData player)
     {
         Health -= damage;
         FloatingText text = Instantiate(floatingText);
@@ -28,10 +28,15 @@ public class Enemy : MonoBehaviour
         RectTransform textTransform = text.GetComponent<RectTransform>();
         textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         textTransform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
+        if (health <= 0)
+        {
+             Die(player);
+        }
     }
 
-    public void Die()
+    public void Die(PlayerData player)
     {
+        player.AddXP(XP);
         Destroy(gameObject);
     }
 
@@ -39,7 +44,18 @@ public class Enemy : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            collision.collider.GetComponent<PlayerData>().takeDamage(25);
+            collision.collider.GetComponent<PlayerData>().takeDamage(25, this);
         }
+    }
+
+    public void Stun(){
+        stunned = true;
+        Thread th = new Thread(resetStun);
+        th.Start();
+    }
+
+    private void resetStun(){
+        Thread.Sleep(stuntime);
+        stunned = false;
     }
 }
