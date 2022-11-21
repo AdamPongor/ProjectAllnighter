@@ -57329,7 +57329,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 8b68a47edf2553c498f1b67f567d58fe, type: 3}
     - target: {fileID: 3208774598683098424, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3208774598683098424, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -57436,6 +57436,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 108774019235222397, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 108774019235222398, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -57481,8 +57485,16 @@ PrefabInstance:
       value: -23.657
       objectReference: {fileID: 0}
     - target: {fileID: 896862181120478960, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896862181120478960, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 896862181120478960, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1537191977744330462, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: m_LocalScale.x
@@ -57536,9 +57548,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1910602762440120193, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910602762440120193, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910602762440120193, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3906091321708323588, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: m_TagString
       value: Ranged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4195886924849245613, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4195886924849245613, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4564494623309770630, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: m_Controller
@@ -57584,6 +57616,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 26.105
       objectReference: {fileID: 0}
+    - target: {fileID: 5198352024246119253, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: playerGroup
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7944214998343528895, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: inMenu
       value: 0
@@ -57596,6 +57632,14 @@ PrefabInstance:
       propertyPath: uiInventory
       value: 
       objectReference: {fileID: 197550659}
+    - target: {fileID: 8032751864882529958, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8032751864882529958, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8150477013936088016, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
       propertyPath: XP
       value: 100
@@ -57899,6 +57943,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2175212120357714251, guid: dd586d1fb5f5cb84490d8fcf93d499eb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4185891638467335822, guid: dd586d1fb5f5cb84490d8fcf93d499eb, type: 3}
       propertyPath: m_Name
       value: Skeleton

@@ -14,7 +14,6 @@ public class PlayerData : MonoBehaviour
     
 
     public int XP = 100000;
-    public int Money = 100000;
     public int Level = 1;
 
     public int Vitality = 1;

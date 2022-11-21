@@ -49,8 +49,10 @@ public class Enemy : MonoBehaviour
             {
                 player.UseStamina(damage);
                 Stun(collision.collider.GetComponent <PlayerController>().GetDamage());
+            } else
+            {
+                player.takeDamage(damage);
             }
-            player.takeDamage(damage);
         }
     }
 

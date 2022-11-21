@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 312200241516765102}
   - component: {fileID: 4796379259334865635}
   - component: {fileID: 8150477013936088016}
+  - component: {fileID: 1910602762440120193}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -153,6 +154,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  uiInventory: {fileID: 0}
   currentWeaponIndex: 0
   weapons: []
   currentWeapon: {fileID: 0}
@@ -239,16 +241,27 @@ MonoBehaviour:
   Stamina: {fileID: 0}
   Mana: {fileID: 0}
   Health: {fileID: 0}
+  floatingText: {fileID: 0}
   lastInteracted: {fileID: 0}
   visitedBonfires: []
   XP: 100000
-  Money: 100000
   Level: 1
   Vitality: 1
   Endurance: 1
   Strength: 1
   Dexterity: 1
   Intelligence: 1
+--- !u!210 &1910602762440120193
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108774019235222398}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &3021450433533603488
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,9 +756,9 @@ PolygonCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.13392784, y: 0.12516196}
-    oldSize: {x: 1.1610049, y: 1.28}
+    border: {x: 0, y: 0, z: 0.0800693, w: 0}
+    pivot: {x: 0.15445578, y: 0.15022014}
+    oldSize: {x: 1.1610049, y: 1.26}
     newSize: {x: 1.1610049, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
