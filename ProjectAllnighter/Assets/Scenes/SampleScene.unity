@@ -2803,6 +2803,9 @@ MonoBehaviour:
     itemSprite: {fileID: 1684165653, guid: 7dbf84dc8e4c0c7418bf76da7ab87f4a, type: 3}
     itemType: 3
     amount: 1
+    useEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &379654559
 Transform:
   m_ObjectHideFlags: 0
@@ -3548,6 +3551,9 @@ MonoBehaviour:
     itemSprite: {fileID: -764693518, guid: 7dbf84dc8e4c0c7418bf76da7ab87f4a, type: 3}
     itemType: 4
     amount: 100
+    useEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &566565194
 Transform:
   m_ObjectHideFlags: 0
@@ -51600,6 +51606,21 @@ MonoBehaviour:
     itemSprite: {fileID: 1127493525, guid: 7dbf84dc8e4c0c7418bf76da7ab87f4a, type: 3}
     itemType: 1
     amount: 1
+    useEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 513613486}
+          m_TargetAssemblyTypeName: PlayerData, Assembly-CSharp
+          m_MethodName: Heal
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 20
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &988468274
 Transform:
   m_ObjectHideFlags: 0
@@ -51985,6 +52006,9 @@ MonoBehaviour:
     itemSprite: {fileID: -924117356, guid: 7dbf84dc8e4c0c7418bf76da7ab87f4a, type: 3}
     itemType: 2
     amount: 1
+    useEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &1049340175
 Transform:
   m_ObjectHideFlags: 0
@@ -57418,6 +57442,9 @@ MonoBehaviour:
     itemSprite: {fileID: 2063820940, guid: e9124cbaca3fd134592a170e7fbd022f, type: 3}
     itemType: 0
     amount: 1
+    useEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!4 &1935696790
 Transform:
   m_ObjectHideFlags: 0

@@ -71,6 +71,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        canDamage = true;
+    }
+
     private void resetCanDamage()
     {
         Thread.Sleep(1000);

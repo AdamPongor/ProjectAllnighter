@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         weaponParent = GetComponentInChildren<Weapon>();
         
         
-        inventory = new Inventory();
+        inventory = new Inventory(GetComponent<PlayerData>());
         uiInventory.SetInventory(inventory);
         uiInventory.SetPlayer(this);
 
@@ -109,11 +109,6 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate(){
-
-        
-
-        
-        
 
         //Move the player if it's moveable and there is any input.
         if(canMove == true && movementInput != Vector2.zero && !inMenu)
@@ -231,10 +226,7 @@ public class PlayerController : MonoBehaviour
 
     void OnHeal()
     {
-        if (!inMenu)
-        {
-            playerData.Heal(20f);
-        }
+        //obsolete for now
     }
     
 

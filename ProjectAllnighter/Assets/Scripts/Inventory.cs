@@ -9,12 +9,12 @@ public class Inventory
     public event EventHandler OnItemListChanged;
     private List<Item> itemList;
 
-    public Inventory(){
+    public Inventory(PlayerData player){
         itemList = new List<Item>();
         
-        AddItem(new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.SWORD, 1));
-        AddItem(new Item(true, ItemAssets.Instance.healthPotionSprite, Item.ItemType.HEALTHPOTION, 1));
-        AddItem(new Item(true, ItemAssets.Instance.staminaPotionSprite, Item.ItemType.STAMINAPOTION, 1));
+        AddItem(new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.SWORD, 1, player));
+        AddItem(new HealthPotion(1, player));
+        AddItem(new Item(true, ItemAssets.Instance.staminaPotionSprite, Item.ItemType.STAMINAPOTION, 1, player));
         Debug.Log("items:" + itemList.Count);
     }
 
@@ -44,7 +44,7 @@ public class Inventory
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItem(Item item, int amount)
     {
         if(item.IsStackable())
         {
@@ -53,7 +53,7 @@ public class Inventory
             {
                 if(inventoryItem.itemType == item.itemType)
                 {
-                    inventoryItem.amount -= item.amount;
+                    inventoryItem.amount -= amount;
                     itemInInventory = inventoryItem;
                 }
             }
@@ -68,6 +68,9 @@ public class Inventory
         {
             itemList.Remove(item);
         }
+
+        //itemList.Remove(item);
+
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
     

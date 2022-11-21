@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using CodeMonkey.Utils;
-
+using UnityEditor.UIElements;
 
 public class UI_Inventory : MonoBehaviour
 {
@@ -54,11 +54,13 @@ public class UI_Inventory : MonoBehaviour
 
             itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                 //Use item
+                item.Use();
+                inventory.RemoveItem(item, 1);
             };
             itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
                 //Drop item
-                Item duplicateItem = new Item (item.Stackable, item.itemSprite, item.itemType, item.amount);
-                inventory.RemoveItem(item);
+                Item duplicateItem = new Item(item.Stackable, item.itemSprite, item.itemType, item.amount, player.GetComponent<PlayerData>());
+                inventory.RemoveItem(item, item.amount);
                 ItemWorld.DropItem(player.GetPosition(),duplicateItem);
             };
 
