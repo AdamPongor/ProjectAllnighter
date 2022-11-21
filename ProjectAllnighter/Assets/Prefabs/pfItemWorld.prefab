@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4509162943590784047}
   - component: {fileID: 4509162943590784044}
   - component: {fileID: 5612698901330364197}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pfItemWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
