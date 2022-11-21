@@ -24,8 +24,6 @@ public class Weapon : MonoBehaviour
     public Transform circleOrigin;
     public float radius;
 
-    //projectile
-    private bool isRanged;
     [SerializeField] GameObject projectile;
     [SerializeField] Transform firePoint;
     protected Camera mainCamera;
@@ -65,7 +63,10 @@ public class Weapon : MonoBehaviour
             return;
         animator.SetTrigger("Attack");
         GameObject proj = Instantiate(projectile, firePoint.position, firePoint.rotation);
-        proj.GetComponent<Projectile_Controller>().Player = GetComponentInParent<PlayerData>();
+        Projectile_Controller pc = proj.GetComponent<Projectile_Controller>();
+        PlayerController player = GetComponentInParent<PlayerController>();
+        pc.Player = GetComponentInParent<PlayerData>();
+        pc.Damage = player.GetDamage();
         IsAttacking = true;
         attackBlocked = true;
         StartCoroutine(DelayAttack());

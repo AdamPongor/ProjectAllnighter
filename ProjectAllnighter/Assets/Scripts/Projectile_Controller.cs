@@ -10,6 +10,7 @@ public class Projectile_Controller : MonoBehaviour
     private float TTL = 3f;
     private float timeElapsed = 0.0f;
     public PlayerData Player { get; set; }
+    public int Damage { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,7 @@ public class Projectile_Controller : MonoBehaviour
         Enemy d = collision.GetComponent<Enemy>();
         if (d != null)
         {
-            d.takeDamage(10, Player);
+            d.takeDamage(Damage, Player);
             Destroy(gameObject);
         }
     }

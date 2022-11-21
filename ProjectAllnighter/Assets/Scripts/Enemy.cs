@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 
     public float health;
     public int XP;
-    public int stuntime;
+    public int damage;
     protected bool stunned;
     [SerializeField] FloatingText floatingText;
     public float Health {
@@ -44,18 +44,24 @@ public class Enemy : MonoBehaviour
     {
         if (collision.collider.tag == "Player")
         {
-            collision.collider.GetComponent<PlayerData>().takeDamage(25, this);
+            PlayerData player = collision.collider.GetComponent<PlayerData>();
+            if (player.GetComponentInChildren<Weapon>().IsBlocking)
+            {
+                player.UseStamina(damage);
+                Stun(collision.collider.GetComponent <PlayerController>().GetDamage());
+            }
+            player.takeDamage(damage);
         }
     }
 
-    public void Stun(){
+    public void Stun(int time){
         stunned = true;
-        Thread th = new Thread(resetStun);
+        Thread th = new Thread(() => resetStun(time));
         th.Start();
     }
 
-    private void resetStun(){
-        Thread.Sleep(stuntime);
+    private void resetStun(int time){
+        Thread.Sleep(time);
         stunned = false;
     }
 }
