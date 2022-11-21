@@ -52,7 +52,7 @@ public class PlayerData : MonoBehaviour
 
     public void takeDamage(float amount)
     {
-            Health.Use(amount);
+        Health.Use(amount);
     }
 
     public void Heal(float amount)

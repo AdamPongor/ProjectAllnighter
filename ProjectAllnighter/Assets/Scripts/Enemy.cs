@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public int XP;
     public int damage;
+    private bool canDamage = true;
     protected bool stunned;
     [SerializeField] FloatingText floatingText;
     public float Health {
@@ -48,12 +50,31 @@ public class Enemy : MonoBehaviour
             if (player.GetComponentInChildren<Weapon>().IsBlocking)
             {
                 player.UseStamina(damage);
-                Stun(collision.collider.GetComponent <PlayerController>().GetDamage());
-            } else
-            {
-                player.takeDamage(damage);
+                Stun(collision.collider.GetComponent<PlayerController>().GetDamage());
             }
         }
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            PlayerData player = collision.collider.GetComponent<PlayerData>();
+            if (canDamage && !stunned)
+            {
+                player.takeDamage(damage);
+                canDamage = false;
+                Thread th = new Thread(resetCanDamage);
+                th.Start();
+            }
+            
+        }
+    }
+
+    private void resetCanDamage()
+    {
+        Thread.Sleep(1000);
+        canDamage = true;
     }
 
     public void Stun(int time){
