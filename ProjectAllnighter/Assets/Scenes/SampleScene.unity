@@ -58907,17 +58907,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2103392407, guid: 2e37953fb3853914682e509fabeaafa2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103392409, guid: 2e37953fb3853914682e509fabeaafa2, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4833114788475122575, guid: 2e37953fb3853914682e509fabeaafa2, type: 3}
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4833114788475122575, guid: 2e37953fb3853914682e509fabeaafa2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.95
+      value: -1.163
       objectReference: {fileID: 0}
     - target: {fileID: 4833114788475122575, guid: 2e37953fb3853914682e509fabeaafa2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.656
+      value: 1.588
       objectReference: {fileID: 0}
     - target: {fileID: 4833114788475122575, guid: 2e37953fb3853914682e509fabeaafa2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -59240,15 +59248,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5760199498499898575, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.341
+      value: 0.554
       objectReference: {fileID: 0}
     - target: {fileID: 5760199498499898575, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.717
+      value: 0.786
       objectReference: {fileID: 0}
     - target: {fileID: 5760199498499898575, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.12995805
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5760199498499898575, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59276,6 +59284,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5760199498499898575, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5807059160990234389, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
