@@ -59238,6 +59238,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5760199498499898561, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5760199498499898561, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
+      propertyPath: poisonDamage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5760199498499898562, guid: b65c6e9f4817bcc40bc3d51130c51164, type: 3}
       propertyPath: m_Name
       value: Slime

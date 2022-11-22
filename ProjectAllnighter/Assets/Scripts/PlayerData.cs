@@ -26,10 +26,7 @@ public class PlayerData : MonoBehaviour
 
     //poison stats 
 
-    bool poisonEffect = false;
-    public bool isPoisoned = false;
-    private float poisonTimer= 5;
-    private int poisonDamage = 5;
+    
 
     public int Vitality
     {
@@ -106,10 +103,7 @@ public class PlayerData : MonoBehaviour
             visitedBonfires.Add(b);
         }
     }
-    public void GetPoisened() 
-    {
-        isPoisoned = true;
-    }
+   
 
     public List<GameObject> GetBonfires()
     {
@@ -131,22 +125,26 @@ public class PlayerData : MonoBehaviour
         textTransform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
     }
 
-    private void FixedUpdate()
+    private int damageSum = 0;
+    private Coroutine poisoned = null;
+
+    public void GetPoisened(int damage)
     {
-        if (isPoisoned)
+        if (poisoned == null)
         {
-            StartCoroutine("PoisonDamage");
+            poisoned = StartCoroutine("PoisonDamage", damage);
         }
     }
-
-    IEnumerator PoisonDamage()
+    
+    IEnumerator PoisonDamage(int damage)
     {
-        if (poisonEffect)
+        while(damageSum < damage)
         {
-            takeDamage(poisonDamage);
-            poisonEffect = false;
-            yield return new WaitForSeconds(poisonTimer);
-            poisonEffect = true;
+            takeDamage(1);
+            damageSum += 1;
+            yield return new WaitForSeconds(0.2f);
         }
+        damageSum = 0;
+        poisoned = null;
     }
 }

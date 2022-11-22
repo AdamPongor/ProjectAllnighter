@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public int XP;
     public int damage;
-    private bool canDamage = true;
+    protected bool canDamage = true;
     protected bool stunned;
     [SerializeField] FloatingText floatingText;
     public float Health {
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         {
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
+    public virtual void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.tag == "Player")
         {
@@ -71,12 +71,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void OnCollisionExit2D(Collision2D collision)
-    {
-        canDamage = true;
-    }
-
-    private void resetCanDamage()
+    public virtual void resetCanDamage()
     {
         Thread.Sleep(1000);
         canDamage = true;

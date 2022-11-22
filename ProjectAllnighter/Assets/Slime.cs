@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Slime : Enemy
@@ -9,6 +10,7 @@ public class Slime : Enemy
     public float moveSpeed = 40f;
     Rigidbody2D rb;
     Animator animator;
+    public int poisonDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +41,21 @@ public class Slime : Enemy
         }
     }
 
-    public new void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionExit2D(Collision2D collision)
     {
-
-        base.OnCollisionExit2D(collision);
-        PlayerData player = collision.collider.GetComponent<PlayerData>();
-        player.GetPoisened();
+        if (collision.collider.tag == "Player")
+        {
+            if (!stunned)
+            {
+                PlayerData player = collision.collider.GetComponent<PlayerData>();
+                player.GetPoisened(poisonDamage);
+            }
+        }
     }
 
+    public override void resetCanDamage()
+    {
+        Thread.Sleep(200);
+        canDamage = true;
+    }
 }

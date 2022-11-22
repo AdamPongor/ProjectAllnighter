@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponData : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class WeaponData : MonoBehaviour
     public int scaling;
     private int level = 0;
     private int maxLevel = 10;
+    public UnityEvent Scale;
 
     public int Level { get => level; set{if (level<maxLevel) level = value; }}
     public int MaxLevel { get => maxLevel;}
@@ -22,6 +24,11 @@ public class WeaponData : MonoBehaviour
             Level++;
         };
     }
+
+    /*public int GetScaleStat()
+    {
+        int x = Scale?.Invoke();
+    }*/
 
     public int GetDamage()
     {
