@@ -9,14 +9,19 @@ public class Ghost : Enemy
     private float moveSpeed = 40f;
     Rigidbody2D rb;
     Animator animator;
-    
+    private bool attackBlocked;
+    public float attackPerSecond;
+
+
+    [SerializeField] GameObject projectile;
+    [SerializeField] Transform firePoint;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
-
     private void FixedUpdate()
     {
 
@@ -28,6 +33,11 @@ public class Ghost : Enemy
 
             Collider2D detected = zone.detectedObjs[0];
             float distance = Vector3.Distance(detected.transform.position, this.transform.position);
+
+            Vector2 offset = new Vector2(detected.transform.position.x - this.transform.position.x, detected.transform.position.y - this.transform.position.y);
+            float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+            firePoint.rotation = Quaternion.Euler(0, 0, angle);
+
             if (detected && !stunned)
             {
                 if (distance > 1.25)
@@ -48,6 +58,19 @@ public class Ghost : Enemy
         }
     }
     private void Attack() {
-    
+        if (attackBlocked)
+            return;
+        GameObject proj = Instantiate(projectile, firePoint.position, firePoint.rotation);
+        Projectile_Controller pc = proj.GetComponent<Projectile_Controller>();
+        pc.Damage = 20;
+        pc.fromPlayer = false;
+        attackBlocked = true;
+        StartCoroutine(DelayAttack());
+    }
+
+    public IEnumerator DelayAttack()
+    {
+        yield return new WaitForSeconds(1/attackPerSecond);
+        attackBlocked = false;
     }
 }

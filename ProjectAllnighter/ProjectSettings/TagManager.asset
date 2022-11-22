@@ -18,14 +18,14 @@ TagManager:
   - UI
   - Player
   - PlayerProjectile
-  - DetectionZone
+  - 
+  - 
+  - 
+  - EnemyProjectile
+  - Enemy
+  - PassThroughEnemy
   - Minimap
   - Minimap + Main
-  - EnemyProjectile
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
@@ -46,9 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 1430256131
+    locked: 0
+  - name: Enemy
+    uniqueID: 299150297
+    locked: 0
   - name: Projectiles
     uniqueID: 3344429311
     locked: 0
-  - name: Player
-    uniqueID: 1430256131
+  - name: EnemyProjectile
+    uniqueID: 1170418363
     locked: 0

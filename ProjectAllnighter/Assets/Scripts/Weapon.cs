@@ -65,6 +65,7 @@ public class Weapon : MonoBehaviour
         animator.SetTrigger("Attack");
         GameObject proj = Instantiate(projectile, firePoint.position, firePoint.rotation);
         Projectile_Controller pc = proj.GetComponent<Projectile_Controller>();
+        pc.fromPlayer = true;
         PlayerController player = GetComponentInParent<PlayerController>();
         pc.Player = GetComponentInParent<PlayerData>();
         pc.Damage = player.GetDamage();

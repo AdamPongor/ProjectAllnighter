@@ -11,6 +11,7 @@ public class Projectile_Controller : MonoBehaviour
     private float timeElapsed = 0.0f;
     public PlayerData Player { get; set; }
     public int Damage { get; set; }
+    public bool fromPlayer { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +34,23 @@ public class Projectile_Controller : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //collision is the object what the projectile hit
-        
-        Enemy d = collision.GetComponent<Enemy>();
-        if (d != null)
+        if (fromPlayer)
         {
-            d.takeDamage(Damage, Player);
-            Destroy(gameObject);
+            Enemy d = collision.GetComponent<Enemy>();
+            if (d != null)
+            {
+                d.takeDamage(Damage, Player);
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            PlayerData p = collision.GetComponent<PlayerData>();
+            if (p != null)
+            {
+                p.takeDamage(Damage);
+                Destroy(gameObject);
+            }
         }
     }
 }
