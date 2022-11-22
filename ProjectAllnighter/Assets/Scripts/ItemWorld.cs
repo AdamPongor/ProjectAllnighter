@@ -14,11 +14,11 @@ public class ItemWorld : MonoBehaviour
         return itemWorld;
     }
 
-    public static ItemWorld DropItem(Vector3 dropPosition,Item item)
+    public static ItemWorld DropItem(Vector3 dropPosition,Item item, Vector2 dir)
     {
-        Vector3 Dir = UtilsClass.GetRandomDir();
-        ItemWorld itemWorld = SpawnItemWorld(dropPosition +Dir * 1f, item);
-        itemWorld.GetComponent<Rigidbody2D>().AddForce(Dir * 1f, ForceMode2D.Impulse);
+        Vector3 Dir = new Vector3(dir.x, dir.y, 0);
+        ItemWorld itemWorld = SpawnItemWorld(dropPosition +Dir * 0.3f, item);
+        itemWorld.GetComponent<Rigidbody2D>().AddForce(Dir * 0.7f, ForceMode2D.Impulse);
         return itemWorld;
     }
     private Item item;

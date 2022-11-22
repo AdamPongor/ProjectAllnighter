@@ -392,6 +392,7 @@ GameObject:
   - component: {fileID: 4195886924849245613}
   - component: {fileID: 2630124592827395776}
   - component: {fileID: 4210629540343451303}
+  - component: {fileID: 8711387120573511884}
   m_Layer: 6
   m_Name: MageStuff
   m_TagString: Untagged
@@ -530,6 +531,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8711387120573511884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3906091321708323588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3ed1285e35caf47bc67b8a31d7528c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 108774019235222398}
+  displayName: Staff
+  baseDamage: 10
+  scaling: 0
 --- !u!1 &5589998174128536693
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +706,7 @@ GameObject:
   - component: {fileID: 365410436}
   - component: {fileID: 365410437}
   - component: {fileID: 6184154160255867796}
+  - component: {fileID: 2786229151127761578}
   m_Layer: 6
   m_Name: Sword
   m_TagString: Untagged
@@ -886,6 +904,22 @@ PolygonCollider2D:
       - {x: -0.020373741, y: -0.16475935}
       - {x: 0.02224127, y: -0.07952933}
       - {x: 0.13943255, y: 0.03766195}
+--- !u!114 &2786229151127761578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9146357273953083263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3ed1285e35caf47bc67b8a31d7528c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 108774019235222398}
+  displayName: Sword
+  baseDamage: 10
+  scaling: 0
 --- !u!1 &9201196375649120952
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +933,7 @@ GameObject:
   - component: {fileID: 4564494623309770630}
   - component: {fileID: 2756438255982935205}
   - component: {fileID: 2931892364205344029}
+  - component: {fileID: 6463080141901443592}
   m_Layer: 6
   m_Name: Shield
   m_TagString: Melee
@@ -1108,3 +1143,19 @@ PolygonCollider2D:
       - {x: -0.020373741, y: -0.16475935}
       - {x: 0.02224127, y: -0.07952933}
       - {x: 0.13943255, y: 0.03766195}
+--- !u!114 &6463080141901443592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201196375649120952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3ed1285e35caf47bc67b8a31d7528c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 108774019235222398}
+  displayName: Shield
+  baseDamage: 500
+  scaling: 0

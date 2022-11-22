@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public Vector2 LastMoveDir { get => lastMoveDir; set => lastMoveDir = value; }
+
     public bool inMenu = false;
     public float moveSpeed = 70f;
     public float maxSpeed = 8f;
@@ -118,14 +120,14 @@ public class PlayerController : MonoBehaviour
 
         //Save the last input so if the player dodging while in IDLE state it will dodge to the direction of the last input.
         if(movementInput != Vector2.zero)
-            lastMoveDir = movementInput;
+            LastMoveDir = movementInput;
 
         
         //While dodging lock the movement
         if(currentState == PlayerStates.DODGE)
         {
             canMove = false;
-            Vector2 dodgeDir = lastMoveDir;
+            Vector2 dodgeDir = LastMoveDir;
             float decreaseDodgeSpeed = 4f;
             dodgeSpeed -= dodgeSpeed * decreaseDodgeSpeed * Time.deltaTime;
             rb.velocity = dodgeDir * dodgeSpeed;
@@ -221,7 +223,7 @@ public class PlayerController : MonoBehaviour
 
     Vector2 getDirection() 
     {
-        return lastMoveDir;
+        return LastMoveDir;
     }
 
     void OnHeal()
@@ -247,7 +249,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 GetPosition()
     {
-        return gameObject.GetComponent<Rigidbody2D>().position;
+        return gameObject.transform.position;
     }
     
     public int GetDamage()
@@ -255,4 +257,8 @@ public class PlayerController : MonoBehaviour
         return weapons[currentWeaponIndex].GetComponent<WeaponData>().GetDamage();
     }
     
+    public bool Pay(int c)
+    {
+        return inventory.RemoveItemType(Item.ItemType.COIN, c);
+    }
 }

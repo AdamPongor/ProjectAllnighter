@@ -61,7 +61,7 @@ public class UI_Inventory : MonoBehaviour
                 //Drop item
                 Item duplicateItem = new Item(item.Stackable, item.itemSprite, item.itemType, item.amount, player.GetComponent<PlayerData>());
                 inventory.RemoveItem(item, item.amount);
-                ItemWorld.DropItem(player.GetPosition(),duplicateItem);
+                ItemWorld.DropItem(player.GetPosition(),duplicateItem, player.LastMoveDir);
             };
 
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, 0);

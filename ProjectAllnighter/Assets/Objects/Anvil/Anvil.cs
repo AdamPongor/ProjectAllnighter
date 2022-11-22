@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Anvil : MonoBehaviour
 {
@@ -37,8 +38,20 @@ public class Anvil : MonoBehaviour
         foreach (WeaponData weapon in weapons)
         {
             GameObject newButton = Instantiate(upgradeButton, buttonParent.transform);
-            newButton.GetComponent<ButtonText>().buttonText.text = weapon.displayName + " +" + weapon.Level;
-            newButton.GetComponent<Button>().onClick.AddListener(() => onUpgrade(weapon));
+            List<TMP_Text> texts = new List<TMP_Text>();
+            texts.AddRange(newButton.GetComponentsInChildren<TMP_Text>());
+
+            texts[0].text = weapon.displayName + " +" + weapon.Level;
+
+            if (weapon.UpgradeAble())
+            {
+                texts[1].text = weapon.getUpgradeCost().ToString();
+                newButton.GetComponentInChildren<Button>().onClick.AddListener(() => onUpgrade(weapon));
+            } else
+            {
+                texts[1].text = "Max";
+            }
+
         }
     }
 }

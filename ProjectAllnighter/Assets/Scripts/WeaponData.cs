@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponData : MonoBehaviour
@@ -9,12 +11,16 @@ public class WeaponData : MonoBehaviour
     public int baseDamage;
     public int scaling;
     private int level = 0;
+    private int maxLevel = 10;
 
-    public int Level { get => level; set => level = value; }
+    public int Level { get => level; set{if (level<maxLevel) level = value; }}
+    public int MaxLevel { get => maxLevel;}
 
     public void Upgrade()
     {
-        Level++;
+        if (player.GetComponent<PlayerController>().Pay(getUpgradeCost())){
+            Level++;
+        };
     }
 
     public int GetDamage()
@@ -22,4 +28,13 @@ public class WeaponData : MonoBehaviour
         return baseDamage + (int)(baseDamage * 0.5 * Level) + scaling;
     }
 
+    public int getUpgradeCost()
+    {
+        return (level + 1) * 10;
+    }
+
+    public bool UpgradeAble()
+    {
+        return level < maxLevel;
+    }
 }

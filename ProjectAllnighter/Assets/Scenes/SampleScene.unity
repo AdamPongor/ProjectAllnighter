@@ -6131,27 +6131,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724909309}
   m_CullTransparentMesh: 1
---- !u!1 &730569530 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9146357273953083263, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
-  m_PrefabInstance: {fileID: 108774018973010483}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &730569536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730569530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3ed1285e35caf47bc67b8a31d7528c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1952343439}
-  displayName: Sword
-  baseDamage: 10
-  scaling: 0
 --- !u!1 &753408485
 GameObject:
   m_ObjectHideFlags: 0
@@ -53542,7 +53521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1952343439}
   buttonParent: {fileID: 602262335}
-  upgradeButton: {fileID: 3404936068985627479, guid: d6c939760e45d3140abfca21dfc7ae7e, type: 3}
+  upgradeButton: {fileID: 1550089419690473850, guid: 54afe970ffbab524ea343bb2ff1b95e9, type: 3}
 --- !u!1 &1451349851
 GameObject:
   m_ObjectHideFlags: 0
@@ -57639,27 +57618,6 @@ PolygonCollider2D:
       - {x: 0.07, y: -0.16}
       - {x: 0.12, y: -0.08}
       - {x: 0.12, y: 0.16}
---- !u!1 &1957190428 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9201196375649120952, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
-  m_PrefabInstance: {fileID: 108774018973010483}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1957190434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957190428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3ed1285e35caf47bc67b8a31d7528c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1952343439}
-  displayName: Shield
-  baseDamage: 500
-  scaling: 0
 --- !u!1 &1963945206
 GameObject:
   m_ObjectHideFlags: 3
@@ -57748,27 +57706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1968303885 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3906091321708323588, guid: f3394609251ee2b4d99c628c02cf659e, type: 3}
-  m_PrefabInstance: {fileID: 108774018973010483}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1968303890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968303885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3ed1285e35caf47bc67b8a31d7528c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1952343439}
-  displayName: Staff
-  baseDamage: 10
-  scaling: 0
 --- !u!1 &2027276000
 GameObject:
   m_ObjectHideFlags: 0
