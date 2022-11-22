@@ -38,4 +38,13 @@ public class Slime : Enemy
             }
         }
     }
+
+    public new void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        base.OnCollisionExit2D(collision);
+        PlayerData player = collision.collider.GetComponent<PlayerData>();
+        player.GetPoisened();
+    }
+
 }

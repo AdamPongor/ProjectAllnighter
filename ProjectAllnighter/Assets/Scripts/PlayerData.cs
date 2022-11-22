@@ -22,6 +22,15 @@ public class PlayerData : MonoBehaviour
     private int dexterity = 1;
     private int intelligence = 1;
 
+
+
+    //poison stats 
+
+    bool poisonEffect = false;
+    public bool isPoisoned = false;
+    private float poisonTimer= 5;
+    private int poisonDamage = 5;
+
     public int Vitality
     {
         get => vitality;
@@ -97,6 +106,10 @@ public class PlayerData : MonoBehaviour
             visitedBonfires.Add(b);
         }
     }
+    public void GetPoisened() 
+    {
+        isPoisoned = true;
+    }
 
     public List<GameObject> GetBonfires()
     {
@@ -116,5 +129,24 @@ public class PlayerData : MonoBehaviour
         RectTransform textTransform = text.GetComponent<RectTransform>();
         textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         textTransform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
+    }
+
+    private void FixedUpdate()
+    {
+        if (isPoisoned)
+        {
+            StartCoroutine("PoisonDamage");
+        }
+    }
+
+    IEnumerator PoisonDamage()
+    {
+        if (poisonEffect)
+        {
+            takeDamage(poisonDamage);
+            poisonEffect = false;
+            yield return new WaitForSeconds(poisonTimer);
+            poisonEffect = true;
+        }
     }
 }
