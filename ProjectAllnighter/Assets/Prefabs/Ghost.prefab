@@ -344,6 +344,6 @@ MonoBehaviour:
   damage: 0
   floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
   zone: {fileID: 659196205179412432}
-  attackPerSecond: 2
+  attackPerSecond: 0.5
   projectile: {fileID: 9106662826603303267, guid: 15ed3e58e59c2274883ec36672f67bb7, type: 3}
   firePoint: {fileID: 8374276950590203313}
