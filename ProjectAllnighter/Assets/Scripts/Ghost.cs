@@ -62,7 +62,7 @@ public class Ghost : Enemy
             return;
         GameObject proj = Instantiate(projectile, firePoint.position, firePoint.rotation);
         Projectile_Controller pc = proj.GetComponent<Projectile_Controller>();
-        pc.Damage = 20;
+        pc.Damage = damage;
         pc.fromPlayer = false;
         attackBlocked = true;
         StartCoroutine(DelayAttack());

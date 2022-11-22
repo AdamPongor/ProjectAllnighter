@@ -48,8 +48,17 @@ public class Projectile_Controller : MonoBehaviour
             PlayerData p = collision.GetComponent<PlayerData>();
             if (p != null)
             {
-                p.takeDamage(Damage);
-                Destroy(gameObject);
+                if (p.GetComponentInChildren<Weapon>().IsBlocking)
+                {
+                    p.UseStamina(Damage);
+                    fromPlayer = true;
+                    Player = p;
+                    bulletSpeed *= -1;
+                } else
+                {
+                    p.takeDamage(Damage);
+                    Destroy(gameObject);
+                }
             }
         }
     }
