@@ -16,11 +16,41 @@ public class PlayerData : MonoBehaviour
     public int XP = 100000;
     public int Level = 1;
 
-    public int Vitality = 1;
-    public int Endurance = 1;
-    public int Strength = 1;
-    public int Dexterity = 1;
-    public int Intelligence = 1;
+    private int vitality = 1;
+    private int endurance = 1;
+    private int strength = 1;
+    private int dexterity = 1;
+    private int intelligence = 1;
+
+    public int Vitality
+    {
+        get => vitality;
+        set
+        {
+            vitality = value;
+            Health.MaxValue += (vitality - 1) * 5;
+        }
+    }
+    public int Endurance
+    {
+        get => endurance;
+        set
+        {
+            endurance = value;
+            Stamina.MaxValue += (endurance - 1) * 3;
+        }
+    }
+    public int Strength { get => strength; set => strength = value; }
+    public int Dexterity { get => dexterity; set => dexterity = value; }
+    public int Intelligence
+    {
+        get => intelligence;
+        set
+        {
+            intelligence = value;
+            Mana.MaxValue += (intelligence - 1) * 3;
+        }
+    }
 
     public GameObject GetLastInteracted() { 
         return lastInteracted; 

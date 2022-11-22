@@ -18,6 +18,15 @@ public class StatusBar : MonoBehaviour
         }
     }
 
+    public float MaxValue { 
+        get => maxValue; set
+        {
+            maxValue = value;
+            currentValue = maxValue;
+            UpdateSlider();
+        } 
+    }
+
     private float _currentStamina;
 
     private WaitForSeconds regenTick;
@@ -27,9 +36,9 @@ public class StatusBar : MonoBehaviour
     void Start()
     {
         regenTick = new WaitForSeconds(tick);
-        currentValue = maxValue;
-        slider.maxValue = maxValue;
-        slider.value = maxValue;
+        currentValue = MaxValue;
+        slider.maxValue = MaxValue;
+        slider.value = MaxValue;
     }
 
     public void Use(float amount)
@@ -42,35 +51,39 @@ public class StatusBar : MonoBehaviour
         {
             currentValue = 0;
         }
-            
-        slider.value = currentValue;
+
+        UpdateSlider();
         if (regen != null)
             StopCoroutine(regen);
 
         regen = StartCoroutine(Regen());
-       // Debug.Log(currentValue);
     }
 
     public void Add(float Amount)
     {
-        if ((currentValue + Amount) > maxValue)
+        if ((currentValue + Amount) > MaxValue)
         {
-            currentValue = maxValue;
+            currentValue = MaxValue;
         }
         else
         {
             currentValue += Amount;
         }
-         slider.value = currentValue;
+        UpdateSlider();
+    }
+
+    public void UpdateSlider()
+    {
+        slider.value = 100 * (currentValue / maxValue);
     }
 
     private IEnumerator Regen()
     {
         yield return new WaitForSeconds(1);
-        while((currentValue < maxValue) && canRegen)
+        while((currentValue < MaxValue) && canRegen)
         {
-            currentValue += maxValue / 100;
-            slider.value = currentValue;
+            currentValue += 1;
+            UpdateSlider();
             yield return regenTick;
         }
         regen = null;
