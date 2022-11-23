@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 using System;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
 
-    public float health;
+    public float maxHealth;
     public int XP;
     public int damage;
     protected bool canDamage = true;
     protected bool stunned;
+    private Vector3 startingPos;
+    private float health;
     [SerializeField] FloatingText floatingText;
+    protected Rigidbody2D rb;
+    protected Animator animator;
     public float Health {
         get { return health; }
 
@@ -20,6 +25,14 @@ public class Enemy : MonoBehaviour
         {
             health = value;
         }
+    }
+
+    public void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        startingPos = gameObject.transform.position;
+        Health = maxHealth;
     }
 
     public void takeDamage(float damage, PlayerData player)
@@ -30,7 +43,7 @@ public class Enemy : MonoBehaviour
         RectTransform textTransform = text.GetComponent<RectTransform>();
         textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
         textTransform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
-        if (health <= 0)
+        if (Health <= 0)
         {
              Die(player);
         }
@@ -39,7 +52,16 @@ public class Enemy : MonoBehaviour
     public void Die(PlayerData player)
     {
         player.AddXP(XP);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    public void Respawn()
+    {
+        canDamage = true;
+        stunned = false;
+        gameObject.transform.position = startingPos;
+        Health = maxHealth;
+        gameObject.SetActive(true);
     }
 
     public virtual void OnCollisionEnter2D(Collision2D collision)

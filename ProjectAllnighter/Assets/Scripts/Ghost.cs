@@ -7,21 +7,12 @@ public class Ghost : Enemy
     Vector2 lastdir;
     public DetectionZone zone;
     private float moveSpeed = 40f;
-    Rigidbody2D rb;
-    Animator animator;
     private bool attackBlocked;
     public float attackPerSecond;
 
 
     [SerializeField] GameObject projectile;
     [SerializeField] Transform firePoint;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-    }
     private void FixedUpdate()
     {
 

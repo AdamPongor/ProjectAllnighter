@@ -10,7 +10,7 @@ public class WeaponData : MonoBehaviour
     public GameObject player;
     public string displayName;
     public int baseDamage;
-    public int scaling;
+    private int scaling;
     private int level = 0;
     private int maxLevel = 10;
     public UnityEvent Scale;
@@ -25,14 +25,10 @@ public class WeaponData : MonoBehaviour
         };
     }
 
-    /*public int GetScaleStat()
-    {
-        int x = Scale?.Invoke();
-    }*/
-
     public int GetDamage()
     {
-        return baseDamage + (int)(baseDamage * 0.5 * Level) + scaling;
+        Scale?.Invoke();
+        return baseDamage + (int)(baseDamage * 0.5 * Level) + (int) (baseDamage * Math.Log(scaling));
     }
 
     public int getUpgradeCost()
@@ -43,5 +39,19 @@ public class WeaponData : MonoBehaviour
     public bool UpgradeAble()
     {
         return level < maxLevel;
+    }
+
+    public void ScaleWithStrength()
+    {
+        scaling = player.GetComponent<PlayerData>().Strength;
+    }
+
+    public void ScaleWithIntelligence()
+    {
+        scaling = player.GetComponent<PlayerData>().Intelligence;
+    }
+    public void ScaleWithDexterity()
+    {
+        scaling = player.GetComponent<PlayerData>().Dexterity;
     }
 }

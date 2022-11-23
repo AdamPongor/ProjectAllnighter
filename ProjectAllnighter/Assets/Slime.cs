@@ -8,16 +8,7 @@ public class Slime : Enemy
     Vector2 lastdir;
     public DetectionZone zone;
     public float moveSpeed = 40f;
-    Rigidbody2D rb;
-    Animator animator;
     public int poisonDamage;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-    }
 
     private void FixedUpdate()
     {
