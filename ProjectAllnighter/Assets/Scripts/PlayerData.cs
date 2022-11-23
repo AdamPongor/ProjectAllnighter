@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerData : MonoBehaviour
 {
     public StatusBar Stamina;
     public StatusBar Mana;
-    public StatusBar Health; 
+    public StatusBar Health;
     public FloatingText floatingText;
 
     public GameObject lastInteracted;
     public List<GameObject> visitedBonfires = new List<GameObject>();
-    
+    public UnityEvent DeathEvent;
+
 
     public int XP = 100000;
     public int Level = 1;
@@ -52,8 +54,8 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    public GameObject GetLastInteracted() { 
-        return lastInteracted; 
+    public GameObject GetLastInteracted() {
+        return lastInteracted;
     }
     public void SetLastInteracted(GameObject go)
     {
@@ -83,6 +85,31 @@ public class PlayerData : MonoBehaviour
     public void takeDamage(float amount)
     {
         Health.Use(amount);
+        if (Health.currentValue <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        XP = 0;
+        DeathEvent?.Invoke();
+    }
+
+    public void Respawn()
+    {
+        if (lastInteracted != null)
+        {
+            Teleport(lastInteracted.transform.position + new Vector3(0.0f, 0.3f, 0.0f));
+        } else {
+            Teleport(new Vector3(0, 0, 0));
+        }
+            
+        Health.Add(Health.MaxValue);
+        Stamina.Add(Stamina.MaxValue);
+        Mana.Add(Mana.MaxValue);
+        poisoned = null;
     }
 
     public void Heal(float amount)
@@ -132,7 +159,7 @@ public class PlayerData : MonoBehaviour
     
     IEnumerator PoisonDamage(int damage)
     {
-        while(damageSum < damage)
+        while(damageSum < damage && poisoned !=null)
         {
             takeDamage(1);
             damageSum += 1;

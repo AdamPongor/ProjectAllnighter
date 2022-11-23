@@ -8,6 +8,13 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
     public UnityEvent pause;
+    public GameObject player;
+    private PlayerController playerController;
+
+    public void Start()
+    {
+        playerController = player.GetComponent<PlayerController>();        
+    }
 
     public void OnEnable()
     {
@@ -16,7 +23,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && !playerController.inMenu)
         {
             Time.timeScale=0;
             pauseMenuUI.SetActive(true);

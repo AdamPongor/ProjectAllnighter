@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
         ItemWorld.DropItem(gameObject.transform.position, item, Dir, 0);
     }
 
-    public void Respawn()
+    public virtual void Respawn()
     {
         canDamage = true;
         stunned = false;

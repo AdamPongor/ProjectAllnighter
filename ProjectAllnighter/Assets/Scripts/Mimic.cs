@@ -17,8 +17,6 @@ public class Mimic : Enemy
         animator.SetBool("isMoving", false);
         if (awake)
         {
-
-            
             if (!stunned)
             {
                 animator.SetBool("isMoving", true);
@@ -30,6 +28,13 @@ public class Mimic : Enemy
                 return;
             }
         }
+    }
+
+    public override void Respawn()
+    {
+        base.Respawn();
+        awake = false;
+        animator.SetBool("isMoving", false);
     }
 
     public override int GetDamage()
