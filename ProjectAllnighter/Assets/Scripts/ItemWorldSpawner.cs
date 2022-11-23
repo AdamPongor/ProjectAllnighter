@@ -34,6 +34,6 @@ public class ItemWorldSpawner : MonoBehaviour
     }
     public void Sword()
     {
-        item = new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.SWORD, 1, player);
+        item = new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.WEAPON, 1, player);
     }
 }

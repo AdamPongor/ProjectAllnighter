@@ -7,10 +7,9 @@ using UnityEngine.Events;
 public class Item
 {
     public enum ItemType {
-        SWORD,
-        HEALTHPOTION,
-        MANAPOTION,
-        STAMINAPOTION,
+        WEAPON,
+        ARMOR,
+        CONSUMABLE,
         COIN
     }
 

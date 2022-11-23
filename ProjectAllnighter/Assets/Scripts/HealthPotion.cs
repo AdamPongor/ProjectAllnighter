@@ -6,7 +6,7 @@ public class HealthPotion : Item
 {
 
     public HealthPotion(int amount, PlayerData p) : 
-        base(true, ItemAssets.Instance.healthPotionSprite, Item.ItemType.HEALTHPOTION, amount, p)
+        base(true, ItemAssets.Instance.healthPotionSprite, Item.ItemType.CONSUMABLE, amount, p)
     {
 
     }

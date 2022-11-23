@@ -5,7 +5,7 @@ using UnityEngine;
 public class ManaPotion : Item
 {
     public ManaPotion(int amount, PlayerData p) :
-        base(true, ItemAssets.Instance.manaPotionSprite, Item.ItemType.MANAPOTION, amount, p)
+        base(true, ItemAssets.Instance.manaPotionSprite, Item.ItemType.CONSUMABLE, amount, p)
     {
 
     }

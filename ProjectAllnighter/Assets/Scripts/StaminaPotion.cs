@@ -5,7 +5,7 @@ using UnityEngine;
 public class StaminaPotion : Item
 {
     public StaminaPotion(int amount, PlayerData p) :
-        base(true, ItemAssets.Instance.staminaPotionSprite, Item.ItemType.STAMINAPOTION, amount, p)
+        base(true, ItemAssets.Instance.staminaPotionSprite, Item.ItemType.CONSUMABLE, amount, p)
     {
 
     }
