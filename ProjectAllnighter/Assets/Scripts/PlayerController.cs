@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 LastMoveDir { get => lastMoveDir; set => lastMoveDir = value; }
 
     public bool inMenu = false;
+    public bool HoveringMenu { get; set; }
     public float moveSpeed = 70f;
     public float maxSpeed = 8f;
     public float dodgeSpeed = 10f;
@@ -186,7 +187,7 @@ public class PlayerController : MonoBehaviour
     {
         //Checking the stamina amount if the player has enough for another attack.
         //If the player is in a dodge or attacking at the moment don't let it attack.
-        if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking && !inMenu)
+        if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking && !inMenu && !HoveringMenu)
         {
             if (playerData.isEnoughMana(20f) && currentWeapon.tag == "Ranged")
             {

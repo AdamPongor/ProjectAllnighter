@@ -22,12 +22,6 @@ public class PlayerData : MonoBehaviour
     private int dexterity = 1;
     private int intelligence = 1;
 
-
-
-    //poison stats 
-
-    
-
     public int Vitality
     {
         get => vitality;

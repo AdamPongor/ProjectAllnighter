@@ -21,7 +21,7 @@ public class ItemWorld : MonoBehaviour
         itemWorld.GetComponent<Rigidbody2D>().AddForce(Dir * 0.7f, ForceMode2D.Impulse);
         return itemWorld;
     }
-    private Item item;
+    public Item item;
     private SpriteRenderer spriteRenderer;
 
     private void Awake()

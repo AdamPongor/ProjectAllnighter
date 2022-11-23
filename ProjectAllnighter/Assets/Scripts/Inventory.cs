@@ -13,9 +13,9 @@ public class Inventory
     public Inventory(PlayerData player){
         itemList = new List<Item>();
         
-        AddItem(new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.SWORD, 1, player));
+        AddItem(new ManaPotion(1, player));
         AddItem(new HealthPotion(1, player));
-        AddItem(new Item(true, ItemAssets.Instance.staminaPotionSprite, Item.ItemType.STAMINAPOTION, 1, player));
+        AddItem(new StaminaPotion(1, player));
         Debug.Log("items:" + itemList.Count);
     }
 
@@ -25,7 +25,7 @@ public class Inventory
             bool itemAlreadyInInventory = false;
             foreach(Item inventoryItem in itemList)
             {
-                if(inventoryItem.itemType == item.itemType)
+                if(inventoryItem.itemSprite == item.itemSprite)
                 {
                     inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;

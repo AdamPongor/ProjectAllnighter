@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class HealthPotion : Item
 {
+
     public HealthPotion(int amount, PlayerData p) : 
         base(true, ItemAssets.Instance.healthPotionSprite, Item.ItemType.HEALTHPOTION, amount, p)
     {
 
     }
 
-    public override void Use() {
+    public override bool Use() {
         player.Heal(20);
+        return true;
+    }
+
+    public override Item Clone()
+    {
+        return new HealthPotion(amount, player);
     }
 }

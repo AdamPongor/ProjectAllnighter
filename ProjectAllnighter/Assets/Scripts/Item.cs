@@ -28,8 +28,15 @@ public class Item
         this.player = player;
     }
 
-    public virtual void Use()
+    public virtual Item Clone()
     {
+        return new Item(Stackable,itemSprite,itemType,amount,player);
+    }
+
+    public virtual bool Use()
+    {
+        Debug.Log("Nyehehehe... Hé Loisz! Item lettem!");
+        return false;
     }
 
     public Sprite GetSprite()

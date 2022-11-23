@@ -33,6 +33,7 @@ public class UI_Inventory : MonoBehaviour
 
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
+        Debug.Log("items:" + inventory.GetItemList().Count);
         RefreshInventoryItems();
     }
 
@@ -54,12 +55,15 @@ public class UI_Inventory : MonoBehaviour
 
             itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                 //Use item
-                item.Use();
-                inventory.RemoveItem(item, 1);
+                if (item.Use())
+                {
+                    inventory.RemoveItem(item, 1);
+                }
             };
             itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
                 //Drop item
-                Item duplicateItem = new Item(item.Stackable, item.itemSprite, item.itemType, item.amount, player.GetComponent<PlayerData>());
+                Item duplicateItem = item.Clone();//new Item(item.Stackable, item.itemSprite, item.itemType, item.amount, player.GetComponent<PlayerData>());
+                
                 inventory.RemoveItem(item, item.amount);
                 ItemWorld.DropItem(player.GetPosition(),duplicateItem, player.LastMoveDir, 0.3f);
             };

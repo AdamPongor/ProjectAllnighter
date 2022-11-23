@@ -1769,6 +1769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 197550658}
   - component: {fileID: 197550659}
+  - component: {fileID: 197550660}
   m_Layer: 5
   m_Name: UI_Inventory
   m_TagString: Untagged
@@ -1811,6 +1812,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449b1445ba98dc7408b9dd0f4bbb409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &197550660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197550657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1952343444}
+          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_MethodName: set_HoveringMenu
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1952343444}
+          m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+          m_MethodName: set_HoveringMenu
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &203377694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,7 +2534,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &340728583
 GameObject:
@@ -2538,7 +2584,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6680561225276285612, guid: 497f836524442054685604790cb9a419, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6680561225276285612, guid: 497f836524442054685604790cb9a419, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2829,8 +2875,9 @@ Transform:
   - {fileID: 839868516}
   - {fileID: 1878699339}
   - {fileID: 1117421582}
+  - {fileID: 1679921128}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &378274138
 MonoBehaviour:
@@ -2926,11 +2973,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b567501eaf01ac42a8782011788b385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Stackable: 1
-    itemSprite: {fileID: 1684165653, guid: 7dbf84dc8e4c0c7418bf76da7ab87f4a, type: 3}
-    itemType: 3
-    amount: 1
+  SetItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 379654558}
+        m_TargetAssemblyTypeName: ItemWorldSpawner, Assembly-CSharp
+        m_MethodName: StaminaPotion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  player: {fileID: 513613486}
 --- !u!4 &379654559
 Transform:
   m_ObjectHideFlags: 0
@@ -2944,7 +3002,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &390659469
 GameObject:
@@ -3526,7 +3584,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6680561225276285612, guid: 497f836524442054685604790cb9a419, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6680561225276285612, guid: 497f836524442054685604790cb9a419, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3622,7 +3680,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &566565191
 GameObject:
@@ -3706,11 +3764,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b567501eaf01ac42a8782011788b385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Stackable: 1
-    itemSprite: {fileID: -764693518, guid: 7dbf84dc8e4c0c7418bf76da7ab87f4a, type: 3}
-    itemType: 4
-    amount: 100
+  SetItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 566565193}
+        m_TargetAssemblyTypeName: ItemWorldSpawner, Assembly-CSharp
+        m_MethodName: Coin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  player: {fileID: 513613486}
 --- !u!4 &566565194
 Transform:
   m_ObjectHideFlags: 0
@@ -3724,7 +3793,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &570326635
 PrefabInstance:
@@ -3839,7 +3908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047010, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047010, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51792,11 +51861,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b567501eaf01ac42a8782011788b385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Stackable: 1
-    itemSprite: {fileID: 1127493525, guid: 7dbf84dc8e4c0c7418bf76da7ab87f4a, type: 3}
-    itemType: 1
-    amount: 1
+  SetItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 988468273}
+        m_TargetAssemblyTypeName: ItemWorldSpawner, Assembly-CSharp
+        m_MethodName: HealthPotion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  player: {fileID: 513613486}
 --- !u!4 &988468274
 Transform:
   m_ObjectHideFlags: 0
@@ -51810,7 +51890,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &994731045
 GameObject:
@@ -52166,11 +52246,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b567501eaf01ac42a8782011788b385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Stackable: 1
-    itemSprite: {fileID: -924117356, guid: 7dbf84dc8e4c0c7418bf76da7ab87f4a, type: 3}
-    itemType: 2
-    amount: 1
+  SetItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1049340174}
+        m_TargetAssemblyTypeName: ItemWorldSpawner, Assembly-CSharp
+        m_MethodName: ManaPotion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  player: {fileID: 513613486}
 --- !u!4 &1049340175
 Transform:
   m_ObjectHideFlags: 0
@@ -52184,7 +52275,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064117524
 GameObject:
@@ -55687,6 +55778,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0.23455, y: -0.00012779}
   m_SizeDelta: {x: 319.53, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1679921128 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
+  m_PrefabInstance: {fileID: 31363295750511167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1686939563
 GameObject:
   m_ObjectHideFlags: 0
@@ -57530,11 +57626,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b567501eaf01ac42a8782011788b385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item:
-    Stackable: 0
-    itemSprite: {fileID: 2063820940, guid: e9124cbaca3fd134592a170e7fbd022f, type: 3}
-    itemType: 0
-    amount: 1
+  SetItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1935696789}
+        m_TargetAssemblyTypeName: ItemWorldSpawner, Assembly-CSharp
+        m_MethodName: Sword
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  player: {fileID: 513613486}
 --- !u!4 &1935696790
 Transform:
   m_ObjectHideFlags: 0
@@ -57548,7 +57655,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1946873181
 GameObject:
@@ -57853,7 +57960,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6680561225276285612, guid: 497f836524442054685604790cb9a419, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6680561225276285612, guid: 497f836524442054685604790cb9a419, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58333,7 +58440,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 378274137}
     m_Modifications:
     - target: {fileID: -5740807294341652832, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
@@ -58549,7 +58656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: XP
-      value: 1000000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: damage
@@ -58558,6 +58665,10 @@ PrefabInstance:
     - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: health
       value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
+      propertyPath: maxHealth
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: -3982989400060791163, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: floatingText
@@ -58577,19 +58688,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.652
+      value: 2.2214851
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.317
+      value: -1.1498022
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.071847364
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58597,15 +58708,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6137055442198542116, guid: f78022ac62c6a5f4a8cdb24d23f8449c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -59132,7 +59243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583598, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1956782402058583598, guid: 5b890940462067e42be3ee5d3da01124, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59419,7 +59530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4764705507249348116, guid: 9e810c797e3297f4d8531b6a33084767, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4764705507249348116, guid: 9e810c797e3297f4d8531b6a33084767, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59624,7 +59735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047010, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4920171087561047010, guid: 84ad297ac85b22f4e8dcfe16711c1a17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59762,7 +59873,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6680561225276285612, guid: 497f836524442054685604790cb9a419, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6680561225276285612, guid: 497f836524442054685604790cb9a419, type: 3}
       propertyPath: m_LocalPosition.x

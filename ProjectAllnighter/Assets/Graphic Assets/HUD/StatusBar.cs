@@ -97,4 +97,22 @@ public class StatusBar : MonoBehaviour
         else
             return true;
     }
+
+    private Coroutine boosted = null;
+
+    public void BoostRegen(int time)
+    {
+        if (boosted == null)
+        {
+            boosted = StartCoroutine("IncreaseSpeed", time);
+        }
+    }
+
+    IEnumerator IncreaseSpeed(int time)
+    {
+        regenTick = new WaitForSeconds(tick *= 0.5f);
+        yield return new WaitForSeconds(time);
+        regenTick = new WaitForSeconds(tick *= 2);
+        boosted = null;
+    }
 }
