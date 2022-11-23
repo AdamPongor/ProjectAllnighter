@@ -41,7 +41,18 @@ public class Ghost : Enemy
                     lastdir = dir;
                     return;
                 }
-                else {
+                else if (distance < 0.5)
+                {
+                    animator.SetBool("isMoving", true);
+                    Vector2 dir = (detected.transform.position - transform.position).normalized;
+                    rb.AddForce((-1)*Time.deltaTime * moveSpeed * dir, ForceMode2D.Impulse);
+                    animator.SetFloat("AnimMoveX", dir.x);
+                    animator.SetFloat("AnimMoveY", dir.y);
+                    lastdir = dir;
+                    return;
+                }
+                else
+                {
                     Attack();
                     return;
                 }
