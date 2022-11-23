@@ -133,6 +133,11 @@ public class Weapon : MonoBehaviour
                 PlayerController pc = GetComponentInParent<PlayerController>();
                 e.takeDamage(pc.GetDamage(), p);
             }
+            if (collider.tag == "Destructable")
+            {
+                Barrel b = collider.GetComponent<Barrel>();
+                b.Destroy();
+            }
         }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Threading;
 using System;
 using UnityEngine.UIElements;
+using CodeMonkey.Utils;
+using Random = System.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -35,7 +37,7 @@ public class Enemy : MonoBehaviour
         Health = maxHealth;
     }
 
-    public void takeDamage(float damage, PlayerData player)
+    public virtual void takeDamage(float damage, PlayerData player)
     {
         Health -= damage;
         FloatingText text = Instantiate(floatingText);
@@ -51,8 +53,17 @@ public class Enemy : MonoBehaviour
 
     public void Die(PlayerData player)
     {
+        DropMoney();
         player.AddXP(XP);
         gameObject.SetActive(false);
+    }
+
+    private void DropMoney()
+    {
+        Random rnd = new Random();
+        Item item = new Coin(rnd.Next(0, 5));
+        Vector2 Dir = UtilsClass.GetRandomDir();
+        ItemWorld.DropItem(gameObject.transform.position, item, Dir, 0);
     }
 
     public void Respawn()
@@ -84,13 +95,18 @@ public class Enemy : MonoBehaviour
             PlayerData player = collision.collider.GetComponent<PlayerData>();
             if (canDamage && !stunned)
             {
-                player.takeDamage(damage);
+                player.takeDamage(GetDamage());
                 canDamage = false;
                 Thread th = new Thread(resetCanDamage);
                 th.Start();
             }
             
         }
+    }
+
+    public virtual int GetDamage()
+    {
+        return damage;
     }
 
     public virtual void resetCanDamage()

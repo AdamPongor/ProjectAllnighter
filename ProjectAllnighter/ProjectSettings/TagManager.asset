@@ -9,6 +9,7 @@ TagManager:
   - Ranged
   - Prompt
   - Defense
+  - Destructable
   layers:
   - Default
   - TransparentFX
