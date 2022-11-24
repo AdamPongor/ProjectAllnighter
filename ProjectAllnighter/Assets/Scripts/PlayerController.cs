@@ -72,7 +72,9 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     [SerializeField] private UI_InventoryBar uI_InventoryBar;
     public InventoryManager inventoryManager;
-
+    private bool inventoryOpen = false;
+    public UnityEvent OpenInventory;
+    public UnityEvent CloseInventory;
     //dynamic weapon list
     private Weapon weaponParent;
     public int currentWeaponIndex;
@@ -233,6 +235,16 @@ public class PlayerController : MonoBehaviour
     void OnHeal()
     {
         //obsolete for now
+    }
+
+    void OnInventory(){
+        if(inventoryOpen){
+            CloseInventory?.Invoke();
+            inventoryOpen = false;
+        } else {
+            OpenInventory?.Invoke();
+            inventoryOpen = true;
+        }
     }
     
 
