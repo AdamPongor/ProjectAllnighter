@@ -15,14 +15,23 @@ public class InventoryManager : MonoBehaviour
             
             InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if(itemInSlot != null && itemInSlot.item.Equals(item))
+            {
+                itemInSlot.amount+= item.amount;
+                return ;
+            } 
+        }
+
+        for(int i = 0; i < inventorySlots.Length; i++)
+        {
+            
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if(itemInSlot == null)
             {
                 SpawnNewItem(item,slot);
                 return ;
-            }
-            
-            
-            
+            } 
         }
         return ;
     }
@@ -76,6 +85,21 @@ public class InventoryManager : MonoBehaviour
                 }
                 
             }
+
+            if(itemIsInList)
+            {
+                for(int i = 0; i < inventorySlots.Length; i++)
+                {
+                    if(inventorySlots[i].GetComponentInChildren<InventoryItem>() != null &&
+                     inventorySlots[i].GetComponentInChildren<InventoryItem>().item.Equals(item) &&
+                      inventorySlots[i].GetComponentInChildren<InventoryItem>().item.IsStackable())
+                    {
+                        AddItem(item);
+                        inventorySlots[i].GetComponentInChildren<InventoryItem>().RefreshAmount();
+                    }
+                }
+            }
+
             
         } 
     }

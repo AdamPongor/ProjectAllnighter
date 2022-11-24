@@ -10,9 +10,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     
     [HideInInspector] public Item item;
-    [HideInInspector] public int ammount = 1;
+     public int amount = 1;
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
+    
     
 
     public void InitializeItem(Item newItem)
@@ -21,6 +22,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.sprite= newItem.itemSprite;
         
     }
+
+    public void RefreshAmount()
+    {
+        this.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = amount.ToString();
+        // bool textActive = amount > 1;
+        // this.GetComponentInChildren<TMPro.TextMeshProUGUI>().gameObject.SetActive(textActive);
+    }
+
+    
     
     public void OnBeginDrag(PointerEventData eventData)
     {
