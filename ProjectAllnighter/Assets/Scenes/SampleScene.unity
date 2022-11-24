@@ -3601,6 +3601,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 465842689}
+  - component: {fileID: 465842690}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -3630,6 +3631,24 @@ RectTransform:
   m_AnchoredPosition: {x: 148.53996, y: 2.1724}
   m_SizeDelta: {x: 295.2484, y: 174.5565}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &465842690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465842688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6465223d973686448b1c01f8efd19a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 465842688}
+  inventory:
+    m_PersistentCalls:
+      m_Calls:
+      - {m_Target: {fileID: 1952343444}, m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp, m_MethodName: InMenu, m_Mode: 6, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 1}, m_CallState: 2}
+  player: {fileID: 1952343439}
 --- !u!1 &468696627
 GameObject:
   m_ObjectHideFlags: 0
