@@ -20,12 +20,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         item = newItem;
         image.sprite= newItem.itemSprite;
-        
+        amount = newItem.amount;
+        RefreshAmount();
     }
 
     public void RefreshAmount()
     {
-        this.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = amount.ToString();
+        this.GetComponentInChildren<TMPro.TextMeshProUGUI>().text =amount.ToString();
         // bool textActive = amount > 1;
         // this.GetComponentInChildren<TMPro.TextMeshProUGUI>().gameObject.SetActive(textActive);
     }

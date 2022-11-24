@@ -17,7 +17,7 @@ public class InventoryManager : MonoBehaviour
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if(itemInSlot != null && itemInSlot.item.Equals(item))
             {
-                itemInSlot.amount= item.amount;
+                itemInSlot.amount = item.amount;
                 return ;
             } 
         }
