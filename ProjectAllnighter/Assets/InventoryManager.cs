@@ -47,47 +47,37 @@ public class InventoryManager : MonoBehaviour
 
     public void RefreshInventoryItems()
     {
-        ClearInventoryUI(); 
         foreach(Item item in inventory.GetItemList())
         {
-            
+            bool itemIsInList = false;   
             
             for(int i = 0; i < inventorySlots.Length;i++)
             {
-                if(inventorySlots[i].GetComponentInChildren<InventoryItem>()==null)
-                 {
-                        
-                     AddItem(item);
-                     break;
+                if(inventorySlots[i].GetComponentInChildren<InventoryItem>() != null)
+                {
+                    if(inventorySlots[i].GetComponentInChildren<InventoryItem>().item.Equals(item) )
+                    {
+                        itemIsInList = true;
+                        break;
+                    }
                 }
+                
+                
+            }
+            if(itemIsInList == false)
+            {
+                for(int i = 0; i < inventorySlots.Length;i++)
+                {
+                    if(inventorySlots[i].GetComponentInChildren<InventoryItem>() == null)
+                    {
+                        AddItem(item);
+                        break;
+                    }
+                }
+                
             }
             
-        }
-
-
-        // for(int i = 0; i < inventorySlots.Length; i++)
-        // {
-        //     if(inventorySlots[i].GetComponentInChildren<InventoryItem>()==null)
-        //     {
-        //         Debug.Log("index="+ i);
-        //         AddItem(inventory.GetItemList()[i]);
-        //     }
-        // }
-            
-        
+        } 
     }
-    
-    public void ClearInventoryUI()
-    {
-        for(int i = 0; i < inventorySlots.Length; i++)
-        {
-            InventorySlot slot = inventorySlots[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            Destroy(inventoryItemPrefab);
-            
-            
-        }
-    }
-
-    
+ 
 }

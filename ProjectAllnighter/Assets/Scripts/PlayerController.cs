@@ -248,6 +248,7 @@ public class PlayerController : MonoBehaviour
         {
             inventory.AddItem(itemWorld.GetItem());
             itemWorld.DestroySelf();
+            
         }
     }
 
