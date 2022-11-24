@@ -6,7 +6,7 @@ using TMPro;
 using CodeMonkey.Utils;
 using UnityEditor.UIElements;
 
-public class UI_Inventory : MonoBehaviour
+public class UI_InventoryBar : MonoBehaviour
 {
     private Inventory inventory;
     private Transform itemSlotContainer;
@@ -49,7 +49,10 @@ public class UI_Inventory : MonoBehaviour
         float itemSlotCellSize = 64f;
         foreach(Item item in inventory.GetItemList())
         {
-            
+            if(x == 3)
+            {
+                break;
+            }
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate,itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
 
