@@ -194,7 +194,9 @@ public class PlayerController : MonoBehaviour
         //If the player is in a dodge or attacking at the moment don't let it attack.
         if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking && !inMenu && !HoveringMenu)
         {
-            if (playerData.isEnoughMana(20f) && currentWeapon.tag == "Ranged")
+            currentWeapon.GetComponent<WeaponData>().Attack?.Invoke();
+
+            /*if (playerData.isEnoughMana(20f) && currentWeapon.tag == "Ranged")
             {
                 weaponParent.RangedAttack();
                 playerData.UseMana(20f);
@@ -205,7 +207,7 @@ public class PlayerController : MonoBehaviour
             } else if (currentWeapon.tag == "Defense")
             {
                 weaponParent.Defend();
-            }
+            }*/
         }
     }
     void OnWeaponChange() 

@@ -28,10 +28,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] Transform firePoint;
     protected Camera mainCamera;
+    private PlayerData playerData;
 
     private void Start()
     {
         mainCamera = Camera.main;
+        playerData = GetComponentInParent<PlayerData>();
     }
     public void Update() {
 
@@ -59,20 +61,23 @@ public class Weapon : MonoBehaviour
     }
     public void RangedAttack()
     {
-        //calculate the projectiles vector
-        if (attackBlocked)
-            return;
-        animator.SetTrigger("Attack");
-        GameObject proj = Instantiate(projectile, firePoint.position, firePoint.rotation);
-        Projectile_Controller pc = proj.GetComponent<Projectile_Controller>();
-        pc.fromPlayer = true;
-        PlayerController player = GetComponentInParent<PlayerController>();
-        pc.Player = GetComponentInParent<PlayerData>();
-        pc.Damage = player.GetDamage();
-        IsAttacking = true;
-        attackBlocked = true;
-        StartCoroutine(DelayAttack());
-
+        if (playerData.isEnoughMana(20f))
+        {
+            //calculate the projectiles vector
+            if (attackBlocked)
+                return;
+            animator.SetTrigger("Attack");
+            GameObject proj = Instantiate(projectile, firePoint.position, firePoint.rotation);
+            Projectile_Controller pc = proj.GetComponent<Projectile_Controller>();
+            pc.fromPlayer = true;
+            PlayerController player = GetComponentInParent<PlayerController>();
+            pc.Player = GetComponentInParent<PlayerData>();
+            pc.Damage = player.GetDamage();
+            IsAttacking = true;
+            attackBlocked = true;
+            StartCoroutine(DelayAttack());
+            playerData.UseMana(20f);
+        }
     }
 
     public void ChangeWeapon(GameObject currentWeapon)    
@@ -82,12 +87,16 @@ public class Weapon : MonoBehaviour
     }
     public virtual void MeleeAttack()
     {
-        if (attackBlocked)
-            return;
-        animator.SetTrigger("Attack");
-        IsAttacking = true;
-        attackBlocked = true;
-        StartCoroutine(DelayAttack());
+        if (playerData.isEnoughStamina(20f))
+        {
+            if (attackBlocked)
+                return;
+            animator.SetTrigger("Attack");
+            IsAttacking = true;
+            attackBlocked = true;
+            StartCoroutine(DelayAttack());
+            playerData.UseStamina(20f);
+        }
     }
 
     public virtual void Defend()
@@ -126,7 +135,7 @@ public class Weapon : MonoBehaviour
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
         {
             
-            if (collider.tag == "Enemy")
+            if (collider.tag == "Enemy" && collider.isTrigger)
             {
                 Enemy e = collider.GetComponent<Enemy>();
                 PlayerData p = GetComponentInParent<PlayerData>();

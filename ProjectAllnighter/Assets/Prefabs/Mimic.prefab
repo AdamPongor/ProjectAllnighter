@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 7895421541032217550}
   - component: {fileID: 5573157050067525412}
   - component: {fileID: 6733650102899351799}
+  - component: {fileID: 4050351546536542451}
   m_Layer: 0
-  m_Name: Barrel
+  m_Name: Mimic
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,3 +190,19 @@ MonoBehaviour:
   XP: 10000
   damage: 40
   floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
+--- !u!70 &4050351546536542451
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563200244719800717}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00474072, y: -0.1232571}
+  m_Size: {x: 0.1534014, y: 0.073487066}
+  m_Direction: 1

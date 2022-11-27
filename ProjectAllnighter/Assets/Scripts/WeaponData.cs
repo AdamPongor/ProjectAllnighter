@@ -14,6 +14,7 @@ public class WeaponData : MonoBehaviour
     private int level = 0;
     private int maxLevel = 10;
     public UnityEvent Scale;
+    public UnityEvent Attack;
 
     public int Level { get => level; set{if (level<maxLevel) level = value; }}
     public int MaxLevel { get => maxLevel;}

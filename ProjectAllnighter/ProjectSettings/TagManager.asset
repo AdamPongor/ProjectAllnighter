@@ -5,11 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Melee
-  - Ranged
   - Prompt
-  - Defense
   - Destructable
+  - Weapon
   layers:
   - Default
   - TransparentFX

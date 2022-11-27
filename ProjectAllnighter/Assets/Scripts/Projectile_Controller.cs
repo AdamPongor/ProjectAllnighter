@@ -37,7 +37,7 @@ public class Projectile_Controller : MonoBehaviour
         if (fromPlayer)
         {
             Enemy d = collision.GetComponent<Enemy>();
-            if (d != null)
+            if (d != null && collision.isTrigger)
             {
                 d.takeDamage(Damage, Player);
                 Destroy(gameObject);

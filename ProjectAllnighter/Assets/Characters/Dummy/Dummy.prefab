@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6299908839193897217}
   - component: {fileID: -5740807294341652832}
   - component: {fileID: -3982989400060791163}
+  - component: {fileID: 3347943736975639569}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Enemy
@@ -119,7 +120,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -134,13 +135,32 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.14999999, y: 0.16}
-      - {x: -0.14999999, y: -0.14}
-      - {x: -0.11, y: -0.16}
-      - {x: 0.14999999, y: -0.16}
-      - {x: 0.16, y: -0.14999999}
-      - {x: 0.16, y: 0.02}
-      - {x: 0.06, y: 0.16}
+    - - {x: -0.025127292, y: 0.15633558}
+      - {x: -0.055772483, y: 0.14480157}
+      - {x: -0.069987774, y: 0.09315482}
+      - {x: -0.09402615, y: 0.08116564}
+      - {x: -0.10949232, y: 0.06355308}
+      - {x: -0.109010875, y: 0.042122424}
+      - {x: -0.08769876, y: 0.017650366}
+      - {x: -0.07670024, y: -0.03230971}
+      - {x: -0.0574497, y: -0.07572386}
+      - {x: -0.07489127, y: -0.08844784}
+      - {x: -0.080558196, y: -0.120710626}
+      - {x: -0.055989668, y: -0.12238571}
+      - {x: -0.047716126, y: -0.14553297}
+      - {x: -0.009746581, y: -0.1538579}
+      - {x: 0.011730552, y: -0.15283236}
+      - {x: 0.044219136, y: -0.14014503}
+      - {x: 0.060496926, y: -0.11412805}
+      - {x: 0.04963702, y: -0.08663857}
+      - {x: 0.05083525, y: -0.06177929}
+      - {x: 0.084771365, y: -0.042690497}
+      - {x: 0.09670365, y: -0.003045231}
+      - {x: 0.09574056, y: 0.029215902}
+      - {x: 0.07816303, y: 0.043967634}
+      - {x: 0.04058647, y: 0.06963079}
+      - {x: 0.04196936, y: 0.12144819}
+      - {x: 0.014669951, y: 0.14649744}
 --- !u!114 &-3982989400060791163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,10 +173,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd80755604b486438d69cb3b28ba8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  maxHealth: 0
   XP: 0
   damage: 0
   floatingText: {fileID: 0}
+--- !u!70 &3347943736975639569
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812169737885795124}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.01351738, y: -0.11428077}
+  m_Size: {x: 0.15042363, y: 0.079151206}
+  m_Direction: 1
 --- !u!1 &6921461893531686026
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2334133966794094200
 Transform:
   m_ObjectHideFlags: 0
