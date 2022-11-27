@@ -195,19 +195,6 @@ public class PlayerController : MonoBehaviour
         if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking && !inMenu && !HoveringMenu)
         {
             currentWeapon.GetComponent<WeaponData>().Attack?.Invoke();
-
-            /*if (playerData.isEnoughMana(20f) && currentWeapon.tag == "Ranged")
-            {
-                weaponParent.RangedAttack();
-                playerData.UseMana(20f);
-            } else if (playerData.isEnoughStamina(20f) && currentWeapon.tag == "Melee")
-            {
-                weaponParent.MeleeAttack();
-                playerData.UseStamina(20f);
-            } else if (currentWeapon.tag == "Defense")
-            {
-                weaponParent.Defend();
-            }*/
         }
     }
     void OnWeaponChange() 
