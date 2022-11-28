@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 998488285, guid: 23df0efc8f84b20449e0e03961e2c554, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -186,12 +186,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f90e41439f70e48b8577ddc815b27b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  XP: 1000
-  damage: 5
+  maxHealth: 100
+  XP: 500
+  damage: 1
   floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
   zone: {fileID: 5760199498888058257}
   moveSpeed: 20
+  poisonDamage: 20
 --- !u!50 &5760199498499898574
 Rigidbody2D:
   serializedVersion: 4

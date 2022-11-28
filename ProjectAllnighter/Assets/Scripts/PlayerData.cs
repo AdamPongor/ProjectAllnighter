@@ -109,7 +109,7 @@ public class PlayerData : MonoBehaviour
         Health.Add(Health.MaxValue);
         Stamina.Add(Stamina.MaxValue);
         Mana.Add(Mana.MaxValue);
-        poisoned = null;
+        //poisoned = null;
     }
 
     public void Heal(float amount)
