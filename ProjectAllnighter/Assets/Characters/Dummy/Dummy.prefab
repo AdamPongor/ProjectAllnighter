@@ -173,10 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd80755604b486438d69cb3b28ba8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  XP: 0
-  damage: 0
-  floatingText: {fileID: 0}
+  maxHealth: 1000
+  XP: 1
+  damage: 10
+  floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
 --- !u!70 &3347943736975639569
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

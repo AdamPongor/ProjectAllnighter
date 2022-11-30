@@ -66,11 +66,16 @@ public class Enemy : MonoBehaviour
         ItemWorld.DropItem(gameObject.transform.position, item, Dir, 0);
     }
 
+    public virtual void ResetPosition()
+    {
+        gameObject.transform.position = startingPos;
+    }
+
     public virtual void Respawn()
     {
         canDamage = true;
         stunned = false;
-        gameObject.transform.position = startingPos;
+        ResetPosition();
         Health = maxHealth;
         gameObject.SetActive(true);
     }

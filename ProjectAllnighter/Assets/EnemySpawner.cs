@@ -13,6 +13,14 @@ public class EnemySpawner : MonoBehaviour
         enemies.AddRange(GetComponentsInChildren<Enemy>());
     }
 
+    public void ResetEnemies()
+    {
+        foreach (Enemy e in enemies)
+        {
+            e.ResetPosition();
+        }
+    }
+
     public void RespawnEnemies()
     {
         foreach (Enemy e in enemies)

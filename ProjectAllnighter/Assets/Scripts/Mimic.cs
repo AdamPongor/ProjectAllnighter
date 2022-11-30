@@ -30,6 +30,13 @@ public class Mimic : Enemy
         }
     }
 
+    public override void ResetPosition()
+    {
+        base.ResetPosition();
+        awake = false;
+        animator.SetBool("isMoving", false);
+    }
+
     public override void Respawn()
     {
         base.Respawn();

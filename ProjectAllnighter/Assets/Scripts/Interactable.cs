@@ -12,6 +12,7 @@ public class Interactable : MonoBehaviour
     public string text;
     private Popup prompt;
     public GameObject PromptBox;
+    public int LevelRequirement;
 
     private void Start()
     {
@@ -39,8 +40,17 @@ public class Interactable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             
-            prompt.Pop(text);
-            inRange = true;
+            PlayerData player = collision.gameObject.GetComponent<PlayerData>();
+            if (player.Level >= LevelRequirement)
+            {
+                prompt.Pop(text);
+                inRange = true;
+            } else
+            {
+                prompt.Pop("Min: lvl " + LevelRequirement);
+            }
+            
+            
         }
     }
 

@@ -101,13 +101,17 @@ public class Weapon : MonoBehaviour
 
     public virtual void Defend()
     {
-        if (attackBlocked)
-            return;
-        animator.SetTrigger("Defend");
-        IsAttacking = true;
-        IsBlocking = true;
-        attackBlocked = true;
-        StartCoroutine(DelayAttack());
+        if (playerData.isEnoughStamina(20f))
+        {
+            if (attackBlocked)
+                return;
+            animator.SetTrigger("Defend");
+            IsAttacking = true;
+            IsBlocking = true;
+            attackBlocked = true;
+            StartCoroutine(DelayAttack());
+        }
+            
     }
 
     public IEnumerator DelayAttack()
