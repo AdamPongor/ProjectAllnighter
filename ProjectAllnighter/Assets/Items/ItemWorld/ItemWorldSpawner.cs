@@ -7,9 +7,10 @@ public class ItemWorldSpawner : MonoBehaviour
 {
     public UnityEvent SetItem;
     public PlayerData player;
+    public GameObject weapon;
     private Item item;
 
-    private void Awake()
+    private void Start()
     {
         SetItem?.Invoke();
         ItemWorld.SpawnItemWorld(transform.position, item);
@@ -34,6 +35,6 @@ public class ItemWorldSpawner : MonoBehaviour
     }
     public void Sword()
     {
-        item = new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.WEAPON, 1, player);
+        item = new WeaponItem(weapon, player);
     }
 }

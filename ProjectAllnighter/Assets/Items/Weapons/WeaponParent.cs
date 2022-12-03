@@ -78,11 +78,6 @@ public class WeaponParent : MonoBehaviour
         }
     }
 
-    public void ChangeWeapon(GameObject currentWeapon)    
-    {
-        weaponRenderer = currentWeapon.GetComponent<SpriteRenderer>();
-        animator = currentWeapon.GetComponent<Animator>();
-    }
     public virtual void MeleeAttack()
     {
         if (playerData.isEnoughStamina(20f))

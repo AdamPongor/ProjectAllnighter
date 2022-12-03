@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -208,11 +209,14 @@ public class PlayerController : MonoBehaviour
             {
                 currentWeaponIndex = 0;
             }
+
             weapons[currentWeaponIndex].SetActive(true);
             currentWeapon = weapons[currentWeaponIndex];
 
-            //change renderers
-            weaponParent.ChangeWeapon(currentWeapon);
+
+            //TODO: ITT VAN VALAMI FUCKUP
+            weaponParent.weaponRenderer = currentWeapon.GetComponent<SpriteRenderer>();
+            weaponParent.animator = currentWeapon.GetComponent<Animator>();
         }
     }
 

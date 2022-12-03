@@ -16,7 +16,7 @@ public class Inventory
         AddItem(new ManaPotion(1, player));
         // AddItem(new HealthPotion(1, player));
         // AddItem(new StaminaPotion(1, player));
-        AddItem(new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.WEAPON,1, player));
+        //AddItem(new Item(false, ItemAssets.Instance.swordSprite, Item.ItemType.WEAPON,1, player));
         Debug.Log("items:" + itemList.Count);
     }
 
