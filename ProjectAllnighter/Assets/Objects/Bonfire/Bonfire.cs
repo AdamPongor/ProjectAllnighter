@@ -13,12 +13,6 @@ public class Bonfire : MonoBehaviour
         BF = gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Rest(PlayerData player)
     {
         player.Heal(1000);
