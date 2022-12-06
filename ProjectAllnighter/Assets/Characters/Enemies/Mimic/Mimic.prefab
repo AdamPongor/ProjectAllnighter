@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5573157050067525412}
   - component: {fileID: 6733650102899351799}
   - component: {fileID: 4050351546536542451}
+  - component: {fileID: 9068914121055676137}
   m_Layer: 0
   m_Name: Mimic
   m_TagString: Enemy
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5563200244719800717}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.7705148, y: -0.9968022, z: -0.071847364}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
@@ -101,9 +102,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 50
-  m_AngularDrag: 0.4
+  m_AngularDrag: 2
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -120,7 +121,7 @@ Animator:
   m_GameObject: {fileID: 5563200244719800717}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 51fa1598b4318494097b8f1764673d9e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3439a7690a7d26c43bc1c70160cb704f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -140,7 +141,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -190,6 +191,7 @@ MonoBehaviour:
   XP: 10000
   damage: 40
   floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
+  flash: {fileID: 0}
 --- !u!70 &4050351546536542451
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -206,3 +208,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00474072, y: -0.1232571}
   m_Size: {x: 0.1534014, y: 0.073487066}
   m_Direction: 1
+--- !u!114 &9068914121055676137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563200244719800717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c43ab2d0261e0a4498089ad1fda18b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3a694f73796eced4e8fa7f69ab005b8b, type: 2}
+  duration: 0.15

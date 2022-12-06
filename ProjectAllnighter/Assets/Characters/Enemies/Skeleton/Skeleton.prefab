@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4273437312526489687}
   - component: {fileID: 1914316701}
   - component: {fileID: 3260274866615509568}
+  - component: {fileID: 8259191302494674953}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -191,6 +192,7 @@ MonoBehaviour:
   XP: 200
   damage: 25
   floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
+  flash: {fileID: 0}
   zone: {fileID: 6528528282291398692}
 --- !u!61 &3260274866615509568
 BoxCollider2D:
@@ -218,6 +220,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.11815786, y: 0.09441131}
   m_EdgeRadius: 0
+--- !u!114 &8259191302494674953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4185891638467335822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c43ab2d0261e0a4498089ad1fda18b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3a694f73796eced4e8fa7f69ab005b8b, type: 2}
+  duration: 0.15
 --- !u!1 &4500718403143348393
 GameObject:
   m_ObjectHideFlags: 0

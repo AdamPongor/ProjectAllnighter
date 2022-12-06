@@ -98,6 +98,8 @@ GameObject:
   - component: {fileID: 5760199498499898574}
   - component: {fileID: 7416974035756076742}
   - component: {fileID: 5807059160990234389}
+  - component: {fileID: 1850410213}
+  - component: {fileID: 1352417641734523523}
   m_Layer: 12
   m_Name: Slime
   m_TagString: Enemy
@@ -190,6 +192,7 @@ MonoBehaviour:
   XP: 500
   damage: 1
   floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
+  flash: {fileID: 0}
   zone: {fileID: 5760199498888058257}
   moveSpeed: 20
   poisonDamage: 20
@@ -244,12 +247,64 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0010379454, y: -0.08434976}
+  m_Size: {x: 0.31196865, y: 0.12899072}
+  m_Direction: 1
+--- !u!60 &1850410213
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760199498499898562}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00092957914, y: -0.03811343}
-  m_Size: {x: 0.22146288, y: 0.22146288}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.06245502, y: 0.07835749}
+      - {x: -0.11876464, y: 0.013323724}
+      - {x: -0.12064996, y: -0.037382424}
+      - {x: -0.15555787, y: -0.045918703}
+      - {x: -0.15606514, y: -0.11032498}
+      - {x: -0.10622751, y: -0.14032504}
+      - {x: -0.02491951, y: -0.1598838}
+      - {x: 0.107274055, y: -0.14421576}
+      - {x: 0.15606514, y: -0.110812515}
+      - {x: 0.15803233, y: -0.041317463}
+      - {x: 0.12358689, y: -0.03671527}
+      - {x: 0.1168735, y: 0.01127404}
+      - {x: 0.06803233, y: 0.07245502}
+--- !u!114 &1352417641734523523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760199498499898562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c43ab2d0261e0a4498089ad1fda18b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3a694f73796eced4e8fa7f69ab005b8b, type: 2}
+  duration: 0.15
 --- !u!1 &5760199498888058258
 GameObject:
   m_ObjectHideFlags: 0

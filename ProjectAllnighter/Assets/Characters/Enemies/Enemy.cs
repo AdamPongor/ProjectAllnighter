@@ -20,6 +20,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] FloatingText floatingText;
     protected Rigidbody2D rb;
     protected Animator animator;
+
+
+    [SerializeField] private SimpleFlash flash;
     public float Health {
         get { return health; }
 
@@ -35,10 +38,12 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         startingPos = gameObject.transform.position;
         Health = maxHealth;
+        flash = GetComponent<SimpleFlash>();
     }
 
     public virtual void takeDamage(float damage, PlayerData player)
     {
+        flash.Flash(Color.red);
         Health -= damage;
         FloatingText text = Instantiate(floatingText);
         text.Text = damage.ToString();

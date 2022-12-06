@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 2103392408}
   - component: {fileID: 2103392407}
   - component: {fileID: 2103392409}
+  - component: {fileID: 8226497726418505621}
   m_Layer: 13
   m_Name: Ghost
   m_TagString: Enemy
@@ -343,7 +344,22 @@ MonoBehaviour:
   XP: 1000
   damage: 20
   floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
+  flash: {fileID: 0}
   zone: {fileID: 659196205179412432}
   attackPerSecond: 0.5
   projectile: {fileID: 9106662826603303267, guid: 15ed3e58e59c2274883ec36672f67bb7, type: 3}
   firePoint: {fileID: 8374276950590203313}
+--- !u!114 &8226497726418505621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7843410556598133059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c43ab2d0261e0a4498089ad1fda18b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3a694f73796eced4e8fa7f69ab005b8b, type: 2}
+  duration: 0.15

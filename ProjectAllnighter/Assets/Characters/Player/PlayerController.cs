@@ -88,6 +88,8 @@ public class PlayerController : MonoBehaviour
 
     PlayerData playerData;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,7 +104,6 @@ public class PlayerController : MonoBehaviour
         uI_InventoryBar.SetInventory(inventory);
         uI_InventoryBar.SetPlayer(this);
         inventoryManager.SetInventory(inventory);
-
 
 
         //dynamic weapon list
@@ -214,7 +215,7 @@ public class PlayerController : MonoBehaviour
             currentWeapon = weapons[currentWeaponIndex];
 
 
-            //TODO: ITT VAN VALAMI FUCKUP
+            //TODO: ITT VAN VALAMI HIBA
             weaponParent.weaponRenderer = currentWeapon.GetComponent<SpriteRenderer>();
             weaponParent.animator = currentWeapon.GetComponent<Animator>();
         }

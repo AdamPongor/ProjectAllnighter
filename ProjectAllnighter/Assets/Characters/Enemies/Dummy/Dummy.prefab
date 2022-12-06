@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5740807294341652832}
   - component: {fileID: -3982989400060791163}
   - component: {fileID: 3347943736975639569}
+  - component: {fileID: 550067598963285272}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Enemy
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8b68a47edf2553c498f1b67f567d58fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -177,6 +178,7 @@ MonoBehaviour:
   XP: 1
   damage: 10
   floatingText: {fileID: 5536553656460930845, guid: ac30bdddc704fa447a1d7477848a6b38, type: 3}
+  flash: {fileID: 0}
 --- !u!70 &3347943736975639569
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -193,6 +195,20 @@ CapsuleCollider2D:
   m_Offset: {x: -0.01351738, y: -0.11428077}
   m_Size: {x: 0.15042363, y: 0.079151206}
   m_Direction: 1
+--- !u!114 &550067598963285272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812169737885795124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c43ab2d0261e0a4498089ad1fda18b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 3a694f73796eced4e8fa7f69ab005b8b, type: 2}
+  duration: 0.15
 --- !u!1 &6921461893531686026
 GameObject:
   m_ObjectHideFlags: 0

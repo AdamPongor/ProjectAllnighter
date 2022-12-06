@@ -24,6 +24,11 @@ public class PlayerData : MonoBehaviour
     private int dexterity = 1;
     private int intelligence = 1;
 
+    //flash controller here because damage detection as well 
+
+    private SimpleFlash flash;
+    
+
     public int Vitality
     {
         get => vitality;
@@ -62,6 +67,11 @@ public class PlayerData : MonoBehaviour
         lastInteracted = go;
     }
 
+    void Start()
+    {
+        flash = GetComponent<SimpleFlash>();
+    }
+
 
     public void UseStamina(float amount)
     {
@@ -85,6 +95,7 @@ public class PlayerData : MonoBehaviour
     public void takeDamage(float amount)
     {
         Health.Use(amount);
+        flash.Flash(Color.red);
         if (Health.currentValue <= 0)
         {
             Die();
@@ -114,6 +125,7 @@ public class PlayerData : MonoBehaviour
 
     public void Heal(float amount)
     {
+        flash.Flash(Color.green);
         Health.Add(amount);
     }
 
