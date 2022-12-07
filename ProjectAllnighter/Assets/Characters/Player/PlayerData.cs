@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -95,7 +96,13 @@ public class PlayerData : MonoBehaviour
     public void takeDamage(float amount)
     {
         Health.Use(amount);
-        flash.Flash(Color.red);
+        if (poisoned != null)
+        {
+            flash.Flash(new Color(0.7f,0,0.7f));
+        } else
+        {
+            flash.Flash(Color.red);
+        }
         if (Health.currentValue <= 0)
         {
             Die();
@@ -105,6 +112,7 @@ public class PlayerData : MonoBehaviour
     public void Die()
     {
         XP = 0;
+        poisoned = null;
         DeathEvent?.Invoke();
     }
 
@@ -120,7 +128,7 @@ public class PlayerData : MonoBehaviour
         Health.Add(Health.MaxValue);
         Stamina.Add(Stamina.MaxValue);
         Mana.Add(Mana.MaxValue);
-        //poisoned = null;
+        
     }
 
     public void Heal(float amount)
@@ -163,6 +171,7 @@ public class PlayerData : MonoBehaviour
 
     public void GetPoisened(int damage)
     {
+        
         if (poisoned == null)
         {
             poisoned = StartCoroutine("PoisonDamage", damage);
@@ -171,8 +180,9 @@ public class PlayerData : MonoBehaviour
     
     IEnumerator PoisonDamage(int damage)
     {
-        while(damageSum < damage && poisoned !=null)
+        while (damageSum < damage)
         {
+            Debug.Log("meghalok geci" + damage);
             takeDamage(1);
             damageSum += 1;
             yield return new WaitForSeconds(0.2f);

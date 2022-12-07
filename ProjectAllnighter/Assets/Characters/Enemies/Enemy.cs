@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
     public int XP;
     public int damage;
     protected bool canDamage = true;
-    protected bool stunned;
+    protected bool stunned = false;
+    protected bool damageable = true;
     private Vector3 startingPos;
     private float health;
     [SerializeField] FloatingText floatingText;
@@ -43,17 +44,27 @@ public class Enemy : MonoBehaviour
 
     public virtual void takeDamage(float damage, PlayerData player)
     {
-        flash.Flash(Color.red);
-        Health -= damage;
-        FloatingText text = Instantiate(floatingText);
-        text.Text = damage.ToString();
-        RectTransform textTransform = text.GetComponent<RectTransform>();
-        textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-        textTransform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
-        if (Health <= 0)
+        if (damageable)
         {
-             Die(player);
+            flash.Flash(Color.red);
+            damageable = false;
+            Health -= damage;
+            FloatingText text = Instantiate(floatingText);
+            text.Text = damage.ToString();
+            RectTransform textTransform = text.GetComponent<RectTransform>();
+            textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+            textTransform.SetParent(GameObject.FindObjectOfType<Canvas>().transform);
+            if (Health <= 0)
+            {
+                flash.StopFlash();
+                Die(player);
+            }
         }
+    }
+
+    public void ResetDamageAble()
+    {
+        damageable = true;
     }
 
     public void Die(PlayerData player)

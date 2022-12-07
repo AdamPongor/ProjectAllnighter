@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
     public class SimpleFlash : MonoBehaviour
     {
@@ -12,13 +13,13 @@ using UnityEngine;
         [Tooltip("Duration of the flash.")]
         [SerializeField] private float duration;
 
-
+        public UnityEvent resetDamageAble;
 
         // The SpriteRenderer that should flash.
         private SpriteRenderer spriteRenderer;
 
         // The material that was in use, when the script started.
-        private Material originalMaterial;
+        private Color originalColor;
 
         // The currently running coroutine.
         private Coroutine flashRoutine;
@@ -34,7 +35,7 @@ using UnityEngine;
 
             // Get the material that the SpriteRenderer uses, 
             // so we can switch back to it after the flash ended.
-            originalMaterial = spriteRenderer.material;
+            originalColor = spriteRenderer.material.color;
         }
 
 
@@ -51,20 +52,31 @@ using UnityEngine;
             }
 
             // Start the Coroutine, and store the reference for it.
-            flashRoutine = StartCoroutine(FlashRoutine());
+            flashRoutine = StartCoroutine(FlashRoutine(color));
         }
 
-        private IEnumerator FlashRoutine()
+        public void StopFlash()
+        {
+        if (flashRoutine != null)
+            {
+                StopCoroutine(flashRoutine);
+            }
+        spriteRenderer.material.color = originalColor;
+        resetDamageAble?.Invoke();
+    }
+
+        private IEnumerator FlashRoutine(Color color)
         {
             // Swap to the flashMaterial.
-            spriteRenderer.material = flashMaterial;
+            spriteRenderer.material.color = color;
 
             // Pause the execution of this function for "duration" seconds.
             yield return new WaitForSeconds(duration);
 
             // After the pause, swap back to the original material.
-            spriteRenderer.material = originalMaterial;
+            spriteRenderer.material.color = originalColor;
 
+            resetDamageAble?.Invoke();
             // Set the routine to null, signaling that it's finished.
             flashRoutine = null;
         }

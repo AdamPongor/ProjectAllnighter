@@ -40,6 +40,7 @@ public class Slime : Enemy
             {
                 PlayerData player = collision.collider.GetComponent<PlayerData>();
                 player.GetPoisened(poisonDamage);
+                Debug.Log(poisonDamage);
             }
         }
     }
