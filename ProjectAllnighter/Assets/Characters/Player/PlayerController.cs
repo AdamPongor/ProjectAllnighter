@@ -103,8 +103,6 @@ public class PlayerController : MonoBehaviour
         
         
         inventory = new Inventory(GetComponent<PlayerData>());
-        uI_InventoryBar.SetInventory(inventory);
-        uI_InventoryBar.SetPlayer(this);
         inventoryManager.SetInventory(inventory);
 
 
