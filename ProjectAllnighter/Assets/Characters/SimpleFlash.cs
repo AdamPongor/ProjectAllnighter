@@ -6,10 +6,6 @@ using UnityEngine.Events;
     public class SimpleFlash : MonoBehaviour
     {
 
-
-        [Tooltip("Material to switch to during the flash.")]
-        [SerializeField] private Material flashMaterial;
-
         [Tooltip("Duration of the flash.")]
         [SerializeField] private float duration;
 
@@ -41,7 +37,6 @@ using UnityEngine.Events;
 
         public void Flash(Color color)
         {
-        flashMaterial.color = color;
 
         // If the flashRoutine is not null, then it is currently running.
         if (flashRoutine != null)

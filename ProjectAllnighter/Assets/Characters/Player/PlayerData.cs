@@ -112,7 +112,7 @@ public class PlayerData : MonoBehaviour
     public void Die()
     {
         XP = 0;
-        poisoned = null;
+        StopPoison();
         DeathEvent?.Invoke();
     }
 
@@ -133,6 +133,7 @@ public class PlayerData : MonoBehaviour
 
     public void Heal(float amount)
     {
+        StopPoison();
         flash.Flash(Color.green);
         Health.Add(amount);
     }
@@ -177,12 +178,18 @@ public class PlayerData : MonoBehaviour
             poisoned = StartCoroutine("PoisonDamage", damage);
         }
     }
+
+    public void StopPoison()
+    {
+        StopCoroutine("PoisonDamage");
+        damageSum = 0;
+        poisoned = null;
+    }
     
     IEnumerator PoisonDamage(int damage)
     {
         while (damageSum < damage)
         {
-            Debug.Log("meghalok geci" + damage);
             takeDamage(1);
             damageSum += 1;
             yield return new WaitForSeconds(0.2f);

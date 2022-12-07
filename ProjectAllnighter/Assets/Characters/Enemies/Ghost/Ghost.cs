@@ -59,6 +59,13 @@ public class Ghost : Enemy
             }
         }
     }
+
+    public override void Respawn()
+    {
+        base.Respawn();
+        attackBlocked = false;
+    }
+
     private void Attack() {
         if (attackBlocked)
             return;
