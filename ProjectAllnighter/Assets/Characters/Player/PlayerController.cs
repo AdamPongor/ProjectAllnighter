@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
     public bool inMenu = false;
     public bool HoveringMenu { get; set; }
+    public Vector2 MovementInput { get => movementInput; set => movementInput = value; }
+
     public float moveSpeed = 70f;
     public float maxSpeed = 8f;
     public float dodgeSpeed = 10f;

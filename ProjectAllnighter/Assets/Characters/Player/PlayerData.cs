@@ -128,7 +128,7 @@ public class PlayerData : MonoBehaviour
         Health.Add(Health.MaxValue);
         Stamina.Add(Stamina.MaxValue);
         Mana.Add(Mana.MaxValue);
-        
+        GetComponent<PlayerController>().MovementInput = Vector2.zero;
     }
 
     public void Heal(float amount)
