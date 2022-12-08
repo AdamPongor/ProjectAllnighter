@@ -100,13 +100,10 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         weaponParent = GetComponentInChildren<WeaponParent>();
-        
-        
+        LastMoveDir = new Vector2(0, -1);
+
         inventory = new Inventory(GetComponent<PlayerData>());
         inventoryManager.SetInventory(inventory);
-        inventoryManager.SetPlayer(this);
-        
-        
         
         //dynamic weapon list
         weapons = new List<GameObject>();

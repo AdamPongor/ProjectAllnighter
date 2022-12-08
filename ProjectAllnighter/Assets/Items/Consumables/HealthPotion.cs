@@ -12,7 +12,7 @@ public class HealthPotion : Item
     }
 
     public override bool Use() {
-        player.Heal(20);
+        player.Heal(50);
         return true;
     }
 

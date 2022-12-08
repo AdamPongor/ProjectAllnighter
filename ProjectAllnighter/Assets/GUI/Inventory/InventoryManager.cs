@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] inventorySlots;
     private Inventory inventory;
     public GameObject inventoryItemPrefab;
-    private PlayerController player;
+    public PlayerController player;
     
     
     public void AddItem(Item item)
@@ -55,11 +55,6 @@ public class InventoryManager : MonoBehaviour
         this.inventory = inventory;
         inventory.OnItemListChanged += Inventory_OnItemListChanged;
         RefreshInventoryItems();
-    }
-
-    public void SetPlayer(PlayerController player)
-    {
-        this.player = player;
     }
 
     public void Inventory_OnItemListChanged(object sender, System.EventArgs e)
