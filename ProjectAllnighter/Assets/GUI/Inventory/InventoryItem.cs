@@ -55,7 +55,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
-        if(parentAfterDrag.name.Equals("WeaponSlot") && this.item.itemType == Item.ItemType.WEAPON )
+        
+        if(parentAfterDrag.name.Substring(0,10).Equals("WeaponSlot") && this.item.itemType == Item.ItemType.WEAPON )
         {
             item.Use();
         }else{
@@ -95,6 +96,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             }
         }else if(eventData.button == PointerEventData.InputButton.Right)
         {
+            
             Item duplicateItem = item.Clone();
             inventory.RemoveItem(item, item.amount);
             Destroy(this.gameObject);

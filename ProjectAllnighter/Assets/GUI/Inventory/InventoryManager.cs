@@ -47,8 +47,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.invManager = this;
         inventoryItem.SetInventory(inventory);
         inventoryItem.SetPlayer(this.player);
-        Debug.Log(this.player);
-        inventoryItem.OnItemClicked += Inventory_OnItemListChanged;
+
     }
     public void SetInventory(Inventory inventory)
     {
