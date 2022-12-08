@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CodeMonkey.Utils;
 
 public class InventoryManager : MonoBehaviour
 {
     public InventorySlot[] inventorySlots;
     private Inventory inventory;
     public GameObject inventoryItemPrefab;
+    
     
     public void AddItem(Item item)
     {
@@ -41,6 +43,9 @@ public class InventoryManager : MonoBehaviour
         GameObject newItemGo = Instantiate(inventoryItemPrefab,slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
         inventoryItem.InitializeItem(item);
+        inventoryItem.invManager = this;
+        inventoryItem.SetInventory(inventory);
+        inventoryItem.OnItemClicked += Inventory_OnItemListChanged;
     }
     public void SetInventory(Inventory inventory)
     {
@@ -48,7 +53,7 @@ public class InventoryManager : MonoBehaviour
         inventory.OnItemListChanged += Inventory_OnItemListChanged;
         RefreshInventoryItems();
     }
-    private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
+    public void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
                
         RefreshInventoryItems();
@@ -66,7 +71,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     if(inventorySlots[i].GetComponentInChildren<InventoryItem>().item.Equals(item) )
                     {
-                        itemIsInList = true;
+                        itemIsInList = true;  
                         break;
                     }
                 }
@@ -101,7 +106,15 @@ public class InventoryManager : MonoBehaviour
             }
 
             
+
+            
         } 
     }
+
+    
+    
+
+
+    
  
 }

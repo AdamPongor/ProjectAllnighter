@@ -1,11 +1,10 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using TMPro;
 
-public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
 
     
@@ -13,6 +12,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
      public int amount = 1;
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
+    private Inventory inventory;
+    public InventoryManager invManager;
+    public event EventHandler OnItemClicked;
     
     
 
@@ -21,14 +23,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         item = newItem;
         image.sprite= newItem.itemSprite;
         amount = newItem.amount;
+        invManager = null;
         RefreshAmount();
     }
 
     public void RefreshAmount()
     {
         this.GetComponentInChildren<TMPro.TextMeshProUGUI>().text =amount.ToString();
-        // bool textActive = amount > 1;
-        // this.GetComponentInChildren<TMPro.TextMeshProUGUI>().gameObject.SetActive(textActive);
     }
 
     
@@ -50,5 +51,28 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+    }
+
+    public void SetInventory(Inventory inventory)
+    {
+        this.inventory = inventory;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(item.itemType== Item.ItemType.CONSUMABLE)
+        {
+            if(item.Use())
+            {
+                inventory.RemoveItem(item,1);  
+                
+                Destroy(this);  
+                invManager.RefreshInventoryItems();            
+            }
+        }
+        if (eventData.button == PointerEventData.InputButton.Right) {
+             Debug.Log ("Right Mouse Button Clicked on: " + name);
+         }
+        OnItemClicked?.Invoke(this,EventArgs.Empty);
     }
 }

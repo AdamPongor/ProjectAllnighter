@@ -98,6 +98,7 @@ MonoBehaviour:
   amount: 1
   image: {fileID: 5143168517015999836}
   parentAfterDrag: {fileID: 0}
+  invManager: {fileID: 0}
 --- !u!1 &6690730053680634811
 GameObject:
   m_ObjectHideFlags: 0

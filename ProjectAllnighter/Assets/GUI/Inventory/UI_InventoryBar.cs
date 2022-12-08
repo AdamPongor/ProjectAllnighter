@@ -33,7 +33,6 @@ public class UI_InventoryBar : MonoBehaviour
 
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
-        Debug.Log("items:" + inventory.GetItemList().Count);
         RefreshInventoryItems();
     }
 

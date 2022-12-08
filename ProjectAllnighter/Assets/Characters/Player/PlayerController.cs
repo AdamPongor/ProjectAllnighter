@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     [SerializeField] private UI_InventoryBar uI_InventoryBar;
-    public InventoryManager inventoryManager;
+    
     private bool inventoryOpen = false;
     public UnityEvent OpenInventory;
     public UnityEvent CloseInventory;
@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerInput;
 
     private Inventory inventory;
+    public InventoryManager inventoryManager;
+    
 
     PlayerData playerData;
 
@@ -104,6 +106,7 @@ public class PlayerController : MonoBehaviour
         
         inventory = new Inventory(GetComponent<PlayerData>());
         inventoryManager.SetInventory(inventory);
+        
 
 
         //dynamic weapon list
