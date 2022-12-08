@@ -32,7 +32,7 @@ public class ItemWorldSpawner : MonoBehaviour
     }
     public void Coin()
     {
-        item = new Coin(100);
+        item = new Coin(1000);
     }
     public void Weapon()
     {

@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
     private void DropMoney()
     {
         Random rnd = new Random();
-        Item item = new Coin(rnd.Next(0, 5));
+        Item item = new Coin(rnd.Next(1, 5));
         Vector2 Dir = UtilsClass.GetRandomDir();
         ItemWorld.DropItem(gameObject.transform.position, item, Dir, 0);
     }

@@ -10,7 +10,7 @@ public class Barrel : MonoBehaviour
     public void Destroy()
     {
         Random rnd = new Random();
-        Item item = new Coin(rnd.Next(0,20));
+        Item item = new Coin(rnd.Next(1,20));
         Vector2 Dir = UtilsClass.GetRandomDir();
         ItemWorld.DropItem(gameObject.transform.position, item, Dir, 0);
         gameObject.SetActive(false);
