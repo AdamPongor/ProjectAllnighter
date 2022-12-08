@@ -14,6 +14,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Transform parentAfterDrag;
     private Inventory inventory;
     public InventoryManager invManager;
+
+    public PlayerController player;
     public event EventHandler OnItemClicked;
     
     
@@ -24,6 +26,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         image.sprite= newItem.itemSprite;
         amount = newItem.amount;
         invManager = null;
+        player = null;
         RefreshAmount();
     }
 
@@ -58,12 +61,19 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         this.inventory = inventory;
     }
 
+    public void SetPlayer(PlayerController player)
+    {
+        this.player = player;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        //if(item.itemType== Item.ItemType.CONSUMABLE)
+        if(eventData.button == PointerEventData.InputButton.Left)
         {
-            if(item.Use())
+            if(item.itemType== Item.ItemType.CONSUMABLE)
             {
+             if(item.Use())
+             {
                 
                 this.amount--; 
                 inventory.RemoveItem(item,1);
@@ -71,11 +81,21 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 {
                     Destroy(this.gameObject);
                     invManager.RefreshInventoryItems(); 
-                      
                 }
                 invManager.RefreshInventoryItems();            
             }
+            }
+        }else if(eventData.button == PointerEventData.InputButton.Right)
+        {
+            Item duplicateItem = item.Clone();
+            inventory.RemoveItem(item, item.amount);
+            Destroy(this.gameObject);
+            invManager.RefreshInventoryItems();
+            ItemWorld.DropItem(player.GetPosition(),duplicateItem, player.LastMoveDir, 0.3f);
+            // invManager.RefreshInventoryItems();
+            // OnItemClicked?.Invoke(this,EventArgs.Empty);
         }
-        OnItemClicked?.Invoke(this,EventArgs.Empty);
+        
+        
     }
 }

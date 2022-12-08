@@ -104,6 +104,9 @@ public class PlayerController : MonoBehaviour
         
         inventory = new Inventory(GetComponent<PlayerData>());
         inventoryManager.SetInventory(inventory);
+        inventoryManager.SetPlayer(this);
+        
+        
         
         //dynamic weapon list
         weapons = new List<GameObject>();
@@ -118,6 +121,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate(){
+        
 
         //Move the player if it's moveable and there is any input.
         if(canMove == true && movementInput != Vector2.zero && !inMenu)
