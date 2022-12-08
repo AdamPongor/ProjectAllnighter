@@ -24,17 +24,15 @@ public class WeaponParent : MonoBehaviour
     public float radius;
 
     [SerializeField] GameObject projectile;
-    [SerializeField] Transform firePoint;
+    public Transform firePoint;
     protected Camera mainCamera;
-    private PlayerData playerData;
+    public PlayerData playerData;
 
     private void Start()
     {
         mainCamera = Camera.main;
-        playerData = GetComponentInParent<PlayerData>();
     }
     public void Update() {
-
         Vector3 mousePosition = Input.mousePosition;
         Vector3 screenPoint = mainCamera.WorldToScreenPoint(transform.localPosition);
         Vector2 offset = new Vector2(mousePosition.x - Screen.width / 2, mousePosition.y - Screen.height / 2);
@@ -49,13 +47,12 @@ public class WeaponParent : MonoBehaviour
 
         //setting sorting order in case of moving upwards or downwards
         if (Direction.y > 0 || Direction.x < 0)
-            {
-                weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
-            }
-            else
-            {
-                weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
-            }
+        {
+            weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
+        } else
+        {
+            weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
+        }
     }
     public void RangedAttack()
     {
@@ -94,10 +91,12 @@ public class WeaponParent : MonoBehaviour
 
     public virtual void Defend()
     {
+        
         if (playerData.isEnoughStamina(20f))
         {
             if (attackBlocked)
                 return;
+            Debug.Log("fasz");
             animator.SetTrigger("Defend");
             IsAttacking = true;
             IsBlocking = true;

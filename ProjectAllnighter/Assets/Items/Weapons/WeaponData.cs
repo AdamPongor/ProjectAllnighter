@@ -15,9 +15,11 @@ public class WeaponData : MonoBehaviour
     private int maxLevel = 10;
     public UnityEvent Scale;
     public UnityEvent Attack;
+    private bool equipped = false;
 
     public int Level { get => level; set{if (level<maxLevel) level = value; }}
     public int MaxLevel { get => maxLevel;}
+    public bool Equipped { get => equipped; set => equipped = value; }
 
     public void Upgrade()
     {

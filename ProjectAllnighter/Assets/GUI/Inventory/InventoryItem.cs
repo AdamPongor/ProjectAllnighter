@@ -60,7 +60,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(item.itemType== Item.ItemType.CONSUMABLE)
+        //if(item.itemType== Item.ItemType.CONSUMABLE)
         {
             if(item.Use())
             {

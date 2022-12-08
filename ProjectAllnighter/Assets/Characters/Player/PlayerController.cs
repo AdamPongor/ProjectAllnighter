@@ -92,8 +92,6 @@ public class PlayerController : MonoBehaviour
 
     PlayerData playerData;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -107,8 +105,6 @@ public class PlayerController : MonoBehaviour
         inventory = new Inventory(GetComponent<PlayerData>());
         inventoryManager.SetInventory(inventory);
         
-
-
         //dynamic weapon list
         weapons = new List<GameObject>();
         for (int i = 0; i < weaponParent.transform.childCount; i++)
@@ -116,7 +112,7 @@ public class PlayerController : MonoBehaviour
             weapons.Add(weaponParent.transform.GetChild(i).gameObject);
             weapons[i].SetActive(false);
         }
-        weapons[0].SetActive(true);
+        //weapons[0].SetActive(true);
         currentWeapon = weapons[0];
         currentWeaponIndex = 0;
     }
@@ -192,12 +188,22 @@ public class PlayerController : MonoBehaviour
         dodgeSpeed = 10f;
     }
 
-
+    private bool hasWeapon()
+    {
+        foreach (GameObject w in weapons)
+        {
+            if (w.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     void OnFire()
     {
         //Checking the stamina amount if the player has enough for another attack.
         //If the player is in a dodge or attacking at the moment don't let it attack.
-        if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking && !inMenu && !HoveringMenu)
+        if (CurrentState != PlayerStates.DODGE && !weaponParent.IsAttacking && !inMenu && !HoveringMenu && hasWeapon())
         {
             currentWeapon.GetComponent<WeaponData>().Attack?.Invoke();
         }
@@ -208,19 +214,25 @@ public class PlayerController : MonoBehaviour
         {
             //change weapon to key R
             weapons[currentWeaponIndex].SetActive(false);
-            currentWeaponIndex++;
-            if (currentWeaponIndex >= weapons.Count)
+            for (int i = 0; i < weapons.Count; i++)
             {
-                currentWeaponIndex = 0;
+                currentWeaponIndex++;
+                if (currentWeaponIndex >= weapons.Count)
+                {
+                    currentWeaponIndex = 0;
+                }
+                if (weapons[currentWeaponIndex].GetComponent<WeaponData>().Equipped)
+                {
+                    weapons[currentWeaponIndex].SetActive(true);
+                    currentWeapon = weapons[currentWeaponIndex];
+
+                    weaponParent.weaponRenderer = currentWeapon.GetComponent<SpriteRenderer>();
+                    weaponParent.animator = currentWeapon.GetComponent<Animator>();
+                    weaponParent.circleOrigin = currentWeapon.GetComponentsInChildren<Transform>()[0];
+                    weaponParent.firePoint = currentWeapon.GetComponentsInChildren<Transform>()[1];
+                    break;
+                }
             }
-
-            weapons[currentWeaponIndex].SetActive(true);
-            currentWeapon = weapons[currentWeaponIndex];
-
-
-            //TODO: ITT VAN VALAMI HIBA
-            weaponParent.weaponRenderer = currentWeapon.GetComponent<SpriteRenderer>();
-            weaponParent.animator = currentWeapon.GetComponent<Animator>();
         }
     }
 

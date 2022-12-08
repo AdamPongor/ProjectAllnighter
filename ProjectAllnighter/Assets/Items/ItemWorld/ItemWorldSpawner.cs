@@ -8,6 +8,7 @@ public class ItemWorldSpawner : MonoBehaviour
     public UnityEvent SetItem;
     public PlayerData player;
     public GameObject weapon;
+    public Sprite s;
     private Item item;
 
     private void Start()
@@ -33,8 +34,8 @@ public class ItemWorldSpawner : MonoBehaviour
     {
         item = new Coin(100);
     }
-    public void Sword()
+    public void Weapon()
     {
-        item = new WeaponItem(weapon, player);
+        item = new WeaponItem(weapon, s, player);
     }
 }
