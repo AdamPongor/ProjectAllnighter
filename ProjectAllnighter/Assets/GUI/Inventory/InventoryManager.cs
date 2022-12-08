@@ -104,8 +104,7 @@ public class InventoryManager : MonoBehaviour
                     }
                 }
             }
-
-            
+   
 
             
         } 

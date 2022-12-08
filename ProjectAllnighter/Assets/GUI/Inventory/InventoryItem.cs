@@ -64,15 +64,18 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             if(item.Use())
             {
-                inventory.RemoveItem(item,1);  
                 
-                Destroy(this);  
+                this.amount--; 
+                inventory.RemoveItem(item,1);
+                if(this.amount<= 0)
+                {
+                    Destroy(this.gameObject);
+                    invManager.RefreshInventoryItems(); 
+                      
+                }
                 invManager.RefreshInventoryItems();            
             }
         }
-        if (eventData.button == PointerEventData.InputButton.Right) {
-             Debug.Log ("Right Mouse Button Clicked on: " + name);
-         }
         OnItemClicked?.Invoke(this,EventArgs.Empty);
     }
 }
