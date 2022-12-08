@@ -13,16 +13,10 @@ public class WeaponItem : Item
 
     public override bool Use()
     {
-        if (weapon.GetComponent<WeaponData>().Equipped)
-        {
-            Unequip();
-        } else
-        {
-            weapon.GetComponent<WeaponData>().Equipped = true;
-        }
+        weapon.GetComponent<WeaponData>().Equipped = true;
         return false;
     }
-    public void Unequip()
+    public override void Unequip()
     {
         weapon.GetComponent<WeaponData>().Equipped = false;
         weapon.SetActive(false);

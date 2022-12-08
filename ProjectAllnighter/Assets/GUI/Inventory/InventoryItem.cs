@@ -96,9 +96,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             }
         }else if(eventData.button == PointerEventData.InputButton.Right)
         {
-            
             Item duplicateItem = item.Clone();
             inventory.RemoveItem(item, item.amount);
+            item.Unequip();
             Destroy(this.gameObject);
             invManager.RefreshInventoryItems();
             ItemWorld.DropItem(player.GetPosition(),duplicateItem, player.LastMoveDir, 0.3f);

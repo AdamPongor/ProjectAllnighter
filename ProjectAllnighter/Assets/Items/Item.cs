@@ -38,6 +38,8 @@ public class Item
         return false;
     }
 
+    public virtual void Unequip() { }
+
     public Sprite GetSprite()
     {
         return itemSprite;
