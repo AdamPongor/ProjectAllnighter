@@ -59,9 +59,15 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if(parentAfterDrag.name.Substring(0,10).Equals("WeaponSlot") && this.item.itemType == Item.ItemType.WEAPON )
         {
             item.Use();
-        }else{
+        }else if (!parentAfterDrag.name.Substring(0,10).Equals("WeaponSlot"))
+        {
+            transform.SetParent(parentAfterDrag);
+        }else
+        {
             transform.SetParent(parentBeforeDrag);
         }
+            
+        
         image.raycastTarget = true;
     }
 
