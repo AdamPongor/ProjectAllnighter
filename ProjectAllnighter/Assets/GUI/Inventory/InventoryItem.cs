@@ -12,11 +12,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
      public int amount = 1;
     public Image image;
     [HideInInspector] public Transform parentAfterDrag;
+    [HideInInspector] public Transform parentBeforeDrag;
     private Inventory inventory;
     public InventoryManager invManager;
 
     public PlayerController player;
-    public event EventHandler OnItemClicked;
+
     
     
 
@@ -40,6 +41,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentAfterDrag = transform.parent;
+        parentBeforeDrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         image.raycastTarget = false;
@@ -53,6 +55,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         transform.SetParent(parentAfterDrag);
+        if(parentAfterDrag.name.Equals("WeaponSlot") && this.item.itemType == Item.ItemType.WEAPON )
+        {
+            item.Use();
+        }else{
+            transform.SetParent(parentBeforeDrag);
+        }
         image.raycastTarget = true;
     }
 
@@ -92,8 +100,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             Destroy(this.gameObject);
             invManager.RefreshInventoryItems();
             ItemWorld.DropItem(player.GetPosition(),duplicateItem, player.LastMoveDir, 0.3f);
-            // invManager.RefreshInventoryItems();
-            // OnItemClicked?.Invoke(this,EventArgs.Empty);
         }
         
         
