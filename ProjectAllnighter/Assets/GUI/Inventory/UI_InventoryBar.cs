@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using CodeMonkey.Utils;
-using UnityEditor.UIElements;
 
 public class UI_InventoryBar : MonoBehaviour
 {
