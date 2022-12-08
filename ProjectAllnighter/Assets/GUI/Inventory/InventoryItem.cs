@@ -62,6 +62,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }else if (!parentAfterDrag.name.Substring(0,10).Equals("WeaponSlot"))
         {
             transform.SetParent(parentAfterDrag);
+            item.Unequip();
         }else
         {
             transform.SetParent(parentBeforeDrag);
