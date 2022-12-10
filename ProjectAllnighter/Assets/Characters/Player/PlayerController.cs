@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    [SerializeField] private UI_InventoryBar uI_InventoryBar;
     
     private bool inventoryOpen = false;
     public UnityEvent OpenInventory;

@@ -4,7 +4,6 @@ using UnityEngine;
 using System.Threading;
 using System;
 using UnityEngine.UIElements;
-using CodeMonkey.Utils;
 using Random = System.Random;
 
 public class Enemy : MonoBehaviour
@@ -78,7 +77,7 @@ public class Enemy : MonoBehaviour
     {
         Random rnd = new Random();
         Item item = new Coin(rnd.Next(1, 5));
-        Vector2 Dir = UtilsClass.GetRandomDir();
+        Vector2 Dir = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized;
         ItemWorld.DropItem(gameObject.transform.position, item, Dir, 0);
     }
 
