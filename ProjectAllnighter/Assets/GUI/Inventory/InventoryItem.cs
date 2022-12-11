@@ -72,7 +72,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             transform.SetParent(parentBeforeDrag);
         }
             
-        
         image.raycastTarget = true;
     }
 

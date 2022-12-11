@@ -96,7 +96,6 @@ public class WeaponParent : MonoBehaviour
         {
             if (attackBlocked)
                 return;
-            Debug.Log("fasz");
             animator.SetTrigger("Defend");
             IsAttacking = true;
             IsBlocking = true;
